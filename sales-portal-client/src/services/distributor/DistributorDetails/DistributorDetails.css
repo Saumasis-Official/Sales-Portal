@@ -1,0 +1,310 @@
+.do-detail-page {
+  margin-top: 60px;
+  min-height: calc(100vh - 60px);
+}
+
+.do-detail-block {
+  padding: 40px 30px;
+  height: 100%;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.basic-details,
+.alert-details {
+  padding-bottom: 10px;
+}
+
+.basic-details h3,
+.alert-details h3 {
+  margin-bottom: 26px;
+  font-size: 26px;
+  line-height: 27px;
+  font-family: 'MyriadPro-Regular';
+  color: #333333de;
+  opacity: 0.8;
+}
+
+.basic-details .form-wrapper,
+.alert-details .form-wrapper {
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.basic-details .form-wrapper label,
+.alert-details .form-wrapper h4 {
+  font-size: 20px;
+  line-height: 27px;
+  color: #333333de;
+  font-family: 'Avenir-Heavy';
+  min-width: 218px;
+  margin: 0;
+}
+
+.basic-details .form-wrapper span {
+  font-size: 22px;
+  line-height: 30px;
+  color: #333333;
+  font-family: 'Avenir-Medium';
+  display: inline-block;
+  word-break: break-word;
+}
+
+.basic-details .form-wrapper span em {
+  font-style: normal;
+  position: relative;
+  top: -5px;
+  left: 13px;
+  cursor: pointer;
+}
+
+.radio-grp {
+  display: flex;
+  align-items: center;
+}
+
+.radio-btn {
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-right: 20px;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 30px;
+  color: #333333;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: 'Avenir-Medium';
+}
+
+/* Hide the browser's default radio button */
+.radio-btn input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border: 1px solid #2e68ae;
+  border-radius: 50%;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-btn input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-btn .checkmark:after {
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1268b3;
+}
+
+.btn-grp button,
+.btn-grp a {
+  padding: 0;
+  min-width: 154px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 18px;
+  font-family: MyriadPro-Semibold;
+  letter-spacing: 0.03px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 30px;
+  display: inline-block;
+}
+
+.btn-grp a.cancel-btn {
+  color: #8d8d8d;
+  background: #c6c6c6;
+  text-align: center;
+}
+
+.btn-grp button.sbmt-btn {
+  color: #fff;
+  background: #1268b3;
+}
+
+input.emailfld {
+  border: 1px solid #e8e9ec;
+  padding: 0 15px;
+  height: 56px;
+  min-width: 500px;
+  font-size: 20px;
+  border-radius: 4px;
+  display: none;
+}
+
+.phonefld {
+  border: 1px solid #e8e9ec;
+  padding: 0 15px;
+  height: 56px;
+  min-width: 500px;
+  font-size: 20px;
+  border-radius: 4px;
+  display: none;
+}
+
+.form-wrapper2 {
+  max-width: 550px;
+}
+
+.form-wrapper2 fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-wrapper2 fieldset legend {
+  padding: 0 10px;
+  display: inline-block;
+  width: auto;
+  margin: 0;
+}
+
+.form-wrapper2 fieldset > div {
+  display: flex;
+  align-items: center;
+}
+
+.form-wrapper2 fieldset > div h4 {
+  margin: 0;
+  min-width: 218px;
+}
+
+.info-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.info-icon span {
+  color: #1268b3 !important;
+}
+
+.info-icon span svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media screen and (max-width: 1600px) {
+  .basic-details .form-wrapper,
+  .alert-details .form-wrapper {
+    margin-bottom: 16px;
+  }
+
+  .basic-details h3,
+  .alert-details h3 {
+    margin-bottom: 16px;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .basic-details .form-wrapper label,
+  .alert-details .form-wrapper h4 {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .basic-details .form-wrapper span {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .radio-btn {
+    font-size: 18px;
+  }
+
+  .phonefld,
+  input.emailfld {
+    height: 40px;
+    min-width: 400px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .phonefld,
+  input.emailfld {
+    min-width: unset;
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .do-detail-page {
+    padding: 20px;
+    margin-left: 0;
+    height: auto;
+  }
+
+  .form-wrapper2 fieldset > div {
+    flex-wrap: wrap;
+  }
+
+  .do-detail-block {
+    padding: 15px;
+  }
+
+  .basic-details .form-wrapper,
+  .alert-details .form-wrapper {
+    display: block;
+  }
+
+  .basic-details .form-wrapper label,
+  .alert-details .form-wrapper h4 {
+    display: block;
+    font-size: 15px;
+  }
+
+  .basic-details .form-wrapper span {
+    font-size: 14px;
+    word-break: break-all;
+  }
+
+  .radio-btn {
+    font-size: 15px;
+  }
+
+  .btn-grp button,
+  .btn-grp a.cancel-btn {
+    min-width: 48%;
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px;
+    margin-right: 0;
+  }
+
+  .btn-grp a.cancel-btn {
+    margin-right: 5px;
+  }
+
+  .phonefld,
+  input.emailfld {
+    padding: 0 10px;
+    min-width: 100%;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,32 @@
+.remarks-value-auto-closure-auto-closure {
+  max-width: 190px;
+  min-height: 32px;
+  line-height: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.remarks-value-auto-closure textarea {
+  height: 60px;
+  border: none;
+  width: 100%;
+  padding: 8px;
+  line-height: 20px;
+  border-radius: 2px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.remarks-value-auto-closure textarea:disabled {
+  background: #d5d5d5;
+  cursor: not-allowed;
+}
+
+.remarks-value-auto-closure textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}

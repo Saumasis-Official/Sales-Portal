@@ -1,0 +1,2853 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Auth",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://devapi-pegasus.tataconsumer.com/auth/api/v1",
+      "variables": {}
+    },
+    {
+      "url": "https://uatapi-pegasus.tataconsumer.com/auth/api/v1",
+      "variables": {}
+    },
+    {
+      "url": "https://prdapi-pegasus.tataconsumer.com/auth/api/v1",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/hc-index": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is health check api used to check if the service is properly running",
+        "operationId": "healthcheck",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to validate and logging in a particular distributor in the portal",
+        "operationId": "login",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/loginrequest"
+              },
+              "example": {
+                "login_id": "116683",
+                "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/refresh-token": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to refresh the token once the token is expired during a distributor logged into a session",
+        "operationId": "refresh-token",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/validate-distributor-id/{id}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to validate the distributor id and return the mobile number of the distributor for otp sending purpose",
+        "operationId": "validate-dist-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/get-alert/{id}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch the notification preferences of a particular distributor",
+        "operationId": "get-alert",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/update-alert": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to modify the notification preferences of a particular distributor",
+        "operationId": "update-alert",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update-alert-request"
+              },
+              "example": {
+                "cloumn_name": [
+                  {
+                    "cloumn_name": "po_so_sms",
+                    "status": false
+                  },
+                  {
+                    "cloumn_name": "invoice_details_sync_sms",
+                    "status": false
+                  },
+                  {
+                    "cloumn_name": "po_so_email",
+                    "status": false
+                  },
+                  {
+                    "cloumn_name": "invoice_details_sync_email",
+                    "status": true
+                  }
+                ],
+                "login_id": "116683"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/send-otp-mail-mobile": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to send otp to mobile number and link to email id of the distributor",
+        "operationId": "update-mobile-otp",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update-mobile-otp-request"
+              },
+              "example": {
+                "updateValue": "7760295006",
+                "type": "sms",
+                "remark": "test"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/reset-password": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to reset password of a distributor after validating the otp when not logged in",
+        "operationId": "reset-password",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/reset-password-request"
+              },
+              "example": {
+                "login_id": "116683",
+                "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/generate-otp": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to generate the otp and send it to the distributor once he requests for password reset",
+        "operationId": "generate-otp",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/generate-otp-request"
+              },
+              "example": {
+                "login_id": "116683"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/verify-otp": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to verify the otp entered by the distributor if it is valid or not",
+        "operationId": "verify-otp",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/verify-otp-request"
+              },
+              "example": {
+                "login_id": "116683",
+                "otp": "111100"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/verify-mobile": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to verify and update the mobile number of a particular distributor",
+        "operationId": "verify-mobile",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/verify-mobile-request"
+              },
+              "example": {
+                "otp": 111100,
+                "remark": "test"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/verify-email/{id}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to verify and update the email id of a particular distributor",
+        "operationId": "verify-email",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "U2FsdGVkX18O4NYvgttRwpSkUZF+02Ltgzxs*qjqFH4=?remark=test"
+            }
+          },
+          {
+            "name": "remark",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "example": "test"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/change-password": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to change the password by a particular distributor from the dashboard screen once he is logged in",
+        "operationId": "change-password-new",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/change-password-new-request"
+              },
+              "example": {
+                "current_password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg=",
+                "new_password": "U2FsdGVkX19vo5/HmMHkUhm8jSz0WXCovWicd9Vaiec="
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to get all the distributor sessions by admin",
+        "operationId": "get-success-sessions",
+        "requestBody": {
+          "description": "Get session logs based on DateTime range and Types i.e. ['all', 'success', 'failure', 'active', '']",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/session-request"
+              },
+              "example": {
+                "from": "2021-12-05 11:00:57.86248+05:30",
+                "to": "2022-12-30 11:08:57.86248+05:30",
+                "type": "success"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to logout a particular distributor who is logged in and clicks on the logout button",
+        "operationId": "logout",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/alert-comment-list/{distributor_id?type=email}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch last updated remarks/comments made by the distributor while modifying a particular email or mobile number.",
+        "operationId": "alert-comment-list",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/distributor-list": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used by TSE, Distributor Admin or Admin to fetch the list of all the distributors that are accessible to the respected type of user",
+        "operationId": "distributor-list",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/distributor-list-request"
+              },
+              "example": {
+                "limit": "10",
+                "offset": "0",
+                "search": "",
+                "status": "ALL"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/login-setting/{distributor_id}": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to modify the login settings of a particular distributor by admin",
+        "operationId": "login-setting",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update login setting of a distributor (enable/disable)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/login-setting"
+              },
+              "example": {
+                "enable_login": true
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/alert-settings/{distributor_id}": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to modfiy the alert settings of a particular distributor by admin",
+        "operationId": "alert-settings",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update alert settings of a distributor (enable/disable po-so sms and email, invoice sync details sms and email)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/alert-settings"
+              },
+              "example": {
+                "enable_po_so_sms": true,
+                "enable_po_so_email": true,
+                "enable_invoice_sync_sms": true,
+                "enable_invoice_sync_email": true
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/alert-remarks/{distributor_id}": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to add remarks on modification of either login or alert settings or both for a particular distributor by admin",
+        "operationId": "alert-remarks",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update alert remarks for changes in settings of a distributor",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/alert-remarks"
+              },
+              "example": {
+                "alert_setting_changes": {
+                  "enable_po_so_sms": true,
+                  "enable_po_so_email": false,
+                  "enable_invoice_sync_email": true
+                },
+                "remarks": "changed these alert settings of this distributor because of some reason",
+                "changed_by": "{admin_id}"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/distributor-settings/{distributor_id}": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to modify the settings of a particular distributor by admin",
+        "operationId": "distributor-settings",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update distributor settings",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/distributor-settings"
+              },
+              "example": {
+                "enable_po_so_sms": true,
+                "enable_login": true,
+                "enable_invoice_sync_email": true,
+                "remarks": "updated distributor settings for distributor - 116683",
+                "changed_by": "{admin_id}"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/get-distribution-list": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch the list of distributors for a particular type of admin",
+        "operationId": "get-distribution-list",
+        "requestBody": {
+          "description": "Get Distributor List",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/get-distribution-list"
+              },
+              "example": {
+                "limit": 20,
+                "offset": 0,
+                "search": "",
+                "tseCode": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/admin/alert-comment-list/{distributor_id}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch all the alert remarks/comments made by the admins while modifying a particular setting",
+        "operationId": "alert-comment-list",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/update-distributor-mobile/{distributor_id}": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to update the mobile number of a particular distributor by admin",
+        "operationId": "update-distributor-mobile",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update distributor mobile number by admin",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update-distributor-mobile"
+              },
+              "example": {
+                "mobile_number": "9876543210",
+                "remark": "test"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/update-distributor-email/{distributor_id}": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to update the email id of a particular distributor by admin",
+        "operationId": "update-distributor-email",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update distributor email id by admin",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update-distributor-email"
+              },
+              "example": {
+                "email": "xyz@tataconsumer.com",
+                "remark": "test"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/tse-user-list": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch the list of all the TSE, Distributor Admin and Admin in the portal",
+        "operationId": "tse-user-list",
+        "requestBody": {
+          "description": "Tse User List by admin",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tse-user-list"
+              },
+              "example": {
+                "limit": 10,
+                "offset": 0,
+                "search": "",
+                "status": "enabled"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/tse-user-setting": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used by Admin to update the settings (i.e. role and login access) for TSE, Distributor Admin and Admins",
+        "operationId": "tse-user-setting",
+        "requestBody": {
+          "description": "Update roles and login enable/disable tse user by admin",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tse-user-setting"
+              },
+              "example": {
+                "user_id": "1110124",
+                "role": "ASM",
+                "enableLogin": "INACTIVE"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/app-level-configuration": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch all the app level configurations (only key and value pairs)",
+        "operationId": "app-level-configuration",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/app-level-configuration": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to update the app level configuration by admin",
+        "operationId": "app-level-configuration",
+        "requestBody": {
+          "description": "Update the app level configuration by admin",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/app-level-configuration"
+              },
+              "example": {
+                "app_level_configuration": [
+                  {
+                    "key": "UNIVERSAL_SEARCH",
+                    "value": "INACTIVE",
+                    "remarks": "updated global search.."
+                  },
+                  {
+                    "key": "Misc_SEARCH",
+                    "value": "UNIVERSAL",
+                    "remarks": "updated Misc search to universal.."
+                  },
+                  {
+                    "key": "REPORT_ISSUES",
+                    "value": "INACTIVE",
+                    "remarks": "disabled report issue..."
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin//app-level-configuration": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch all the app level configurations with last update details by admin",
+        "operationId": "app-level-configuration",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/session": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch all distributor session logs by Admin",
+        "operationId": "Dist Sessions log",
+        "requestBody": {
+          "description": "Get session logs based on DateTime range and Types i.e. ['all', 'success', 'failure', 'active', ''] by super admin",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/session-request"
+              },
+              "example": {
+                "from": "2021-12-05 11:00:57.86248+05:30",
+                "to": "2022-12-30 11:08:57.86248+05:30",
+                "type": "success"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/admin/update-maintenance-status": {
+      "patch": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to update-maintenance-status",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "id": "51",
+                  "remarks": "Testing with swagger",
+                  "status": "OPEN"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }  
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/user/fetch/{id}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is used to fetch user using ID ",
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/add-maintenance-status": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is to add-maintenance-status",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "duration": "1",
+                  "id": "44",
+                  "remark": "Done for Swagger",
+                  "status": "CLOSE"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/alert-comment-list/{distributor_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is to alert-comment-list using a distributor_id",
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 100003
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/upload-file": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is to upload-file",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "description": "It is changed for swagger Checking",
+                  "userName": "Jaiprassath",
+                  "contactName": "Jaiprassath",
+                  "title": "SWAGGER CHECK",
+                  "email": "jaiprassath.kothandapani@tataconsumer.com",
+                  "contact": "6747578689",
+                  "category": "SOP"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "uploadFile",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+               "example": "application/json"
+            }         
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/admin/file-upload-history": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is to check file-upload-history",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "limit": 10,
+                  "offset": 0,
+                  "search": "",
+                  "searchField": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/fetch-azureAD-users/{search_text}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is to fetch-azureAD-users using search_text",
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "search_text",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "test"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/sso_user": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is to login for sso_user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "code": "",
+                  "email": "samarth.lavhate@tataconsumer.com",
+                  "name": "samarth lavhate",
+                  "role": "SUPER_ADMIN"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "ssoUser",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/admin/fetch-help-section-data": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is to fetch-help-section-data",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "category": "SOP",
+                  "limit": 10,
+                  "offset": 0
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "helpSectionData",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/admin/createPreAssignUrl": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is to createPreAssignUrl",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "path": "HELPSECTION.docx"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "createPreAssignUrl",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/admin/distributor-settings": {
+      "put": {
+        "tags": ["Misc"],
+        "summary": "This api is to Access distributor-settings",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "distributor_ids": [
+                    "100003",
+                    "100040",
+                    "100042",
+                    "100056",
+                    "100059",
+                    "100064",
+                    "100069",
+                    "100073",
+                    "100083",
+                    "100085"
+                  ],
+                  "remarks": "tested for swagger"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/admin/dashboard-filter-categories": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is to filter dashboard-filter-categories",
+        "security": [{ "api_key": [] }],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "{{token}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+  
+    "/auth/api/v1/admin/area-code-list": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to check area-code-list",
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "{{token}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers" : {}
+          }
+        }
+      }
+    },
+    "/admin/get-adjustment-timeline": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to check get-adjustment-timeline",
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "{{token}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers" : {}
+          }
+        }
+      }
+    },
+    "/admin/cfa-depot-mapping": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to get cfa-depot-mapping",
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "{{token}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers" : {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to update cfa-depot-mapping",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "id": 95,
+                  "zone": "East-1",
+                  "depot_code": "1428",
+                  "sales_org": 1010,
+                  "distribution_channel": 10,
+                  "division": 12,
+                  "location": "Guwahati",
+                  "name": "C/O M/S. Rana Chowdhary",
+                  "address": "Rana Chowdhary , C/O Nilachal Logistics(P) Ltd, Hard Board Factory Compund,  Panikhetty, Guwahati-781026 (Assam)",
+                  "email": "mohnish.ghoshal@tataconsumer.com",
+                  "contact_person": "Sanjay",
+                  "contact_number": "9876543212",
+                  "zone_manager_email": "kiran.hebbali@tataconsumer.com",
+                  "logistic_email": "kiran.hebballi@tataconsumer.com,mohnish.ghoshal@tataconsumer.com",
+                  "created_on": "2023-04-13T04:33:15.043Z",
+                  "updated_on": "2024-01-10T05:31:02.052Z",
+                  "cluster_manager_email": "saumasis.chandra@tataconsumer.com",
+                  "is_deleted": true,
+                  "updated_by": "TCPL_54365377",
+                  "remarks": "tested for swaggerssss"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers" : {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to post cfa-depot-mapping",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "zone": "South 2",
+                  "depot_code": "1290",
+                  "sales_org": "1010",
+                  "distribution_channel": 10,
+                  "division": [
+                    10
+                  ],
+                  "location": "Tamil Nadu",
+                  "name": "Jaiprassath",
+                  "address": "40,Amit building,velacherry,chennai-3",
+                  "email": "jaiprassath.kothandapani@tataconsumer.com",
+                  "contact_person": "Naveen",
+                  "contact_number": "9989989977",
+                  "zone_manager_email": "david@tataconsumer.com",
+                  "cluster_manager_email": "pganeshrao@tataconsumer.com",
+                  "logistic_email": "naveen@tataconsumer.com",
+                  "remarks": "Testing for swageerr"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+           "headers":{}
+          }
+        }
+      }
+    },
+    "/admin/multiple-update-cfa-depot-mapping": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to update multiple-update-cfa-depot-mapping",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "zone": [
+                    "South 2",
+                    "South 1"
+                  ],
+                  "depot_code": [],
+                  "sales_org": 0,
+                  "distribution_channel": 0,
+                  "division": [
+                    99
+                  ],
+                  "location": "Karnataka",
+                  "name": "saumasis chandra",
+                  "address": "esteem mall,kempuraaaa",
+                  "email": "saumasis.chandra@tataconsumer.com",
+                  "contact_person": "saumasis",
+                  "contact_number": "9988776644",
+                  "zone_manager_email": "saumasis.chandra@tataconsumer.com",
+                  "cluster_manager_email": "saumasis.chandra@tataconsumer.com",
+                  "logistic_email": "saumasis.chandra@tataconsumer.com",
+                  "remarks": "swagger checking"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers":{}
+          }
+        }
+      }
+    },
+    "/admin/db-moq-details/{distributor_id}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to get db_moq_details using distributor_id",
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 100003
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/survey/get-depot-for-logistics": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is for survey list for get-depot-for-logistics",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "logistics_email": "rajat.kumar@tataconsumer.com"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/survey/upsert-cfa-questionnaire-admin": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to make survey for upsert-cfa-questionnaire-admin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "depot_code_distributors": [
+                    {
+                      "depot_code": "1416",
+                      "applicable_distributors": [
+                        "100264"
+                      ]
+                    }
+                  ],
+                  "questions": {
+                    "1": "How satisfied you are with the time taken to delivery your orders?",
+                    "2": "How would you rate the product quality at the time of delivery?",
+                    "3": "How would you rate the quality of truck (cleanliness/tarpaulin etc.) which was carrying our product?",
+                    "4": "How satisfied are you with the communication and responsiveness of our CFA during the delivery process?",
+                    "5": "How satisfied are you with our speed of resolution of issues like shortage, damage products etc.",
+                    "6": "Overall rating on your experience with CFA",
+                    "7": "Testing For Swagger by Jai"
+                  },
+                  "survey_start": "2024-02-01",
+                  "survey_end": "2024-02-14"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/survey/get-cfa-questions-admin": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to make survey for get-cfa-questions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": ""
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/survey/survey-response-report": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to make survey with survey-response-report",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "zones": [
+                    "South 2"
+                  ],
+                  "area_codes": [
+                    "TN02"
+                  ],
+                  "offset": 0,
+                  "limit": 10,
+                  "headerFilter": {}
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/survey/survey-report": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to make survey using survey-report",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "depot_codes": [
+                    "1137"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/survey/survey-notifications": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to make survey using survey-notifications",
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/survey/save-db-response-admin": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "This api is to make survey and posting save-db-response-admin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "questionnaire_id": 1,
+                  "db_code": "100040",
+                  "db_name": "AJANTA STORE",
+                  "db_email": "sihhub007@gmail.com",
+                  "db_mobile": "9442428272",
+                  "depot_code": "1213",
+                  "survey_start": "2024-01-02T18:30:00.000Z",
+                  "survey_end": "2024-01-03T18:00:00.000Z",
+                  "db_response": {
+                    "comment": "wetwetwgdrhdhdhjhbcjkzvknvklnxcbklxnblvcnbkndfjsdasjfbsdjvbdgsdgsfsfgsfdhdh"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "loginrequest": {
+        "title": "loginrequest",
+        "required": [
+          "login_id",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "login_id": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "login_id": "116683",
+          "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+        }
+      },
+      "update-alert-request": {
+        "title": "update-alert-request",
+        "required": [
+          "cloumn_name",
+          "login_id"
+        ],
+        "type": "object",
+        "properties": {
+          "cloumn_name": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CloumnName"
+            },
+            "description": ""
+          },
+          "login_id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "cloumn_name": [
+            {
+              "cloumn_name": "po_so_sms",
+              "status": false
+            },
+            {
+              "cloumn_name": "invoice_details_sync_sms",
+              "status": false
+            },
+            {
+              "cloumn_name": "po_so_email",
+              "status": false
+            },
+            {
+              "cloumn_name": "invoice_details_sync_email",
+              "status": true
+            }
+          ],
+          "login_id": "116683"
+        }
+      },
+      "CloumnName": {
+        "title": "CloumnName",
+        "required": [
+          "cloumn_name",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "cloumn_name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "cloumn_name": "po_so_sms",
+          "status": false
+        }
+      },
+      "update-mobile-otp-request": {
+        "title": "update-mobile-otp-request",
+        "required": [
+          "updateValue",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "updateValue": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "updateValue": "7760295006",
+          "type": "sms",
+          "remark": "test"
+        }
+      },
+      "update-email-otp-request": {
+        "title": "update-email-otp-request",
+        "required": [
+          "updateValue",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "updateValue": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "updateValue": "deepak_1@outlook.com",
+          "type": "email",
+          "remark": "test"
+        }
+      },
+      "reset-password-request": {
+        "title": "reset-password-request",
+        "required": [
+          "login_id",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "login_id": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "login_id": "116683",
+          "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+        }
+      },
+      "generate-otp-request": {
+        "title": "generate-otp-request",
+        "required": [
+          "login_id"
+        ],
+        "type": "object",
+        "properties": {
+          "login_id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "login_id": "116683"
+        }
+      },
+      "verify-otp-request": {
+        "title": "verify-otp-request",
+        "required": [
+          "login_id",
+          "otp"
+        ],
+        "type": "object",
+        "properties": {
+          "login_id": {
+            "type": "string"
+          },
+          "otp": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "login_id": "116683",
+          "otp": "111100"
+        }
+      },
+      "verify-mobile-request": {
+        "title": "verify-mobile-request",
+        "required": [
+          "otp"
+        ],
+        "type": "object",
+        "properties": {
+          "otp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "remark": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "otp": 111100,
+          "remark": "test"
+        }
+      },
+      "change-password-new-request": {
+        "title": "change-password-new-request",
+        "required": [
+          "current_password",
+          "new_password"
+        ],
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "current_password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg=",
+          "new_password": "U2FsdGVkX19vo5/HmMHkUhm8jSz0WXCovWicd9Vaiec="
+        }
+      },
+      "change-password-to-old-request": {
+        "title": "change-password-to-old-request",
+        "required": [
+          "current_password",
+          "new_password"
+        ],
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "current_password": "U2FsdGVkX19vo5/HmMHkUhm8jSz0WXCovWicd9Vaiec=",
+          "new_password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+        }
+      },
+      "session-request": {
+        "title": "session-request",
+        "required": [
+          "from",
+          "to"
+        ],
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "login_id": {
+            "type": "string"
+          },
+          "search": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "from": "2021-12-05 11:00:57.86248+05:30",
+          "to": "2022-12-30 11:08:57.86248+05:30"
+        }
+      },
+      "login-setting": {
+        "title": "login-setting",
+        "required": [
+          "enable_login"
+        ],
+        "type": "object",
+        "properties": {
+          "enable_login": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "enable_login": true
+        }
+      },
+      "alert-settings": {
+        "title": "alert-settings",
+        "type": "object",
+        "properties": {
+          "enable_po_so_sms": {
+            "type": "boolean"
+          },
+          "enable_po_so_email": {
+            "type": "boolean"
+          },
+          "enable_invoice_sync_sms": {
+            "type": "boolean"
+          },
+          "enable_invoice_sync_email": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "enable_login": true
+        }
+      },
+      "alert-remarks": {
+        "title": "alert-remarks",
+        "type": "object",
+        "properties": {
+          "alert_setting_changes": {
+            "type": "object",
+            "properties": {
+              "enable_po_so_sms": {
+                "type": "boolean"
+              },
+              "enable_po_so_email": {
+                "type": "boolean"
+              },
+              "enable_invoice_sync_sms": {
+                "type": "boolean"
+              },
+              "enable_invoice_sync_email": {
+                "type": "boolean"
+              },
+              "enable_login": {
+                "type": "boolean"
+              }
+            }
+          },
+          "remarks": {
+            "type": "string"
+          },
+          "changed_by": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "alert_setting_changes": {
+            "enable_login": true,
+            "remarks": "changed login setting of this distributor because of some reason",
+            "changed_by": "{admin_id}"
+          }
+        }
+      },
+      "distributor-settings": {
+        "title": "distributor-settings",
+        "type": "object",
+        "properties": {
+          "enable_po_so_sms": {
+            "type": "boolean"
+          },
+          "enable_po_so_email": {
+            "type": "boolean"
+          },
+          "enable_invoice_sync_sms": {
+            "type": "boolean"
+          },
+          "enable_invoice_sync_email": {
+            "type": "boolean"
+          },
+          "enable_login": {
+            "type": "boolean"
+          },
+          "remarks": {
+            "type": "string"
+          },
+          "changed_by": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "enable_po_so_sms": true,
+          "enable_login": true,
+          "enable_invoice_sync_email": true,
+          "remarks": "updated distributor settings for distributor - 116683",
+          "changed_by": "{admin_id}"
+        }
+      },
+      "distributor-list-request": {
+        "title": "distributor-list-request",
+        "required": [
+          "limit",
+          "offset"
+        ],
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "search": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "limit": 20,
+          "offset": 0,
+          "search": "",
+          "status": "ALL"
+        }
+      },
+      "get-distribution-list": {
+        "title": "get-distribution-list",
+        "required": [
+          "limit",
+          "offset"
+        ],
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "search": {
+            "type": "string"
+          },
+          "tseCode": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "limit": 20,
+          "offset": 0,
+          "search": "",
+          "tseCode": ""
+        }
+      },
+      "update-distributor-mobile": {
+        "title": "update-distributor-mobile",
+        "type": "object",
+        "properties": {
+          "mobile_number": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "mobile_number": "9876543210",
+          "remark": "test"
+        }
+      },
+      "update-distributor-email": {
+        "title": "update-distributor-email",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "xyz@tataconsumer.com",
+          "remark": "test"
+        }
+      },
+      "tse-user-list": {
+        "title": "tse-user-list",
+        "required": [
+          "limit",
+          "offset"
+        ],
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "search": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "limit": 10,
+          "offset": 0,
+          "search": "",
+          "status": "enabled"
+        }
+      },
+      "tse-user-setting": {
+        "title": "tse-user-setting",
+        "required": [
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "enableLogin": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "user_id": "1110124",
+          "role": "DIST_ADMIN",
+          "enableLogin": "INACTIVE"
+        }
+      },
+      "app-level-configuration": {
+        "title": "app-level-configuration",
+        "required": [
+          "app_level_configuration"
+        ],
+        "type": "object",
+        "properties": {
+          "app_level_configuration": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/app-level-setting-item"
+            }
+          }
+        },
+        "example": {
+          "app_level_configuration": [
+            {
+              "key": "UNIVERSAL_SEARCH",
+              "value": "INACTIVE",
+              "remarks": "updated global search.."
+            },
+            {
+              "key": "Misc_SEARCH",
+              "value": "UNIVERSAL",
+              "remarks": "updated Misc search to universal.."
+            },
+            {
+              "key": "REPORT_ISSUES",
+              "value": "INACTIVE",
+              "remarks": "disabled report issue..."
+            }
+          ]
+        }
+      },
+      "app-level-setting-item": {
+        "title": "app-level-setting-item",
+        "required": [
+          "key",
+          "value",
+          "remarks"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "remarks": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "key": "UNIVERSAL_SEARCH",
+          "value": "INACTIVE",
+          "remarks": "updated global search.."
+        }
+      }
+    }
+  },
+ 
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

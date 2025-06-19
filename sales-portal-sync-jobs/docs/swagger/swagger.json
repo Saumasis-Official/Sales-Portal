@@ -1,0 +1,124 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "tcpl-sap-integration",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://devapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://uatapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://prdapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://S4hanapocapi.tataconsumer.com:443/sap/opu/odata/SAP",
+      "variables": {}
+    },
+    {
+      "url": "https://s4hanapreprodapp1.tataconsumer.com:1443/sap/opu/odata/SAP",
+      "variables": {}
+    },
+    {
+      "url": "https://s4hanaprodapp1.tataconsumer.com/sap/opu/odata/SAP/sap/opu/odata/SAP",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/sap/api/v1/hc-index": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is health check api used to check if the service is properly running",
+        "operationId": "healthcheck",
+
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      },
+      "basic": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "loginrequest": {
+        "title": "loginrequest",
+        "required": ["login_id", "password"],
+        "type": "object",
+        "properties": {
+          "login_id": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "login_id": "116683",
+          "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+        }
+      }
+    }
+  },
+ 
+  "/verify-email/{id}": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to verify-email using Mail ID",
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "remark",
+          "in": "query",
+          "schema": {
+            "type": "string"
+          },
+          "example": "tests"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "example": "jaiprassath.kothandapani@tataconsumer.com"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "security": [{ "api_key": [] }],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

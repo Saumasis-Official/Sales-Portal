@@ -1,0 +1,66 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title  Forecast upload status notification.
+    link(href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i', rel='stylesheet')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='stylesheet', href='../assets/styles/style.css', type='text/css')
+  body(data-gr-c-s-loaded='true', style='')
+    .template-wrapper
+    table.body(border='0', cellpadding='0', cellspacing='0')
+      tbody
+        tr
+          td  
+          td.container
+            .content
+              table.main
+                tbody
+                  tr
+                    td.wrapper
+                      table(border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                          tr
+                            td
+                              a.template-logo(href='https://pegasus.tataconsumer.com/tcp-logo.png')
+                                img(src='https://pegasus.tataconsumer.com/tcp-logo.png')
+
+                              p.lead
+                                | Hello, 
+                                br
+                                br
+                                | This is the forecast upload status to Sales-Order-Portal(Pegasus) for the month of #{data.forecastMonth}.
+                                br
+                                br
+                                | Please find attached the list of areas for which forecast has been successfully uploaded, areas for which forecast  upload has failed and distributors for whom forecast has not been uploaded.
+                                br
+                                br
+                              p.lead
+                                if !data.unsuccessfulAreaCodesPresent 
+                                  | Forecast has been successfully uploaded for all the areas.
+                              p.lead 
+                                if !data.unsuccessfulDistributorsPresent 
+                                  | Forecast has been successfully uploaded for all the distributors belonging to the successfully uploaded areas.
+                              br
+                              br
+                              p Thank you
+              table
+                tbody
+                  tr
+                    td.wrapper
+                      table(border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                          tr
+                            td
+                             
+                  .footer
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td.content-block
+                            p.text-center
+                              | © 2021 Tata Consumer Products Limited.
+                              br
+                              |  This is an automated email, please do not respond to this mail id.
+                              //- a(href='#') unsubscribe 
+          td  

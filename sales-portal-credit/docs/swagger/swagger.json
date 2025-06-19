@@ -1,0 +1,135 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "credit",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://devapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://uatapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://prdapi-pegasus.tataconsumer.com",
+      "variables": {}
+    }
+  ],
+
+  "paths": {
+    "/credit/api/v1/hc-index": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is health check api used to check if the service is properly running",
+        "operationId": "healthcheck",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "loginrequest": {
+        "title": "loginrequest",
+        "required": ["login_id", "password"],
+        "type": "object",
+        "properties": {
+          "login_id": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "login_id": "116683",
+          "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+        }
+      },
+      "updatematerialtagsrequest": {
+        "title": "updatematerialtagsrequest",
+        "required": ["dataset"],
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "type": "file"
+          }
+        },
+        "example": {
+          "dataset": "/home/Downloads/Ordering Portal Material List with tagging_Updated_dt 26.11.2021.xlsx"
+        }
+      },
+      "salesHierarchyDetailsRequest": {
+        "title": "salesHierarchyDetailsRequest",
+        "required": ["dataset"],
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "type": "file"
+          }
+        },
+        "example": {
+          "dataset": "/home/Downloads/Sales_hierarchy.xlsx"
+        }
+      },
+      "zoneWiseOrders": {
+        "title": "zoneWiseOrders",
+        "required": ["from_date", "to_date"],
+        "type": "object",
+        "properties": {
+          "from_date": {
+            "type": "string"
+          },
+          "to_date": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "from_date": "2022-03-01 18:39+05:30",
+          "to_date": "2022-06-03 18:39+05:30"
+        }
+      },
+      "zoneWiseIssues": {
+        "title": "zoneWiseIssues",
+        "required": ["from_date", "to_date"],
+        "type": "object",
+        "properties": {
+          "from_date": {
+            "type": "string"
+          },
+          "to_date": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "from_date": "2022-03-01 18:39+05:30",
+          "to_date": "2022-06-03 18:39+05:30"
+        }
+      }
+    }
+  },
+  "security": [{ "api_key": [] }],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

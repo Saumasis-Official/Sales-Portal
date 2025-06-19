@@ -1,0 +1,57 @@
+.maintainance-message {
+  margin-top: 13px;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #427dba;
+}
+.time {
+  color: #427dba;
+}
+#image-logo {
+  scale: 1.35;
+}
+
+.container {
+  /* background-color: red; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maintenance-word {
+  color: #1268b3;
+  font-size: 2.5rem;
+}
+
+.sub-message {
+  font-size: 1.1rem;
+}
+
+.try-again {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #427dba;
+}
+
+.tcpl-logo {
+  width: 4rem;
+}
+
+.super-admin-login {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 10px 20px;
+}
+
+.super-admin-login-link {
+  color: #427dba;
+  cursor: text;
+}
+
+.super-admin-login-link:hover {
+  color: #427dba;
+  cursor: text;
+  text-decoration: none;
+}

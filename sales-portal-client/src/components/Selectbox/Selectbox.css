@@ -1,0 +1,54 @@
+.select-box-container{
+    position: relative;
+    width: 9.3rem;
+    margin-bottom: 8px;
+}
+
+.select-box-option {
+  background-color: none;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.select-box-option .ant-select-selection-item {
+  background-color: white !important;
+  border: none !important;
+  line-height: 25px !important;
+}
+
+.select-box-option .ant-select-selection-item-remove {
+  display: none !important;
+}
+
+.select-box-option span .ant-select-selection-item-content {
+  background-color: none;
+}
+
+.select-box-option .ant-select-selector {
+  height: 25px !important;
+  overflow: hidden;
+}
+
+.select-box-option .ant-select-selector .ant-select-selection-placeholder {
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  left: 11px;
+  transform: translateY(-50%);
+  transition: all 0.3s;
+}
+
+.notch-select{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.select-box-notch-label{
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+}

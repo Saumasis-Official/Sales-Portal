@@ -1,0 +1,124 @@
+.generate-otp {
+    text-align: end;
+}
+
+.back-to-login {
+    float: right;
+    font-family: 'Avenir-Heavy';
+}
+
+.otp-form-head p  a {
+    font-size: 13px;
+}
+
+/* Extra small devices (portrait phones, less than 360px) */
+@media (max-width: 360px) {
+    .otp-wrapper div input {
+        width: 30px !important;
+        height: 40px !important;
+    }
+
+    .otp-form-head p {
+        word-break: break-word;
+    }
+
+    .otp-form-head p span {
+        display: block;
+    }
+
+    .otp-form-head h3 {
+        margin: 0px;
+    }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+
+@media (max-width: 575.98px) {
+    .otp-form-head {
+        margin-bottom: 0px;
+    }
+
+    .otp-form-head h3 {
+        font-size: 18px;
+    }
+
+    .otp-form-head p {
+        font-size: 13px;
+    }
+    .otp-form-head p  a {
+        font-size: 15px;
+    }
+    .back-to-login {
+        font-size: 15px;
+    }
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .otp-form-head {
+        padding-bottom: 15px;
+    }
+
+    .otp-form-head h3 {
+        font-size: 18px;
+    }
+
+    .otp-form-head p {
+        font-size: 11px;
+    }
+
+    .otp-wrapper div input {
+        width: 32px !important;
+        height: 40px !important;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .otp-form-head p {
+        font-size: 13px;
+    }
+
+    .otp-form-head p  a {
+        font-size: 14px;
+    }
+
+    .otp-wrapper div input {
+        width: 32px !important;
+        height: 40px !important;
+    }
+
+    .default-btn {
+        height: 45px;
+        padding-top: 10px;
+    }
+
+}
+
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .otp-form-head p  a {
+        font-size: 14px;
+    }
+    .back-to-login {
+        font-size: 15px;
+    }
+}
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+    .otp-form-head p  a {
+        font-size: 14px;
+    }
+    .back-to-login {
+        font-size: 15px;
+    }
+}

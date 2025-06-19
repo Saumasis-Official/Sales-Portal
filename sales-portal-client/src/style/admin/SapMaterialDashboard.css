@@ -1,0 +1,89 @@
+#page-title{
+    width:85%;
+    min-width: fit-content;
+}
+#fetch-form {
+    width: 65%;
+    float: left;
+    border-color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+#main {
+    flex: 90%;
+}
+
+#btn {
+    align-self: flex-end;
+    width: fit-content;
+    flex: 10%;
+}
+
+#fetch-btn {
+    color: #1268b3;
+    border-color: #1268b3;
+    width: 70px;
+    border-width: 0.2ch;
+    border-radius: 7px;
+
+}
+
+#distChannelCheckedList {
+    padding-left: 5px;
+}
+
+#divisionCheckedList {
+    padding-left: 5px;
+}
+
+#onDistChannelCheckAllChange {
+    padding-right: 5px;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+}
+
+
+.colm-op {
+    background-color: rgb(230, 236, 241);
+    border: none;
+    padding: 0.5% 1%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px 2px;
+    border-radius: 8px;
+    border-color: #1268b3;
+}
+
+.colm-op:hover {
+    background-color: rgb(191, 225, 255);
+}
+
+.check-colm-op:checked+.colm-op {
+    background-color: rgb(125, 193, 252);
+}
+
+.check-colm-op {
+    display: none;
+}
+
+.materials>td{
+    text-align: center;
+}
+
+.row-colmn{
+    width: 100%;
+    clear: both;
+    float: left;
+    margin-bottom: 0.5vw;
+}
+
+#material-table{
+    clear: both;
+}
+
+.colm-search-icon{
+    margin-left: 0.4vw;
+}

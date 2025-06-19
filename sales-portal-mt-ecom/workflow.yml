@@ -1,0 +1,37 @@
+steps:
+  dev_unittest:
+    - cd sales-portal-mt-ecom && python3 -m pip install coverage && pip install -r requirements.txt &&  python3 -m coverage report 
+    
+  dev_build:
+    - docker build -f sales-portal-mt-ecom/Dockerfile -t mtecom-dev:latest .
+
+  dev_trivyscan:
+    - trivy scan2html image mtecom-dev:latest --scan2html-flags --output salesportal-mt-ecom-trivy.html
+
+  dev_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag mtecom-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:dev_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:dev_latest && docker tag mtecom-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:dev_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:dev_$commit_id 
+
+  dev_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "DEV-AP-SALE-ECOM-TD" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:dev_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "DEV-AP-SALE-BACKEND-01" --service "DEV-AP-SALE-ECOM-SERVICE" --task-definition "DEV-AP-SALE-ECOM-TD":${NEW_REVISION}
+  
+    
+  uat_build:
+    - docker build -f sales-portal-mt-ecom/Dockerfile -t mtecom-uat:latest .
+
+
+  uat_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag mtecom-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:uat_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:uat_latest && docker tag mtecom-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:uat_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:uat_$commit_id 
+
+  uat_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "UAT-AP-SALE-ECOM-TD" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:uat_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "UAT-AP-SALE-BACKEND-01" --service "UAT-AP-SALE-ECOM-SERVICE" --task-definition "UAT-AP-SALE-ECOM-TD":${NEW_REVISION}
+
+    
+  prod_build:
+    - docker build -f sales-portal-mt-ecom/Dockerfile -t mtecom-prod:latest .
+
+
+  prod_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag mtecom-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:prod_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:prod_latest && docker tag mtecom-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:prod_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:prod_$commit_id 
+
+  prod_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "PRD-AP-SALE-ECOM-TD" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mtecom:prod_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "PRD-AP-SALE-BACKEND-01" --service "PRD-AP-SALE-ECOM-SERVICE" --task-definition "PRD-AP-SALE-ECOM-TD":${NEW_REVISION}

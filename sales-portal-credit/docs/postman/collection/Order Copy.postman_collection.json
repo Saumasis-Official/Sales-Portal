@@ -1,0 +1,33 @@
+{
+	"info": {
+		"_postman_id": "0357a53f-039c-44b2-a66f-881b9fde8f93",
+		"name": "New Order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sync-logs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/sync-logs"
+			},
+			"response": []
+		}
+	]
+}

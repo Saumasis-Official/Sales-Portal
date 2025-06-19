@@ -1,0 +1,122 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title  Order has successfully been created
+    link(href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i', rel='stylesheet')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='stylesheet', href='../assets/styles/style.css', type='text/css')
+  body(data-gr-c-s-loaded='true', style='')
+    .template-wrapper
+    table.body(border='0', cellpadding='0', cellspacing='0')
+      tbody
+        tr
+          td  
+          td.container
+            .content
+              table.main
+                tbody
+                  tr
+                    td.wrapper
+                      table(border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                          tr
+                            td
+                              a.template-logo(href='https://pegasus.tataconsumer.com/tcp-logo.png')
+                                img(src='https://pegasus.tataconsumer.com/tcp-logo.png')
+                              br
+                              br 
+                              p.lead
+                                | Hello #{user.distributorName} (#{user.distributorCode}), 
+                                br
+                                br
+                                | Your TCPL order has been successfully created, below are the details for your reference.
+
+                              table(border='0', cellpadding='0', cellspacing='0')
+                                tbody
+                                  tr
+                                    td.mt30.mb30(align='center')
+                                      table(border='0', cellpadding='0', cellspacing='0')
+                                        tbody
+                                          tr
+                                            td
+                                              p.user-text
+                                                span  Area:- #{user.area || '<NOT AVAILABLE>'}
+                                                br
+                                                span  ASM:- #{user.asm || '<NOT AVAILABLE>'} 
+                                                br
+                                                span  TSE:- #{user.tse || '<NOT AVAILABLE>'}
+                                                br
+                                                span  Purchase Order No:- # #{user.poNumber || '<NOT AVAILABLE>'}
+                                                br
+                                                span  Purchase Order Date:- #{user.poDate || '<NOT AVAILABLE>'}
+                                                br
+                                                span  SO Reference:- # #{user.soRefrence || '<NOT AVAILABLE>'}
+                                                br
+                                                span  SO Date:- #{user.soDate || '<NOT AVAILABLE>'}
+                                                br
+                                                span  Ship To:- #{user.shipTo.PARTN_NAME || '<NOT AVAILABLE>'}
+                                                br
+                                                span  Ship To Customer Code:- # #{user.shipTo.PARTN_NUMB || '<NOT AVAILABLE>'}
+                                                br
+                                                span  Unloading Point:- #{user.unloadingPoint ? user.unloadingPoint.PARTN_NAME: '<NOT AVAILABLE>'}
+                                                br
+                                                span  Unloading Point Code:- # #{user.unloadingPoint ? user.unloadingPoint.PARTN_NUMB:'<NOT AVAILABLE>'}
+                                                br
+                                                span  Total Quantity in Tonnage:- #{user.totalQuantityTon || '<NOT AVAILABLE>'}
+                                                br
+                                                span  Tentative Net Value:- Rs #{user.amount || '<NOT AVAILABLE>'}
+                                                br                                                                                                
+                                      table.data-grid-table.table(style='font-size:14px;text-align:left;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;width: 100%;{{msohideall}}' cellpadding='5' cellspacing='0' border='1' bordercolor='#dddddd')
+                                          tr 
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Material
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Material Code 
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Quantity 
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Sales Unit
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Pack Type
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Quantity in BUOM
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Quantity in Tonnage
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Tentative Amount in Rs.                                            
+                                          each val in user.items
+                                            tr
+                                              td #{val.DESCRIPTION}
+                                              td #{val.MATERIAL}
+                                              td #{val.REQ_QTY}
+                                              td #{val.SALES_UNIT}
+                                              td #{val.PACK_TYPE}
+                                              td #{val.BUOM}     
+                                              td #{val.Quantity_Ton}                           
+                                              td #{val.TENTATIVE}
+                              br
+                              p Thank you
+                             
+              //- table.help-section
+              //-   tbody
+              //-     tr
+              //-       td.wrapper
+              //-         table(border='0', cellpadding='0', cellspacing='0')
+              //-           tbody
+              //-             tr
+              //-               td
+              //-                 h2.text-center.mb0 Need more help?
+              //-                 a.support-link(href='#') We're here,ready to here
+              table
+                tbody
+                  tr
+                    td.wrapper
+                      table(border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                          tr
+                            td
+                             
+                  .footer
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td.content-block
+                            p.text-center
+                              | © 2021 Tata Consumer Products Limited.
+                              br
+                              |  This is an automated email, please do not respond to this mail id.
+                              //- a(href='#') unsubscribe 
+          td  

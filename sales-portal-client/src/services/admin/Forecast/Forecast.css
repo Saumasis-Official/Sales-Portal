@@ -1,0 +1,109 @@
+.forecast-dashboard-table table thead tr th {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    padding: 4px 11px;
+}
+
+.forecast-dashboard-table table tbody tr td {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px 11px;
+}
+.width-sm {
+    width: 50px;
+}
+
+.totals {
+    text-align: inherit;
+    background-color: #a5d0f8;
+}
+
+.deviation-positive {
+    color: green;
+}
+
+.qty-input {
+    /* border: #88f268 solid 5px; */
+    border-radius: 5%;
+    background-color: inherit;
+    width: fit-content;
+}
+
+.qty-input:focus {
+    box-shadow: inset 0px 0px 0px 1.5px #1890ff;
+}
+
+.qty-input:disabled {
+    border: none;
+}
+
+.top-header {
+    border-left: 2px solid white;
+    text-align: center;
+}
+
+.width45 {
+    width: 45%;
+}
+
+.right-header {
+    display: grid;
+    direction: column;
+}
+
+.back-btn {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #1268b3;
+}
+
+.cancel-btn {
+    background-color: grey;
+}
+
+.cancel-btn:hover {
+    background-color: red;
+}
+
+.edit-cancel-btn {
+    font-size: 18px;
+    font-family: MyriadPro-Semibold;
+    letter-spacing: 0.03px;
+    color: #ffffff;
+    display: inline-block;
+    border-radius: 4px;
+    border: none;
+    padding: 5px 24px;
+    cursor: pointer;
+}
+
+.comment-section {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.text-body {
+    text-align: center;
+}
+.space-5 {
+    margin: 5px;
+}
+.forecast-dist-name {
+    width: 300px;
+}
+.forecast-cg {
+    width: 180px;
+}
+.forecast-col {
+    width: 130px;
+    text-align: center;
+}

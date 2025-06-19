@@ -1,0 +1,20 @@
+.audit-trail {
+    color: red;
+}
+.qty-input {
+    border-color: rgb(221, 220, 220);
+    border-width: 0.2px;
+    width: 100px;
+  }
+  
+  .qty-input:focus {
+    box-shadow: inset 0px 0px 0px 1.5px #1890ff;
+  }
+
+  .no-data{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 900;
+    font-size: 20px;
+    color: #ff7118;
+  }

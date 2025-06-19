@@ -1,0 +1,13 @@
+<svg id="icons-communication-location-1-default" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="Group_4292" data-name="Group 4292">
+    <g id="Group_4289" data-name="Group 4289">
+      <path id="Path_9279" data-name="Path 9279" d="M0,0H40V40H0Z" fill="none"/>
+    </g>
+    <g id="Group_4290" data-name="Group 4290" transform="translate(7.521 7.521)">
+      <path id="Path_9280" data-name="Path 9280" d="M0,0H24.958V24.958H0Z" fill="none"/>
+      <path id="Path_9281" data-name="Path 9281" d="M0,0H24.958V24.958H0Z" fill="none"/>
+    </g>
+    <line id="Line_401" data-name="Line 401" x2="25.067" y2="25.067" transform="translate(7.434 7.434)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="1"/>
+    <line id="Line_402" data-name="Line 402" x1="25.067" y2="25.067" transform="translate(7.434 7.434)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="1"/>
+  </g>
+</svg>

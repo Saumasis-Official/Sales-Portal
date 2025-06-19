@@ -1,0 +1,4766 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "tcpl-sap-integration",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://devapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://uatapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://prdapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://S4hanapocapi.tataconsumer.com:443/sap/opu/odata/SAP",
+      "variables": {}
+    },
+    {
+      "url": "https://s4hanapreprodapp1.tataconsumer.com:1443/sap/opu/odata/SAP",
+      "variables": {}
+    },
+    {
+      "url": "https://s4hanaprodapp1.tataconsumer.com/sap/opu/odata/SAP/sap/opu/odata/SAP",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/sap/api/v1/hc-index": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is health check api used to check if the service is properly running",
+        "operationId": "healthcheck",
+
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/auth/api/v1/login": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to validate and logging in a particular distributor in the portal",
+        "operationId": "login",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/loginrequest"
+              },
+              "example": {
+                "login_id": "116683",
+                "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/validate-order": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to validate a specific order details and shipping/unloading points provided by the distributor after clicking on the validate button",
+        "operationId": "validate-order",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/validate-order-request"
+              },
+              "example": {
+                "sales_org": "1010",
+                "distribution_channel": "10",
+                "po_number": "",
+                "po_date": "",
+                "req_date": "",
+                "items": [
+                  {
+                    "material_code": "14000000000598",
+                    "item_number": "000010",
+                    "required_qty": "3",
+                    "target_qty": "3",
+                    "pack_type": "",
+                    "sales_unit": "CV",
+                    "description": "TETLEYBL NTB 25S TB"
+                  }
+                ],
+                "partners": [
+                  {
+                    "partner_role": "AG",
+                    "partner_number": "116683"
+                  },
+                  {
+                    "partner_role": "WE",
+                    "partner_number": "116683"
+                  }
+                ],
+                "navresult": []
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/create-order": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to place an order after validating the order and on clicking the submit button",
+        "operationId": "create-order",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create-order-request"
+              },
+              "example": {
+                "sales_org": "1010",
+                "distribution_channel": "10",
+                "soldto": "116683",
+                "shipto": "116683",
+                "unloading": "141198",
+                "po_number": "AWSPR-00000000000600",
+                "po_date": "29.11.2021",
+                "req_date": "29.11.2021",
+                "pay_terms": "",
+                "items": [
+                  {
+                    "item_number": "000010",
+                    "material_code": "14000000000598",
+                    "required_qty": "3",
+                    "sales_unit": "CV"
+                  }
+                ],
+                "navresult": []
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/update-email-mobile/{login_id}": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to update the email, mobile number or both for a particular distributor at the sap end",
+        "operationId": "update-mobile",
+        "parameters": [
+          {
+            "name": "login_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update-mobile-request"
+              },
+              "example": {
+                "type": "sms",
+                "updateValue": "9971410421"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/re-order": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to re-order a particular placed order",
+        "operationId": "re-order",
+        "parameters": [
+          {
+            "name": "so_number",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "'110066119'"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/credit-limit/{login_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch the credit limit details of a particular distributor",
+        "operationId": "credit-limit",
+        "parameters": [
+          {
+            "name": "login_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/so-details": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api fetches the sales order details for a particular sales order of a distributor",
+        "operationId": "so-details",
+
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/so-details-request"
+              },
+              "example": {
+                "so_number": "110272324"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/sales-order-delivery": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api fetches all the deliveries of a particular sales order from the delivery numbers provided",
+        "operationId": "sales-order-delivery",
+
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/sales-order-delivery-request"
+              },
+              "example": {
+                "deliveryNumber": ["810081009"]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/sales-order-invoice": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api fetches all the invoices of a particular sales order from the invoice numbers provided",
+        "operationId": "sales-order-invoice",
+
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/warehouse-details": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api fetches the shipping and unloading points of a particular distributor",
+        "operationId": "get-warehouse-details",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/util/product-sync": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to manually sync the product master data in the database",
+        "operationId": "product-sync",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/util/so-sync/{login_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to manually sync the sales orders for a particular distributor basis on some paramters provided as listed below",
+        "operationId": "so-sync",
+        "parameters": [
+          {
+            "name": "login_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "to filter out different status like 'not_delivered', 'partially_delivered', 'delivered' and 'all'",
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "delivered"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/util/distributor-sync": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to sync the distributor master data in the database",
+        "operationId": "distributor-sync",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/util/sales-hierarchy-sync": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to manually sync the sales hierarchy details in the database",
+        "operationId": "sales-hierarchy-sync",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/multiple-so-details": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch multiple sales orders' so, delivery and invoice details together",
+        "operationId": "multiple-so-details",
+
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/so-details-request"
+              },
+              "example": {
+                "items": [
+                  {
+                    "so_number": "110272375",
+                    "deliveries": ["810385104", "810385108"],
+                    "invoices": ["932180875"]
+                  },
+                  {
+                    "so_number": "110272374",
+                    "deliveries": ["810385109", "810385110"],
+                    "invoices": ["910241675", "910241676"]
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/admin/credit-limit/{distributor_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch the credit limit details of a particular distributor by admin",
+        "operationId": "credit-limit",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/admin/so-details/{distributor_id}": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api fetches the sales order details for a particular sales order of a distributor by admin",
+        "operationId": "so-details",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/so-details-request"
+              },
+              "example": {
+                "so_number": "110272324"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/admin/sales-order-delivery/{distributor_id}": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api fetched all the deliveries of a particular sales order from the delivery numbers provided by admin",
+        "operationId": "sales-order-delivery",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/sales-order-delivery-request"
+              },
+              "example": {
+                "deliveryNumber": ["810081009"]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/admin/sales-order-invoice/{distributor_id}": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api fetches all the invoices of a particular sales order from the invoice numbers provided by admin",
+        "operationId": "sales-order-invoice",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/sales-order-invoice-request"
+              },
+              "example": {
+                "invoiceNumber": ["910047573"]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/admin/warehouse-details/{distributor_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api fetches the shipping and unloading points of a particular distributor by admin",
+        "operationId": "get-warehouse-details",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/admin/multiple-so-details/{distributor_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch multiple sales orders' so, delivery and invoice details together by admin",
+        "operationId": "multiple-so-details",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/report-portal-error": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to report any kind of error that occurs on portal by the distributor",
+        "operationId": "report-portal-error",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/report-portal-error-request"
+              },
+              "example": {
+                "remarks": "Remark entered by user",
+                "errorCode": "ERR-DBO-OVAL-001-QTY",
+                "errorMessage": "Error with quantity of item",
+                "logObj": {
+                  "item1": "30"
+                },
+                "categoryId": 3,
+                "ccRecipients": "abc.xyz@test.com",
+                "tse": {
+                  "code": "12345",
+                  "email": "abc.xyz@test.com",
+                  "first_name": "abc",
+                  "last_name": "xyz"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/materials-bom-explode": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to show the promo items along with the items in the cart",
+        "operationId": "materials-bom-explode",
+
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/materials-bom-explode-request"
+              },
+              "example": {
+                "materialCode": "14000000000511",
+                "quantity": 2
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/sap/api/v1/util/distributor-inventory-sync": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to manually sync product wise area and channel code in order to map with different distributors",
+        "operationId": "distributor-inventory-sync",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/service-request-category": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to manually sync product wise area and channel code in order to map with different distributors",
+        "operationId": "distributor-inventory-sync",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/admin/service-request-category": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to add a new service request category by the super admin only",
+        "operationId": "service-request-category",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create-service-request-category-request"
+              },
+              "example": {
+                "label": "create error",
+                "description": "this is a test create error"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/admin/service-request-category/{category_id}": {
+      "put": {
+        "tags": ["Misc"],
+        "summary": "This api is used to modify a service request category or to set it's status as active or inactive by the super admin",
+        "operationId": "service-request-category",
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 7
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update-service-request-category-request"
+              },
+              "example": {
+                "description": "this is a test category",
+                "enable": false
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/sap/api/v1/admin/create-users": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to add a new user/s by the super admin only",
+        "operationId": "create-users",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create-users-request"
+              },
+              "example": [
+                {
+                  "userId": "PORTAL_20",
+                  "firstName": "TEST",
+                  "lastName": "TEST",
+                  "emailAddress": "ABC.XYZ@TEST.COM",
+                  "mobileNumber": "9999999999",
+                  "managerId": "PORTAL_MANAGED",
+                  "code": "123",
+                  "roles": "SUPPORT"
+                }
+              ]
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/ZSD_UPDATE_DISTRIBUTOR_SRV/Updateset": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Update Phone and email id of distributor",
+        "operationId": "UpdatePhoneandemailidofdistributor",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Distributor eq '116683' and Phone eq '9449674888' and Email eq 'mahaveertejraj@gmail.com'"
+            }
+          },
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_CREDIT_LIMIT_SRV/InputSet": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Credit Limit",
+        "operationId": "CreditLimit",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Distributor eq '116683'"
+            }
+          },
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_SO_LANDING_SRV/Sales_infoSet": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Sales Order Landing Page/Initial Page",
+        "operationId": "SalesOrderLandingPage/InitialPage",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Distributor eq '116683' and Days eq '99'"
+            }
+          },
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_SO_LANDING_SRV/Delivery_InofSet": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Sales Order Landing Page/Delivery Click",
+        "operationId": "SalesOrderLandingPage/DeliveryClick",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Delivery_Number eq '810001631'"
+            }
+          },
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_SO_LANDING_SRV/Invoice_InfoSet": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Sales Order Landing Page/Invoice Click",
+        "operationId": "SalesOrderLandingPage/InvoiceClick",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Invoice_Number eq '910078722'"
+            }
+          },
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_SALES_REORDER_SRV/Pull_SOSet": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Sales Re-Order",
+        "operationId": "SalesRe-Order",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "( Sales_Order eq '110178274' )"
+            }
+          },
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_SHIPTO_UNLOAD_POINT_SRV/InputSet": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Ship to and unloading point",
+        "operationId": "Shiptoandunloadingpoint",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Distributor eq '116683' and Sales_Org eq '1010' and Distribution_channel eq '10' and Division eq '10' "
+            }
+          },
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_SALES_ORDER_SIMULATION_SRV/HeaderSet": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "Validate",
+        "operationId": "Validate",
+        "parameters": [
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateRequest"
+              },
+              "example": {
+                "DOC_TYPE": "ZOR",
+                "SALES_ORG": "1010",
+                "DISTR_CHAN": "10",
+                "DIVISION": "10",
+                "REQ_DATE_H": "16.03.2022",
+                "PURCH_NO": "DBO-8264214652161872",
+                "PURCH_DATE": "16.03.2022",
+                "Itemset": [
+                  {
+                    "MATERIAL": "15000000001290",
+                    "ITM_NUMBER": "000010",
+                    "TARGET_QTY": "5",
+                    "REQ_QTY": "5"
+                  }
+                ],
+                "partnerset": [
+                  {
+                    "PARTN_ROLE": "AG",
+                    "PARTN_NUMB": "11683"
+                  },
+                  {
+                    "PARTN_ROLE": "WE",
+                    "PARTN_NUMB": "11683"
+                  }
+                ],
+                "NAVRESULT": []
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_SALES_ORDER_CRT_SRV/SalesHeaderSet": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "Submit",
+        "operationId": "Submit",
+        "parameters": [
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitRequest"
+              },
+              "example": {
+                "UniqueID": "",
+                "DocType": "ZOR",
+                "SalesOrg": "1010",
+                "SoldTo": "112749",
+                "ShipTo": "112749",
+                "DistChannel": "10",
+                "Division": "60",
+                "PoNumber": "40K5HJK222",
+                "PoDate": "06.04.2022",
+                "ReqDate": "",
+                "PayTerms": "",
+                "NAVITEM": [
+                  {
+                    "ItemNumber": "10",
+                    "SystemSKUCode": "15000000000578",
+                    "TargetQty": "1",
+                    "SalesUnit": "CV",
+                    "Plant": "",
+                    "EAN": "8904043901077",
+                    "MRP": "40"
+                  },
+                  {
+                    "ItemNumber": "20",
+                    "SystemSKUCode": "14000000000478",
+                    "TargetQty": "1",
+                    "SalesUnit": "CV",
+                    "Plant": "",
+                    "EAN": "8904043901077",
+                    "MRP": "40"
+                  }
+                ],
+                "NAVRESULT": [
+                  {
+                    "SalesOrder": "",
+                    "Type": "",
+                    "Id": "",
+                    "Number": ""
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_DISTRIBUTOR_MASTER_SRV/ResultSet": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Distributor Master Data",
+        "operationId": "DistributorMasterData",
+        "parameters": [
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ZSD_PRODUCT_MASTER_SALES_PORT_SRV/ResultSet": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "Product Master data",
+        "operationId": "ProductMasterdata",
+        "parameters": [
+          {
+            "name": "sap-client",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 400
+            }
+          },
+          {
+            "name": "sap-language",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "EN"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "enum": ["application/json"],
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      },
+      "basic": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "loginrequest": {
+        "title": "loginrequest",
+        "required": ["login_id", "password"],
+        "type": "object",
+        "properties": {
+          "login_id": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "login_id": "116683",
+          "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+        }
+      },
+      "validate-order-request": {
+        "title": "validate-order-request",
+        "required": [
+          "sales_org",
+          "distribution_channel",
+          "po_number",
+          "po_date",
+          "req_date",
+          "items",
+          "partners",
+          "navresult"
+        ],
+        "type": "object",
+        "properties": {
+          "sales_org": {
+            "type": "string"
+          },
+          "distribution_channel": {
+            "type": "string"
+          },
+          "po_number": {
+            "type": "string"
+          },
+          "po_date": {
+            "type": "string"
+          },
+          "req_date": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            },
+            "description": ""
+          },
+          "partners": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Partner"
+            },
+            "description": ""
+          },
+          "navresult": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "sales_org": "1010",
+          "distribution_channel": "10",
+          "po_number": "",
+          "po_date": "",
+          "req_date": "",
+          "items": [
+            {
+              "material_code": "14000000000598",
+              "item_number": "000010",
+              "required_qty": "3",
+              "target_qty": "3",
+              "pack_type": "",
+              "sales_unit": "CV",
+              "description": "TETLEYBL NTB 25S TB"
+            }
+          ],
+          "partners": [
+            {
+              "partner_role": "AG",
+              "partner_number": "116683"
+            },
+            {
+              "partner_role": "WE",
+              "partner_number": "116683"
+            }
+          ],
+          "navresult": []
+        }
+      },
+      "Item": {
+        "title": "Item",
+        "required": [
+          "material_code",
+          "item_number",
+          "required_qty",
+          "target_qty",
+          "pack_type",
+          "sales_unit",
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "material_code": {
+            "type": "string"
+          },
+          "item_number": {
+            "type": "string"
+          },
+          "required_qty": {
+            "type": "string"
+          },
+          "target_qty": {
+            "type": "string"
+          },
+          "pack_type": {
+            "type": "string"
+          },
+          "sales_unit": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "material_code": "14000000000598",
+          "item_number": "000010",
+          "required_qty": "3",
+          "target_qty": "3",
+          "pack_type": "",
+          "sales_unit": "CV",
+          "description": "TETLEYBL NTB 25S TB"
+        }
+      },
+      "Partner": {
+        "title": "Partner",
+        "required": ["partner_role", "partner_number"],
+        "type": "object",
+        "properties": {
+          "partner_role": {
+            "type": "string"
+          },
+          "partner_number": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "partner_role": "AG",
+          "partner_number": "116683"
+        }
+      },
+      "create-order-request": {
+        "title": "create-order-request",
+        "required": [
+          "sales_org",
+          "distribution_channel",
+          "soldto",
+          "shipto",
+          "unloading",
+          "po_number",
+          "po_date",
+          "req_date",
+          "pay_terms",
+          "items",
+          "navresult"
+        ],
+        "type": "object",
+        "properties": {
+          "sales_org": {
+            "type": "string"
+          },
+          "distribution_channel": {
+            "type": "string"
+          },
+          "soldto": {
+            "type": "string"
+          },
+          "shipto": {
+            "type": "string"
+          },
+          "unloading": {
+            "type": "string"
+          },
+          "po_number": {
+            "type": "string"
+          },
+          "po_date": {
+            "type": "string"
+          },
+          "req_date": {
+            "type": "string"
+          },
+          "pay_terms": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item1"
+            },
+            "description": ""
+          },
+          "navresult": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "sales_org": "1010",
+          "distribution_channel": "10",
+          "soldto": "116683",
+          "shipto": "116683",
+          "unloading": "141198",
+          "po_number": "AWSPR-00000000000600",
+          "po_date": "29.11.2021",
+          "req_date": "29.11.2021",
+          "pay_terms": "",
+          "items": [
+            {
+              "item_number": "000010",
+              "material_code": "14000000000598",
+              "required_qty": "3",
+              "sales_unit": "CV"
+            }
+          ],
+          "navresult": []
+        }
+      },
+      "Item1": {
+        "title": "Item1",
+        "required": [
+          "item_number",
+          "material_code",
+          "required_qty",
+          "sales_unit"
+        ],
+        "type": "object",
+        "properties": {
+          "item_number": {
+            "type": "string"
+          },
+          "material_code": {
+            "type": "string"
+          },
+          "required_qty": {
+            "type": "string"
+          },
+          "sales_unit": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "item_number": "000010",
+          "material_code": "14000000000598",
+          "required_qty": "3",
+          "sales_unit": "CV"
+        }
+      },
+      "update-mobile-request": {
+        "title": "update-mobile-request",
+        "required": ["type", "updateValue"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "updateValue": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "type": "sms",
+          "updateValue": "9971410421"
+        }
+      },
+      "update-email-request": {
+        "title": "update-email-request",
+        "required": ["type", "updateValue"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "updateValue": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "type": "email",
+          "updateValue": "deepak_1@outlook.com"
+        }
+      },
+      "sales-order-delivery-request": {
+        "title": "sales-order-delivery-request",
+        "required": ["deliveryNumber"],
+        "type": "object",
+        "properties": {
+          "deliveryNumber": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "deliveryNumber": "810081009"
+        }
+      },
+      "sales-order-invoice-request": {
+        "title": "sales-order-invoice-request",
+        "required": ["invoiceNumber"],
+        "type": "object",
+        "properties": {
+          "invoiceNumber": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "invoiceNumber": "910047573"
+        }
+      },
+      "so-details-request": {
+        "title": "so-details-request",
+        "required": ["so_number"],
+        "type": "object",
+        "properties": {
+          "so_number": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "so_number": "110272324"
+        }
+      },
+      "report-portal-error-request": {
+        "title": "report-portal-error-request",
+        "required": ["remarks", "errorCode"],
+        "type": "object",
+        "properties": {
+          "remarks": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "logObj": {
+            "type": "object"
+          },
+          "categoryId": {
+            "type": "number"
+          },
+          "ccRecipients": {
+            "type": "string"
+          },
+          "tse": {
+            "type": "object"
+          }
+        },
+        "example": {
+          "remarks": "Remark entered by user",
+          "errorCode": "ERR-DBO-OVAL-001-QTY",
+          "errorMessage": "Error with quantity of item",
+          "logObj": {
+            "item1": "30"
+          },
+          "categoryId": 3,
+          "ccRecipients": "abc.xyz@test.com",
+          "tse": {
+            "code": "12345",
+            "email": "abc.xyz@test.com",
+            "first_name": "abc",
+            "last_name": "xyz"
+          }
+        }
+      },
+      "materials-bom-explode-request": {
+        "title": "materials-bom-explode-request",
+        "required": "materialCode",
+        "type": "object",
+        "properties": {
+          "materialCode": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "materialCode": "14000000000511"
+        }
+      },
+      "create-service-request-category-request": {
+        "title": "create-service-request-category-request",
+        "required": ["label", "description"],
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "label": "create error",
+          "description": "this is a test create error"
+        }
+      },
+      "update-service-request-category-request": {
+        "title": "update-service-request-category-request",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "enable": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "description": "this is a test category",
+          "enable": false
+        }
+      },
+      "create-users-request": {
+        "title": "create-users-request",
+        "required": ["userId", "firstName", "emailAddress", "roles"],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "emailAddress": {
+            "type": "string"
+          },
+          "mobileNumber": {
+            "type": "string"
+          },
+          "managerId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "string"
+          }
+        },
+        "example": [
+          {
+            "userId": "PORTAL_20",
+            "firstName": "TEST",
+            "lastName": "TEST",
+            "emailAddress": "ABC.XYZ@TEST.COM",
+            "mobileNumber": "9999999999",
+            "managerId": "PORTAL_MANAGED",
+            "code": "123",
+            "roles": "SUPPORT"
+          }
+        ]
+      },
+      "ValidateRequest": {
+        "title": "ValidateRequest",
+        "required": [
+          "DOC_TYPE",
+          "SALES_ORG",
+          "DISTR_CHAN",
+          "DIVISION",
+          "REQ_DATE_H",
+          "PURCH_NO",
+          "PURCH_DATE",
+          "Itemset",
+          "partnerset",
+          "NAVRESULT"
+        ],
+        "type": "object",
+        "properties": {
+          "DOC_TYPE": {
+            "type": "string"
+          },
+          "SALES_ORG": {
+            "type": "string"
+          },
+          "DISTR_CHAN": {
+            "type": "string"
+          },
+          "DIVISION": {
+            "type": "string"
+          },
+          "REQ_DATE_H": {
+            "type": "string"
+          },
+          "PURCH_NO": {
+            "type": "string"
+          },
+          "PURCH_DATE": {
+            "type": "string"
+          },
+          "Itemset": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Itemset"
+            },
+            "description": ""
+          },
+          "partnerset": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Partnerset"
+            },
+            "description": ""
+          },
+          "NAVRESULT": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "DOC_TYPE": "ZOR",
+          "SALES_ORG": "1010",
+          "DISTR_CHAN": "10",
+          "DIVISION": "10",
+          "REQ_DATE_H": "16.03.2022",
+          "PURCH_NO": "DBO-8264214652161872",
+          "PURCH_DATE": "16.03.2022",
+          "Itemset": [
+            {
+              "MATERIAL": "15000000001290",
+              "ITM_NUMBER": "000010",
+              "TARGET_QTY": "5",
+              "REQ_QTY": "5"
+            }
+          ],
+          "partnerset": [
+            {
+              "PARTN_ROLE": "AG",
+              "PARTN_NUMB": "11683"
+            },
+            {
+              "PARTN_ROLE": "WE",
+              "PARTN_NUMB": "11683"
+            }
+          ],
+          "NAVRESULT": []
+        }
+      },
+      "Itemset": {
+        "title": "Itemset",
+        "required": [
+          "MATERIAL",
+          "ITM_NUMBER",
+          "TARGET_QTY",
+          "REQ_QTY"
+        ],
+        "type": "object",
+        "properties": {
+          "MATERIAL": {
+            "type": "string"
+          },
+          "ITM_NUMBER": {
+            "type": "string"
+          },
+          "TARGET_QTY": {
+            "type": "string"
+          },
+          "REQ_QTY": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "MATERIAL": "15000000001290",
+          "ITM_NUMBER": "000010",
+          "TARGET_QTY": "5",
+          "REQ_QTY": "5"
+        }
+      },
+      "Partnerset": {
+        "title": "Partnerset",
+        "required": ["PARTN_ROLE", "PARTN_NUMB"],
+        "type": "object",
+        "properties": {
+          "PARTN_ROLE": {
+            "type": "string"
+          },
+          "PARTN_NUMB": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "PARTN_ROLE": "AG",
+          "PARTN_NUMB": "11683"
+        }
+      },
+      "SubmitRequest": {
+        "title": "SubmitRequest",
+        "required": [
+          "UniqueID",
+          "DocType",
+          "SalesOrg",
+          "SoldTo",
+          "ShipTo",
+          "DistChannel",
+          "Division",
+          "PoNumber",
+          "PoDate",
+          "ReqDate",
+          "PayTerms",
+          "NAVITEM",
+          "NAVRESULT"
+        ],
+        "type": "object",
+        "properties": {
+          "UniqueID": {
+            "type": "string"
+          },
+          "DocType": {
+            "type": "string"
+          },
+          "SalesOrg": {
+            "type": "string"
+          },
+          "SoldTo": {
+            "type": "string"
+          },
+          "ShipTo": {
+            "type": "string"
+          },
+          "DistChannel": {
+            "type": "string"
+          },
+          "Division": {
+            "type": "string"
+          },
+          "PoNumber": {
+            "type": "string"
+          },
+          "PoDate": {
+            "type": "string"
+          },
+          "ReqDate": {
+            "type": "string"
+          },
+          "PayTerms": {
+            "type": "string"
+          },
+          "NAVITEM": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NAVITEM"
+            },
+            "description": ""
+          },
+          "NAVRESULT": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NAVRESULT"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "UniqueID": "",
+          "DocType": "ZOR",
+          "SalesOrg": "1010",
+          "SoldTo": "112749",
+          "ShipTo": "112749",
+          "DistChannel": "10",
+          "Division": "60",
+          "PoNumber": "40K5HJK222",
+          "PoDate": "06.04.2022",
+          "ReqDate": "",
+          "PayTerms": "",
+          "NAVITEM": [
+            {
+              "ItemNumber": "10",
+              "SystemSKUCode": "15000000000578",
+              "TargetQty": "1",
+              "SalesUnit": "CV",
+              "Plant": "",
+              "EAN": "8904043901077",
+              "MRP": "40"
+            },
+            {
+              "ItemNumber": "20",
+              "SystemSKUCode": "14000000000478",
+              "TargetQty": "1",
+              "SalesUnit": "CV",
+              "Plant": "",
+              "EAN": "8904043901077",
+              "MRP": "40"
+            }
+          ],
+          "NAVRESULT": [
+            {
+              "SalesOrder": "",
+              "Type": "",
+              "Id": "",
+              "Number": ""
+            }
+          ]
+        }
+      },
+      "NAVITEM": {
+        "title": "NAVITEM",
+        "required": [
+          "ItemNumber",
+          "SystemSKUCode",
+          "TargetQty",
+          "SalesUnit",
+          "Plant",
+          "EAN",
+          "MRP"
+        ],
+        "type": "object",
+        "properties": {
+          "ItemNumber": {
+            "type": "string"
+          },
+          "SystemSKUCode": {
+            "type": "string"
+          },
+          "TargetQty": {
+            "type": "string"
+          },
+          "SalesUnit": {
+            "type": "string"
+          },
+          "Plant": {
+            "type": "string"
+          },
+          "EAN": {
+            "type": "string"
+          },
+          "MRP": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "ItemNumber": "10",
+          "SystemSKUCode": "15000000000578",
+          "TargetQty": "1",
+          "SalesUnit": "CV",
+          "Plant": "",
+          "EAN": "8904043901077",
+          "MRP": "40"
+        }
+      },
+      "NAVRESULT": {
+        "title": "NAVRESULT",
+        "required": ["SalesOrder", "Type", "Id", "Number"],
+        "type": "object",
+        "properties": {
+          "SalesOrder": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Id": {
+            "type": "string"
+          },
+          "Number": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "SalesOrder": "",
+          "Type": "",
+          "Id": "",
+          "Number": ""
+        }
+      }
+    }
+  },
+  "/warehouse-details-dist-channel/{distributor_id}/{dist_channel}/{division_str}": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is used to fetch warehouse-details-distributor-channel using distributor ID, Distributor_channel and Division",
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "distributor_id",
+          "in": "path",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": true,
+          "example": 82390
+        },
+        {
+          "name": "dist_channel",
+          "in": "path",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": true,
+          "example": 10
+        },
+        {
+          "name": "division_str",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "example": "AP"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/validate-order/{distributor_id}": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is used to post Validate Order using Distributor ID",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "sales_org": "1010",
+                "distribution_channel": 10,
+                "division": "10",
+                "items": [
+                  {
+                    "material_code": "15000000000779",
+                    "item_number": "000010",
+                    "required_qty": "24",
+                    "target_qty": "24",
+                    "pack_type": "1 Kg",
+                    "sales_unit": "CV",
+                    "description": "TS_TATA SALT_25 X 1KG",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 14,
+                    "stock_in_hand": "",
+                    "stock_in_transit": "25",
+                    "open_order": ""
+                  }
+                ],
+                "partners": [
+                  {
+                    "partner_role": "AG",
+                    "partner_number": "100003"
+                  },
+                  {
+                    "partner_role": "WE",
+                    "partner_number": "100003",
+                    "partner_name": "Singh Enterprises"
+                  }
+                ],
+                "pdp": "OFF",
+                "original_items": [
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000000542",
+                    "item_number": "000010",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "200 gms",
+                    "sales_unit": "CV",
+                    "description": "TATAGOLD_SPECIALITY_200G_CEKA",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 10
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000000575",
+                    "item_number": "000020",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "50s",
+                    "sales_unit": "CV",
+                    "description": "TETLEYBL_FTB-MASALA_50S_TB",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 10
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000002053",
+                    "item_number": "000030",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "100 gms",
+                    "sales_unit": "CV",
+                    "description": "SPICESPURES_KASHMIRICHILLY100G",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000002415",
+                    "item_number": "000040",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "250 gms",
+                    "sales_unit": null,
+                    "description": "SF RAGIBITESFILLS_CHOCO_250G",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000002428",
+                    "item_number": "000050",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "250 gms",
+                    "sales_unit": null,
+                    "description": "SF RAGIBITESFILLS_STRBRY_250G",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000005478",
+                    "item_number": "000060",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "Single Serve",
+                    "sales_unit": null,
+                    "description": "YS_CHEESYPASTA_CORN_V",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000005479",
+                    "item_number": "000070",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "Single Serve",
+                    "sales_unit": null,
+                    "description": "YS_TOMPASTA_VGS_V",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000005481",
+                    "item_number": "000080",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "Single Serve",
+                    "sales_unit": null,
+                    "description": "YS_NOODLE_SCHWNVGS_V",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000005483",
+                    "item_number": "000090",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "Single Serve",
+                    "sales_unit": null,
+                    "description": "YS_BIRYANI_SPICYVEG_V",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "14000000005488",
+                    "item_number": "000100",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "Single Serve",
+                    "sales_unit": null,
+                    "description": "YS_DAL MAKHANI_V",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "15000000000519",
+                    "item_number": "000110",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "500 gms",
+                    "sales_unit": "CV",
+                    "description": "BESAN_BESAN GARGARA_500G",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "15000000000521",
+                    "item_number": "000120",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "200 gms",
+                    "sales_unit": "CV",
+                    "description": "BESAN_BESAN GARGARA_200G",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  },
+                  {
+                    "original_quantity": "0",
+                    "material_code": "15000000000673",
+                    "item_number": "000130",
+                    "required_qty": "0",
+                    "target_qty": "0",
+                    "pack_type": "Rs 10",
+                    "sales_unit": "CV",
+                    "description": "SPICESBLENDS_CHICKEN _RS.10",
+                    "sales_org": 1010,
+                    "distribution_channel": 10,
+                    "division": 13
+                  }
+                ],
+                "po_number": "",
+                "po_date": "",
+                "req_date": "",
+                "navresult": []
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "auto_order",
+          "in": "query",
+          "schema": {
+            "type": "boolean"
+          },
+          "example": "true"
+        },
+        {
+          "name": "distributor_id",
+          "in": "path",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": true,
+          "example": 100003
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/report-portal-error/{distributor_id}": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to post Report Portal Error using Distributor Id",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "remarks": "Testing error reporting",
+                "categoryId": 1,
+                "ccRecipients": "kiran.hebballi@tataconsumer.com,Abhinav.Singh@tataconsumer.com,Niraj.Singh@tataconsumer.com",
+                "tse": [
+                  {
+                    "user_id": "1114192",
+                    "first_name": "Niraj",
+                    "last_name": "Singh",
+                    "email": "Niraj.Singh@tataconsumer.com",
+                    "mobile_number": "7398157801",
+                    "code": "NE01TS03"
+                  }
+                ],
+                "errorCode": "ERR-DBO-OVAL-009-TENT-AMOUNT",
+                "errorMessage": "Unable to get tentative amount value",
+                "logObj": {
+                  "sales_order_data": {
+                    "sales_org": "1010",
+                    "distribution_channel": 10,
+                    "division": "10",
+                    "items": [
+                      {
+                        "material_code": "14000000000546",
+                        "item_number": "000010",
+                        "required_qty": "1",
+                        "target_qty": "1",
+                        "pack_type": "100 gms",
+                        "sales_unit": "CV",
+                        "description": "TATAGOLD_CARE_100G_CEKA",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 10,
+                        "stock_in_hand": "0",
+                        "stock_in_transit": "",
+                        "open_order": ""
+                      }
+                    ],
+                    "partners": [
+                      {
+                        "partner_role": "AG",
+                        "partner_number": "100003"
+                      },
+                      {
+                        "partner_role": "WE",
+                        "partner_number": "100003",
+                        "partner_name": "Singh Enterprises"
+                      }
+                    ],
+                    "pdp": "OFF",
+                    "original_items": [
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000000542",
+                        "item_number": "000010",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "200 gms",
+                        "sales_unit": "CV",
+                        "description": "TATAGOLD_SPECIALITY_200G_CEKA",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 10
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000000575",
+                        "item_number": "000020",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "50s",
+                        "sales_unit": "CV",
+                        "description": "TETLEYBL_FTB-MASALA_50S_TB",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 10
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000002053",
+                        "item_number": "000030",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "100 gms",
+                        "sales_unit": "CV",
+                        "description": "SPICESPURES_KASHMIRICHILLY100G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000002415",
+                        "item_number": "000040",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "250 gms",
+                        "sales_unit": null,
+                        "description": "SF RAGIBITESFILLS_CHOCO_250G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000002428",
+                        "item_number": "000050",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "250 gms",
+                        "sales_unit": null,
+                        "description": "SF RAGIBITESFILLS_STRBRY_250G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005478",
+                        "item_number": "000060",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_CHEESYPASTA_CORN_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005479",
+                        "item_number": "000070",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_TOMPASTA_VGS_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005481",
+                        "item_number": "000080",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_NOODLE_SCHWNVGS_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005483",
+                        "item_number": "000090",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_BIRYANI_SPICYVEG_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005488",
+                        "item_number": "000100",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_DAL MAKHANI_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "15000000000519",
+                        "item_number": "000110",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "500 gms",
+                        "sales_unit": "CV",
+                        "description": "BESAN_BESAN GARGARA_500G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "15000000000521",
+                        "item_number": "000120",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "200 gms",
+                        "sales_unit": "CV",
+                        "description": "BESAN_BESAN GARGARA_200G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "15000000000673",
+                        "item_number": "000130",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Rs 10",
+                        "sales_unit": "CV",
+                        "description": "SPICESBLENDS_CHICKEN _RS.10",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      }
+                    ],
+                    "po_number": "",
+                    "po_date": "",
+                    "req_date": "",
+                    "navresult": [],
+                    "distributor": {
+                      "id": "100003",
+                      "name": "Singh Enterprises",
+                      "mobile": "9922595206",
+                      "email": "kiran.hebballi@tataconsumer.com",
+                      "market": "801583",
+                      "channel_code": "GT",
+                      "area_code": "NE01",
+                      "city": "Tinsukia",
+                      "postal_code": 786125,
+                      "liquidation": true,
+                      "enable_pdp": false,
+                      "ao_enable": true,
+                      "reg_enable": true,
+                      "region": "Assam",
+                      "customer_group": "GT-Dist (Non Metro)",
+                      "customer_group_code": "10",
+                      "group5": "East 1",
+                      "group5_name": "E1",
+                      "distributor_sales_details": [
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 12,
+                          "line_of_business": 12,
+                          "reference_date": null,
+                          "pdp_day": "WEFRSA",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "Liquids"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 14,
+                          "line_of_business": 14,
+                          "reference_date": null,
+                          "pdp_day": null,
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "Salt"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 17,
+                          "line_of_business": 17,
+                          "reference_date": null,
+                          "pdp_day": "WEWETH",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "ICD"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 18,
+                          "line_of_business": 18,
+                          "reference_date": null,
+                          "pdp_day": "WEMOTU",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "R&G "
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 99,
+                          "line_of_business": 99,
+                          "reference_date": null,
+                          "pdp_day": "WEMOTU",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "Others"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 40,
+                          "division": 14,
+                          "line_of_business": 14,
+                          "reference_date": null,
+                          "pdp_day": "WEMOWEFR",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "Salt"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 10,
+                          "line_of_business": 10,
+                          "reference_date": null,
+                          "pdp_day": "WETUWE",
+                          "plant_name": "1430",
+                          "plant_description": "SOHAM MARITIME PRIVATE LIMITED",
+                          "division_description": "Tea"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 13,
+                          "line_of_business": 13,
+                          "reference_date": null,
+                          "pdp_day": "WEWETHFR",
+                          "plant_name": "1430",
+                          "plant_description": "SOHAM MARITIME PRIVATE LIMITED",
+                          "division_description": "Foods"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 40,
+                          "division": 13,
+                          "line_of_business": 13,
+                          "reference_date": null,
+                          "pdp_day": "WEMOWEFR",
+                          "plant_name": "1430",
+                          "plant_description": "SOHAM MARITIME PRIVATE LIMITED",
+                          "division_description": "Foods"
+                        }
+                      ],
+                      "tse": [
+                        {
+                          "user_id": "1114192",
+                          "first_name": "Niraj",
+                          "last_name": "Singh",
+                          "email": "Niraj.Singh@tataconsumer.com",
+                          "mobile_number": "7398157801",
+                          "code": "NE01TS03"
+                        }
+                      ],
+                      "asm": [
+                        {
+                          "user_id": "1112157",
+                          "first_name": "Abhinav",
+                          "last_name": "Singh",
+                          "email": "Abhinav.Singh@tataconsumer.com",
+                          "mobile_number": "9654939037",
+                          "code": "NE01"
+                        }
+                      ]
+                    },
+                    "order_type": "Auto-Order"
+                  },
+                  "errors": [
+                    {
+                      "item_number": "000010",
+                      "message": "Missing :Net Value,,ZCD1,JOCG,JOSG,JTC1,ZMRP;  Missing :Pricing,,ZCD1,JOCG,JOSG,JTC1,ZMRP"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "distributor_id",
+          "in": "path",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": true,
+          "example": 100003
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/create-mapping-requests": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to Create Mapping Requests",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "status": "PENDING",
+                "type": "ADD",
+                "distributor_code": "149033",
+                "TSE_code": "MH07TS01",
+                "ASMRSM_code": "1112441",
+                "created_by": "priyank.singh@tataconsumer.com",
+                "submission_comments": "Testing"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/get-mapping-requests": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to post Mapping Requests",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "offset": 0,
+                "limit": 10,
+                "search": ""
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/get-liquidation-materials": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to Get Liquidation-materials using Plant Code",
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "plantCode",
+          "in": "query",
+          "schema": {
+            "type": "string"
+          },
+          "example": "1428,1430"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/tse-list": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch TSE-List",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/get-distributor-code": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to Get Distributor-code",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/report-portal-error-cfa": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to Report portal-Error for CFA",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "remarks": "Testing",
+                "categoryId": 1,
+                "ccRecipients": "kiran.hebballi@tataconsumer.com,Abhinav.Singh@tataconsumer.com,Niraj.Singh@tataconsumer.com",
+                "tse": [
+                  {
+                    "user_id": "1114192",
+                    "first_name": "Niraj",
+                    "last_name": "Singh",
+                    "email": "Niraj.Singh@tataconsumer.com",
+                    "mobile_number": "7398157801",
+                    "code": "NE01TS03"
+                  }
+                ],
+                "errorCode": "ERR-DBO-OVAL-009-TENT-AMOUNT",
+                "errorMessage": "Unable to get tentative amount value",
+                "logObj": {
+                  "sales_order_data": {
+                    "sales_org": "1010",
+                    "distribution_channel": 10,
+                    "division": "10",
+                    "items": [
+                      {
+                        "material_code": "14000000000546",
+                        "item_number": "000010",
+                        "required_qty": "1",
+                        "target_qty": "1",
+                        "pack_type": "100 gms",
+                        "sales_unit": "CV",
+                        "description": "TATAGOLD_CARE_100G_CEKA",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 10,
+                        "stock_in_hand": "0",
+                        "stock_in_transit": "",
+                        "open_order": ""
+                      }
+                    ],
+                    "partners": [
+                      {
+                        "partner_role": "AG",
+                        "partner_number": "100003"
+                      },
+                      {
+                        "partner_role": "WE",
+                        "partner_number": "100003",
+                        "partner_name": "Singh Enterprises"
+                      }
+                    ],
+                    "pdp": "OFF",
+                    "original_items": [
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000000542",
+                        "item_number": "000010",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "200 gms",
+                        "sales_unit": "CV",
+                        "description": "TATAGOLD_SPECIALITY_200G_CEKA",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 10
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000000575",
+                        "item_number": "000020",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "50s",
+                        "sales_unit": "CV",
+                        "description": "TETLEYBL_FTB-MASALA_50S_TB",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 10
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000002053",
+                        "item_number": "000030",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "100 gms",
+                        "sales_unit": "CV",
+                        "description": "SPICESPURES_KASHMIRICHILLY100G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000002415",
+                        "item_number": "000040",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "250 gms",
+                        "sales_unit": null,
+                        "description": "SF RAGIBITESFILLS_CHOCO_250G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000002428",
+                        "item_number": "000050",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "250 gms",
+                        "sales_unit": null,
+                        "description": "SF RAGIBITESFILLS_STRBRY_250G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005478",
+                        "item_number": "000060",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_CHEESYPASTA_CORN_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005479",
+                        "item_number": "000070",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_TOMPASTA_VGS_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005481",
+                        "item_number": "000080",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_NOODLE_SCHWNVGS_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005483",
+                        "item_number": "000090",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_BIRYANI_SPICYVEG_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "14000000005488",
+                        "item_number": "000100",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Single Serve",
+                        "sales_unit": null,
+                        "description": "YS_DAL MAKHANI_V",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "15000000000519",
+                        "item_number": "000110",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "500 gms",
+                        "sales_unit": "CV",
+                        "description": "BESAN_BESAN GARGARA_500G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "15000000000521",
+                        "item_number": "000120",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "200 gms",
+                        "sales_unit": "CV",
+                        "description": "BESAN_BESAN GARGARA_200G",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      },
+                      {
+                        "original_quantity": "0",
+                        "material_code": "15000000000673",
+                        "item_number": "000130",
+                        "required_qty": "0",
+                        "target_qty": "0",
+                        "pack_type": "Rs 10",
+                        "sales_unit": "CV",
+                        "description": "SPICESBLENDS_CHICKEN _RS.10",
+                        "sales_org": 1010,
+                        "distribution_channel": 10,
+                        "division": 13
+                      }
+                    ],
+                    "po_number": "",
+                    "po_date": "",
+                    "req_date": "",
+                    "navresult": [],
+                    "distributor": {
+                      "id": "100003",
+                      "name": "Singh Enterprises",
+                      "mobile": "9922595206",
+                      "email": "kiran.hebballi@tataconsumer.com",
+                      "market": "801583",
+                      "channel_code": "GT",
+                      "area_code": "NE01",
+                      "city": "Tinsukia",
+                      "postal_code": 786125,
+                      "liquidation": true,
+                      "enable_pdp": false,
+                      "ao_enable": true,
+                      "reg_enable": true,
+                      "region": "Assam",
+                      "customer_group": "GT-Dist (Non Metro)",
+                      "customer_group_code": "10",
+                      "group5": "East 1",
+                      "group5_name": "E1",
+                      "distributor_sales_details": [
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 12,
+                          "line_of_business": 12,
+                          "reference_date": null,
+                          "pdp_day": "WEFRSA",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "Liquids"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 14,
+                          "line_of_business": 14,
+                          "reference_date": null,
+                          "pdp_day": null,
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "Salt"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 17,
+                          "line_of_business": 17,
+                          "reference_date": null,
+                          "pdp_day": "WEWETH",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "ICD"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 18,
+                          "line_of_business": 18,
+                          "reference_date": null,
+                          "pdp_day": "WEMOTU",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "R&G "
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 99,
+                          "line_of_business": 99,
+                          "reference_date": null,
+                          "pdp_day": "WEMOTU",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "Others"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 40,
+                          "division": 14,
+                          "line_of_business": 14,
+                          "reference_date": null,
+                          "pdp_day": "WEMOWEFR",
+                          "plant_name": "1428",
+                          "plant_description": "M/S. RANA CHOWDHARY",
+                          "division_description": "Salt"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 10,
+                          "line_of_business": 10,
+                          "reference_date": null,
+                          "pdp_day": "WETUWE",
+                          "plant_name": "1430",
+                          "plant_description": "SOHAM MARITIME PRIVATE LIMITED",
+                          "division_description": "Tea"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 10,
+                          "division": 13,
+                          "line_of_business": 13,
+                          "reference_date": null,
+                          "pdp_day": "WEWETHFR",
+                          "plant_name": "1430",
+                          "plant_description": "SOHAM MARITIME PRIVATE LIMITED",
+                          "division_description": "Foods"
+                        },
+                        {
+                          "distributor_id": "100003",
+                          "sales_org": 1010,
+                          "distribution_channel": 40,
+                          "division": 13,
+                          "line_of_business": 13,
+                          "reference_date": null,
+                          "pdp_day": "WEMOWEFR",
+                          "plant_name": "1430",
+                          "plant_description": "SOHAM MARITIME PRIVATE LIMITED",
+                          "division_description": "Foods"
+                        }
+                      ],
+                      "tse": [
+                        {
+                          "user_id": "1114192",
+                          "first_name": "Niraj",
+                          "last_name": "Singh",
+                          "email": "Niraj.Singh@tataconsumer.com",
+                          "mobile_number": "7398157801",
+                          "code": "NE01TS03"
+                        }
+                      ],
+                      "asm": [
+                        {
+                          "user_id": "1112157",
+                          "first_name": "Abhinav",
+                          "last_name": "Singh",
+                          "email": "Abhinav.Singh@tataconsumer.com",
+                          "mobile_number": "9654939037",
+                          "code": "NE01"
+                        }
+                      ]
+                    },
+                    "order_type": "Auto-Order"
+                  },
+                  "errors": [
+                    {
+                      "item_number": "000010",
+                      "message": "Missing :Net Value,,ZCD1,JOCG,JOSG,JTC1,ZMRP;  Missing :Pricing,,ZCD1,JOCG,JOSG,JTC1,ZMRP"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/service-request-category/{type}": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch Service Request Category using type of request",
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "type",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "example": "SD_RESPONSE"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/plant-code-update-request": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to post Plant-code Update-request",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "data": [
+                  {
+                    "sales_org": "1010",
+                    "distribution_channel": "10",
+                    "division": "10",
+                    "plant_name": "1265",
+                    "previous_sales_details": "10/10/1213"
+                  }
+                ],
+                "dbCode": "100122",
+                "name": "R.K.AGENCIES-RKD",
+                "comment": "Testing"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/get-plant-code-update-request": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to Get Plant-code update-request",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "offset": 0,
+                "limit": 10,
+                "search": "",
+                "status": "ALL"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/logistic-Officer-Response": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to post Logistic-Officer Response",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "pc_number": "PC-0124-00031",
+                "distributor_code": "100003",
+                "distributor_name": "Singh Enterprises",
+                "division": "13",
+                "tseName": "Rajat Kumar  <TCPL_ADMIN>",
+                "tseId": "Rajat Kumar TCPL_62279494",
+                "distribution_channel": "10",
+                "sales_org": "1010",
+                "request_type": "Update_Plant",
+                "plant_code": "1428",
+                "previous_sales_details": "10/13/1430",
+                "comments": "testing this",
+                "status": "APPROVED",
+                "response": "testing"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/pdp-update-request": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to post PDP update-request",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "comment": "Testing",
+                "dbCode": "82380",
+                "name": "tata",
+                "pdp_data": [
+                  {
+                    "sales_org": "1010",
+                    "division": "10",
+                    "distribution_channel": "10",
+                    "plant_code": "1234",
+                    "pdp_current": "",
+                    "pdp_requested": "WETUWETHFR",
+                    "ref_date_current": "00000000",
+                    "ref_date_requested": "00000000"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/get-pdp-update-requests": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to post PDP-update-requests",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "offset": 0,
+                "limit": 10,
+                "search": "",
+                "status": "ALL"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/pdp-update-response": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to post PDP-update-response",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "pdpNo": "PDP-0124-00013",
+                "dbCode": "100003",
+                "dbName": "Singh Enterprises",
+                "sales_org": "1010",
+                "division": "12",
+                "distribution_channel": "10",
+                "plant_code": "1428",
+                "status": "APPROVED",
+                "pdp_old": "WEFRSA",
+                "pdp_new": "WETHFRSA",
+                "ref_date_old": "00000000",
+                "ref_date_new": "00000000",
+                "response": "testing ",
+                "created_by": "rajat.kumar@tataconsumer.com"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/customer-group-list": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to Get customer-group-list",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/depot-code-mapping-details": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to Post Depot-code-mapping Details using Depot Code and Division Zone Sales",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "divZoneSales": [
+                  {
+                    "division": "10",
+                    "distributionChannel": "10",
+                    "sales_org": "1010"
+                  },
+                  {
+                    "division": "12",
+                    "distributionChannel": "10",
+                    "sales_org": "1010"
+                  },
+                  {
+                    "division": "13",
+                    "distributionChannel": "10",
+                    "sales_org": "1010"
+                  },
+                  {
+                    "division": "14",
+                    "distributionChannel": "10",
+                    "sales_org": "1010"
+                  },
+                  {
+                    "division": "17",
+                    "distributionChannel": "10",
+                    "sales_org": "1010"
+                  },
+                  {
+                    "division": "18",
+                    "distributionChannel": "10",
+                    "sales_org": "1010"
+                  },
+                  {
+                    "division": "99",
+                    "distributionChannel": "10",
+                    "sales_org": "1010"
+                  },
+                  {
+                    "division": "13",
+                    "distributionChannel": "40",
+                    "sales_org": "1010"
+                  },
+                  {
+                    "division": "14",
+                    "distributionChannel": "40",
+                    "sales_org": "1010"
+                  }
+                ],
+                "depot_code": [
+                  "1428",
+                  "1429",
+                  "1430"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/download-mdm-data": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to Download-MDM-data",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "dataDownload": {
+                  "kams": "AMAZON",
+                  "key": true,
+                  "customerCode": [],
+                  "siteCode": [],
+                  "depotCode": [],
+                  "region": [],
+                  "vendorCode": [],
+                  "status": [],
+                  "headerFilter": {},
+                  "article_code": "",
+                  "article_desc": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/get-mdm-data": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to Fetch MDM-data",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "offset": 0,
+                "limit": 10,
+                "kams": "",
+                "customerCode": [],
+                "siteCode": [],
+                "depotCode": [],
+                "region": [],
+                "vendorCode": [],
+                "status": [],
+                "headerFilter": {},
+                "article_code": "",
+                "article_desc": ""
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/mdm-filed-level-save": {
+    "put": {
+      "tags":["Misc"],
+      "summary": "This api is to update MDM-filed-level-save",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": 8777,
+                "psku": "14000000002397",
+                "psku_desc": "SF MILLETMUESLI_CRUNCHY_B2G1",
+                "sku": "14000000002397",
+                "sku_desc": "SF Millet Muesli Crunchy B2G1 1.2kg",
+                "division": null,
+                "article_id": "123456",
+                "article_desc": "Testing",
+                "plant_code": "1257",
+                "site_code": null,
+                "customer_code": null,
+                "customer_name": "AMAZON",
+                "vendor_code": null,
+                "region": "Maharashtra",
+                "status": true,
+                "vendor_name": "TCPL",
+                "mrp": "820",
+                "caselot": null,
+                "created_on": "2024-01-04T10:50:59.934Z",
+                "updated_on": "2024-01-10T07:25:46.291Z",
+                "is_deleted": false,
+                "updated_by": null,
+                "loose_piece": false,
+                "primary_buying_uom": "CV",
+                "mrp_uom_buying": "PAC",
+                "l1_pack": "1",
+                "l1_pack_uom": "CV",
+                "l2_pack": "6",
+                "l2_pack_uom": "PAC",
+                "l3_pack": "1",
+                "l3_pack_uom": "EA",
+                "l4_pack": null,
+                "l4_pack_uom": "",
+                "is_disabled": true
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/upload-mdm-data": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to upload MDM-data",
+      "consumes": "multipart/form-data",
+      "requestBody": {
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/uploadmdmData",
+              "example": {
+                "dataset": "/home/Downloads/mdm-data.xlsx"
+              },
+              "properties": {
+                "file": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/all-mdm-customers": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch All-MDM-customers",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+         "headers":{}
+        }
+      }
+    }
+  },
+  "/mdm-notifications": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to Get MDM-Notifications",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+
+        }
+      }
+    }
+  },
+  "/update-distributor-plant-code": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to Upload Distributor-plant-code",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "data": [
+                  {
+                    "sales_org": "1010",
+                    "distribution_channel": "10",
+                    "division": "10",
+                    "plant_name": "1275",
+                    "previous_sales_details": "10/10/1137"
+                  }
+                ],
+                "dbCode": "143004",
+                "name": "SIGMA DISTRIBUTORS SIGMA DISTRIBUTORS",
+                "comment": "Testing"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/sap-material-list": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to upload SAP Material-list",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "distributionChannels": [  10,  40  ],
+                "divisions": [  10,  12,  13,  14,  18,  99  ]
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/update-distributor-mobile/{distributor_id}": {
+    "put": {
+      "tags":["Misc"],
+      "summary": "This api is to update Distributor Mobile Number using Distributor ID",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "mobile_number": "7904021030",
+                "remark": "Test"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "distributor_id",
+          "in": "path",
+          "schema": {
+            "type": "string",
+            "example": "100003"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/update-distributor-email/{distributor_id}": {
+    "put": {
+      "tags":["Misc"],
+      "summary": "This api is to update Distributor Email using Distributor Id",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "email": "jaiprassath12345@gmail.com",
+                "remark": "Test"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "distributor_id",
+          "in": "path",
+          "schema": {
+            "type": "string",
+            "example": "100003"
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/send-otp-mail-mobile": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to send-otp-mail-mobile",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "type": "sms",
+                "updateValue": "7904021030"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/verify-mobile": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "This api is to verify-mobile",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "mobile": "7904021030"
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/verify-email/{id}": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to verify-email using Mail ID",
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "remark",
+          "in": "query",
+          "schema": {
+            "type": "string"
+          },
+          "example": "tests"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "example": "jaiprassath.kothandapani@tataconsumer.com"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/so-sync/{distributor_id}": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch SO-Sync using Distributor ID",
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "distributor_id",
+          "in": "path",
+          "schema": {
+            "type": "integer",
+            "example": 100003
+          },
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/product-sync": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch teh product-sync Details",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/distributor-sync": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch the distributor-sync",
+      "security": [{ "api_key": [] }],
+      "parameters": [
+        {
+          "name": "bearer-auth",
+          "in": "header",
+          "schema": {
+            "type": "string"
+          },
+          "example": "$2y$10$z97XkHhqGaz1tC9qOJXXeu9jxaKhcTh2ZPtOyggxIiZ5qCHYteA6i"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/sales-hierarchy-sync": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch sales-hierarchy-sync",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/distributor-inventory-sync": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch Distributor Inventory-sync",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/mdm-sync": {
+    "get": {
+      "tags":["Misc"],
+      "summary": "This api is to fetch MDM-sync",
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "/": {
+    "post": {
+      "tags":["Misc"],
+      "summary": "materials-bom-explode",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "example": {
+                "materialCode": "15000000002350",
+                "quantity": 10
+              }
+            }
+          }
+        }
+      },
+      "security": [{ "api_key": [] }],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "headers":{}
+        }
+      }
+    }
+  },
+  "security": [{ "api_key": [] }],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

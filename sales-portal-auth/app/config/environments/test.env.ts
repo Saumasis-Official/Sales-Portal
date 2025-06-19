@@ -1,0 +1,17 @@
+// Maintaining this file for env dependencies
+
+process.env.PGSQL_CONNECTION_URL = ''
+process.env.PGSQL_HOST = ''
+process.env.PGSQL_DATABASE_NAME = ''
+process.env.PGSQL_USERNAME = ''
+process.env.PGSQL_PASSWORD = ''
+process.env.PGSQL_POR = ''
+process.env.PGSQL_CONNECTION_URL_READ = ''
+process.env.PGSQL_HOST_READ = ''
+process.env.AZUREAD_CLIENTID = ''
+process.env.AZUREAD_AUTHORITY = ''
+process.env.AZUREAD_SECRET = ''
+process.env.AZUREAD_SCOPES = ''
+process.env.AZUREAD_EMAIL_SEARCH_URI = ''
+process.env.ENABLE_EMAIL = 'FALSE'
+process.env.NODE_ENV = 'test'

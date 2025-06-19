@@ -1,0 +1,344 @@
+.log-wrapper {
+  margin-top: 60px;
+  min-height: calc(100vh - 60px);
+  padding: 20px 34px 24px;
+  margin-left: 92px;
+  transition: 0.3s;
+}
+
+.detail-log {
+  padding: 0px 30px 20px;
+  height: 100%;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.log-wrapper .header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px 10px 0px;
+  align-items: center;
+}
+
+.dropDown-label {
+  font-weight: normal;
+  font-family: MyriadPro-Regular;
+  font-size: 18px;
+  color: #333333;
+  margin-right: 3px;
+}
+
+.width120px{
+  width: 120px;
+}
+
+.session-log-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.session-log-table table thead tr {
+  background: #1268b3;
+  width: 100%;
+  overflow: auto !important;
+}
+
+.session-log-table table thead tr th {
+  color: #fff;
+  padding: 11px 15px;
+  font-weight: normal;
+  font-family: MyriadPro-Semibold;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.session-logs-th {
+  position: sticky;
+  top: 0;
+}
+
+.session-log-table table thead tr th:nth-child(1) {
+  width: 100px;
+}
+
+.session-log-table table thead tr th:nth-child(2) {
+  width: 228px;
+}
+
+.session-log-table table thead tr th:nth-child(3) {
+  width: 228px;
+}
+
+.session-log-table table thead tr th:nth-child(4) {
+  width: 185px;
+}
+
+.session-log-table table thead tr th:nth-child(5) {
+  width: 228px;
+}
+
+.session-log-table table tr td {
+  padding: 11px 15px;
+  font-weight: normal;
+  font-family: MyriadPro-Regular;
+  font-size: 18px;
+  color: #333333;
+}
+
+.session-log-table table tr td:last-child {
+  width: 300px;
+}
+
+.session-log-table table tbody tr:nth-of-type(odd) {
+  background: #f3f3f3;
+}
+
+.new-session-log-table {
+  max-height: 64vh !important;
+  overflow: auto !important;
+}
+
+.session-date-picker .ant-picker-range {
+  height: 40px;
+}
+
+.session-download-btn {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.session-download-btn button {
+  display: inline-block;
+  background: #34aeef;
+  border: none;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  height: 32px;
+}
+
+@media (min-width: 300px) and (max-width: 560px) {
+  .log-wrapper {
+    margin-left: 0px;
+  }
+
+  .log-wrapper .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-log {
+    width: 154vw;
+  }
+
+  .card-row-col h3 {
+    font-size: 14px;
+  }
+
+  .card-row-col h5 {
+    font-size: 10px;
+  }
+
+  .ant-picker {
+    width: 212px;
+  }
+
+  .ant-picker-range {
+    top: 18px;
+  }
+
+  .dropdown-box {
+    position: relative;
+    left: 106vw;
+    bottom: 10vh;
+  }
+
+  .dropDown-label {
+    font-size: 16px;
+  }
+
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    height: 36px;
+  }
+
+  .ant-select {
+    width: 86px;
+  }
+
+  .session-log-table table thead tr th {
+    font-size: 12px;
+  }
+
+  .session-log-table table tr td {
+    font-size: 8px;
+  }
+
+  .session-log-table table thead tr th:nth-child(1) {
+    width: 66px;
+  }
+
+  .session-log-table table thead tr th:nth-child(2) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(3) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(4) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(5) {
+    width: 80px;
+  }
+
+  .session-log-table table thead tr th:nth-child(6) {
+    width: 90px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 799px) {
+  .card-row-col h3 {
+    font-size: 14px;
+  }
+
+  .card-row-col h5 {
+    font-size: 10px;
+  }
+
+  .ant-picker {
+    width: 212px;
+  }
+
+  .dropDown-label {
+    font-size: 16px;
+  }
+
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    height: 32px;
+  }
+
+  .ant-select {
+    width: 86px;
+  }
+
+  .session-log-table table thead tr th {
+    font-size: 12px;
+  }
+
+  .session-log-table table tr td {
+    font-size: 9px;
+  }
+
+  .session-log-table table thead tr th:nth-child(1) {
+    width: 66px;
+  }
+
+  .session-log-table table thead tr th:nth-child(2) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(3) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(4) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(5) {
+    width: 80px;
+  }
+
+  .session-log-table table thead tr th:nth-child(6) {
+    width: 90px;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1199px) {
+
+  /* .session-log-table table tr td {
+    font-size: 14px;
+    padding: 21px 12px;
+  } */
+  .card-row-col h3 {
+    font-size: 14px;
+  }
+
+  .card-row-col h5 {
+    font-size: 10px;
+  }
+
+  .ant-picker {
+    width: 212px;
+  }
+
+  .dropDown-label {
+    font-size: 16px;
+  }
+
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    height: 32px;
+  }
+
+  .dropdown-box .ant-select {
+    width: 86px;
+  }
+
+  .session-log-table table thead tr th {
+    font-size: 12px;
+  }
+
+  .session-log-table table tr td {
+    font-size: 9px;
+  }
+
+  .session-log-table table thead tr th:nth-child(1) {
+    width: 66px;
+  }
+
+  .session-log-table table thead tr th:nth-child(2) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(3) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(4) {
+    width: 68px;
+  }
+
+  .session-log-table table thead tr th:nth-child(5) {
+    width: 80px;
+  }
+
+  .session-log-table table thead tr th:nth-child(6) {
+    width: 90px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1320px) {
+  .session-log-table table thead tr th {
+    font-size: 14px;
+  }
+
+  .session-log-table table tr td {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .session-date-picker {
+    width: 25%;
+  }
+
+  .admin-dashboard-search.session-log-search {
+    max-width: 220px;
+  }
+}

@@ -1,0 +1,24 @@
+.material-desc-row {
+  white-space: nowrap;
+  padding-left: 16px !important;
+}
+
+
+.details-download-btn {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.details-download-btn button {
+  display: inline-block;
+  background: #34aeef;
+  border: none;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sales-orders-th{
+margin-right: 100px;
+}

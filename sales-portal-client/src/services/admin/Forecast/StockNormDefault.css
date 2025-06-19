@@ -1,0 +1,5 @@
+.grid-container-row-sn-default {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+  }

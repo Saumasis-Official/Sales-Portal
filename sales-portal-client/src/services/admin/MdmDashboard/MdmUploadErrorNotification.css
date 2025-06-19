@@ -1,0 +1,69 @@
+.error-table {
+    width: 300%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.error-table th, .error-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.error-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.comment-red {
+    color: red;
+}
+.mdm-modal{
+    width : 1200px !important;
+    height: 1000px !important;
+}
+.mdm-header {
+    background-color: #f2f2f2;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.mdm-modal .table-container {
+    max-height: 300px; 
+    overflow-y: auto;
+    position: relative;
+}
+
+.mdm-modal table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mdm-modal th, .mdm-modal td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.mdm-modal th {
+    background-color: #f2f2f2;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.modal-button {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 20px;
+}
+.mdm-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.modal-button {
+    margin-left: 10px;
+}

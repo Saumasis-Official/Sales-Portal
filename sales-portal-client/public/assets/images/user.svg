@@ -1,0 +1,19 @@
+<svg id="Component_380_8" data-name="Component 380 – 8" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <g id="icons-navigation-hamburger-menu-1-default" transform="translate(5 7)">
+    <g id="Group_3193" data-name="Group 3193">
+      <g id="Group_3192" data-name="Group 3192">
+        <g id="Group_3189" data-name="Group 3189">
+          <path id="Path_8631" data-name="Path 8631" d="M0,0H32V32H0Z" fill="none"/>
+        </g>
+        <g id="Group_3190" data-name="Group 3190">
+          <path id="Path_8632" data-name="Path 8632" d="M0,0H20V20H0Z" transform="translate(6 6)" fill="none"/>
+          <path id="Path_8633" data-name="Path 8633" d="M0,0H20V20H0Z" transform="translate(6 6)" fill="none"/>
+        </g>
+        <g id="Group_3191" data-name="Group 3191" transform="translate(0 2)">
+          <path id="Path_8634" data-name="Path 8634" d="M.52,1.263H19.48M.52,6H11.48" transform="translate(6 10)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path id="Icon_awesome-user-circle" data-name="Icon awesome-user-circle" d="M22,.563a22,22,0,1,0,22,22A22,22,0,0,0,22,.563Zm0,8.516a7.806,7.806,0,1,1-7.806,7.806A7.807,7.807,0,0,1,22,9.079Zm0,30.516a17,17,0,0,1-13-6.05,9.891,9.891,0,0,1,8.738-5.3,2.171,2.171,0,0,1,.63.1A11.745,11.745,0,0,0,22,28.95a11.7,11.7,0,0,0,3.628-.612,2.171,2.171,0,0,1,.63-.1A9.891,9.891,0,0,1,35,33.545,17,17,0,0,1,22,39.595Z" transform="translate(0 -0.563)" fill="#1268b3"/>
+</svg>

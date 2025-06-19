@@ -1,0 +1,1165 @@
+{
+	"info": {
+		"_postman_id": "a68b8099-2ed2-4d33-8cd4-9c55281c3c41",
+		"name": "New SAP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "warehouse-details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/warehouse-details/100003",
+					"host": ["{{env}}admin"],
+					"path": ["warehouse-details", "100003"],
+					"variable": [
+						{
+							"key": "distributor_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "warehouse-details-dist-channel",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/warehouse-details-dist-channel/:distributor_id/:dist_channel/:division_str",
+					"host": ["{{env}}admin"],
+					"path": ["warehouse-details-dist-channel", ":distributor_id", ":dist_channel", ":division_str"],
+					"variable": [
+						{
+							"key": "distributor_id",
+							"value": "82390"
+						},
+						{
+							"key": "dist_channel",
+							"value": "10"
+						},
+						{
+							"key": "division_str",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validate-order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sales_org\": \"1010\",\r\n    \"distribution_channel\": 10,\r\n    \"division\": \"10\",\r\n    \"items\": [\r\n        {\r\n            \"material_code\": \"15000000000779\",\r\n            \"item_number\": \"000010\",\r\n            \"required_qty\": \"24\",\r\n            \"target_qty\": \"24\",\r\n            \"pack_type\": \"1 Kg\",\r\n            \"sales_unit\": \"CV\",\r\n            \"description\": \"TS_TATA SALT_25 X 1KG\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 14,\r\n            \"stock_in_hand\": \"\",\r\n            \"stock_in_transit\": \"25\",\r\n            \"open_order\": \"\"\r\n        }\r\n    ],\r\n    \"partners\": [\r\n        {\r\n            \"partner_role\": \"AG\",\r\n            \"partner_number\": \"100003\"\r\n        },\r\n        {\r\n            \"partner_role\": \"WE\",\r\n            \"partner_number\": \"100003\",\r\n            \"partner_name\": \"Singh Enterprises\"\r\n        }\r\n    ],\r\n    \"pdp\": \"OFF\",\r\n    \"original_items\": [\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000000542\",\r\n            \"item_number\": \"000010\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"200 gms\",\r\n            \"sales_unit\": \"CV\",\r\n            \"description\": \"TATAGOLD_SPECIALITY_200G_CEKA\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 10\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000000575\",\r\n            \"item_number\": \"000020\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"50s\",\r\n            \"sales_unit\": \"CV\",\r\n            \"description\": \"TETLEYBL_FTB-MASALA_50S_TB\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 10\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000002053\",\r\n            \"item_number\": \"000030\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"100 gms\",\r\n            \"sales_unit\": \"CV\",\r\n            \"description\": \"SPICESPURES_KASHMIRICHILLY100G\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000002415\",\r\n            \"item_number\": \"000040\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"250 gms\",\r\n            \"sales_unit\": null,\r\n            \"description\": \"SF RAGIBITESFILLS_CHOCO_250G\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000002428\",\r\n            \"item_number\": \"000050\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"250 gms\",\r\n            \"sales_unit\": null,\r\n            \"description\": \"SF RAGIBITESFILLS_STRBRY_250G\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000005478\",\r\n            \"item_number\": \"000060\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"Single Serve\",\r\n            \"sales_unit\": null,\r\n            \"description\": \"YS_CHEESYPASTA_CORN_V\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000005479\",\r\n            \"item_number\": \"000070\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"Single Serve\",\r\n            \"sales_unit\": null,\r\n            \"description\": \"YS_TOMPASTA_VGS_V\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000005481\",\r\n            \"item_number\": \"000080\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"Single Serve\",\r\n            \"sales_unit\": null,\r\n            \"description\": \"YS_NOODLE_SCHWNVGS_V\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000005483\",\r\n            \"item_number\": \"000090\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"Single Serve\",\r\n            \"sales_unit\": null,\r\n            \"description\": \"YS_BIRYANI_SPICYVEG_V\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"14000000005488\",\r\n            \"item_number\": \"000100\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"Single Serve\",\r\n            \"sales_unit\": null,\r\n            \"description\": \"YS_DAL MAKHANI_V\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"15000000000519\",\r\n            \"item_number\": \"000110\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"500 gms\",\r\n            \"sales_unit\": \"CV\",\r\n            \"description\": \"BESAN_BESAN GARGARA_500G\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"15000000000521\",\r\n            \"item_number\": \"000120\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"200 gms\",\r\n            \"sales_unit\": \"CV\",\r\n            \"description\": \"BESAN_BESAN GARGARA_200G\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        },\r\n        {\r\n            \"original_quantity\": \"0\",\r\n            \"material_code\": \"15000000000673\",\r\n            \"item_number\": \"000130\",\r\n            \"required_qty\": \"0\",\r\n            \"target_qty\": \"0\",\r\n            \"pack_type\": \"Rs 10\",\r\n            \"sales_unit\": \"CV\",\r\n            \"description\": \"SPICESBLENDS_CHICKEN _RS.10\",\r\n            \"sales_org\": 1010,\r\n            \"distribution_channel\": 10,\r\n            \"division\": 13\r\n        }\r\n    ],\r\n    \"po_number\": \"\",\r\n    \"po_date\": \"\",\r\n    \"req_date\": \"\",\r\n    \"navresult\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/validate-order/:distributor_id?auto_order=true",
+					"host": ["{{env}}admin"],
+					"path": ["validate-order", ":distributor_id"],
+					"query": [
+						{
+							"key": "auto_order",
+							"value": "true"
+						}
+					],
+					"variable": [
+						{
+							"key": "distributor_id",
+							"value": "100003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "report-portal-error",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"remarks\": \"Testing\",\r\n    \"categoryId\": 1,\r\n    \"ccRecipients\": \"kiran.hebballi@tataconsumer.com,Abhinav.Singh@tataconsumer.com,Niraj.Singh@tataconsumer.com\",\r\n    \"tse\": [\r\n        {\r\n            \"user_id\": \"1114192\",\r\n            \"first_name\": \"Niraj\",\r\n            \"last_name\": \"Singh\",\r\n            \"email\": \"Niraj.Singh@tataconsumer.com\",\r\n            \"mobile_number\": \"7398157801\",\r\n            \"code\": \"NE01TS03\"\r\n        }\r\n    ],\r\n    \"errorCode\": \"ERR-DBO-OVAL-009-TENT-AMOUNT\",\r\n    \"errorMessage\": \"Unable to get tentative amount value\",\r\n    \"logObj\": {\r\n        \"sales_order_data\": {\r\n            \"sales_org\": \"1010\",\r\n            \"distribution_channel\": 10,\r\n            \"division\": \"10\",\r\n            \"items\": [\r\n                {\r\n                    \"material_code\": \"14000000000546\",\r\n                    \"item_number\": \"000010\",\r\n                    \"required_qty\": \"1\",\r\n                    \"target_qty\": \"1\",\r\n                    \"pack_type\": \"100 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"TATAGOLD_CARE_100G_CEKA\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 10,\r\n                    \"stock_in_hand\": \"0\",\r\n                    \"stock_in_transit\": \"\",\r\n                    \"open_order\": \"\"\r\n                }\r\n            ],\r\n            \"partners\": [\r\n                {\r\n                    \"partner_role\": \"AG\",\r\n                    \"partner_number\": \"100003\"\r\n                },\r\n                {\r\n                    \"partner_role\": \"WE\",\r\n                    \"partner_number\": \"100003\",\r\n                    \"partner_name\": \"Singh Enterprises\"\r\n                }\r\n            ],\r\n            \"pdp\": \"OFF\",\r\n            \"original_items\": [\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000000542\",\r\n                    \"item_number\": \"000010\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"200 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"TATAGOLD_SPECIALITY_200G_CEKA\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 10\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000000575\",\r\n                    \"item_number\": \"000020\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"50s\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"TETLEYBL_FTB-MASALA_50S_TB\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 10\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000002053\",\r\n                    \"item_number\": \"000030\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"100 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"SPICESPURES_KASHMIRICHILLY100G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000002415\",\r\n                    \"item_number\": \"000040\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"250 gms\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"SF RAGIBITESFILLS_CHOCO_250G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000002428\",\r\n                    \"item_number\": \"000050\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"250 gms\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"SF RAGIBITESFILLS_STRBRY_250G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005478\",\r\n                    \"item_number\": \"000060\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_CHEESYPASTA_CORN_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005479\",\r\n                    \"item_number\": \"000070\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_TOMPASTA_VGS_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005481\",\r\n                    \"item_number\": \"000080\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_NOODLE_SCHWNVGS_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005483\",\r\n                    \"item_number\": \"000090\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_BIRYANI_SPICYVEG_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005488\",\r\n                    \"item_number\": \"000100\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_DAL MAKHANI_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"15000000000519\",\r\n                    \"item_number\": \"000110\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"500 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"BESAN_BESAN GARGARA_500G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"15000000000521\",\r\n                    \"item_number\": \"000120\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"200 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"BESAN_BESAN GARGARA_200G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"15000000000673\",\r\n                    \"item_number\": \"000130\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Rs 10\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"SPICESBLENDS_CHICKEN _RS.10\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                }\r\n            ],\r\n            \"po_number\": \"\",\r\n            \"po_date\": \"\",\r\n            \"req_date\": \"\",\r\n            \"navresult\": [],\r\n            \"distributor\": {\r\n                \"id\": \"100003\",\r\n                \"name\": \"Singh Enterprises\",\r\n                \"mobile\": \"9922595206\",\r\n                \"email\": \"kiran.hebballi@tataconsumer.com\",\r\n                \"market\": \"801583\",\r\n                \"channel_code\": \"GT\",\r\n                \"area_code\": \"NE01\",\r\n                \"city\": \"Tinsukia\",\r\n                \"postal_code\": 786125,\r\n                \"liquidation\": true,\r\n                \"enable_pdp\": false,\r\n                \"ao_enable\": true,\r\n                \"reg_enable\": true,\r\n                \"region\": \"Assam\",\r\n                \"customer_group\": \"GT-Dist (Non Metro)\",\r\n                \"customer_group_code\": \"10\",\r\n                \"group5\": \"East 1\",\r\n                \"group5_name\": \"E1\",\r\n                \"distributor_sales_details\": [\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 12,\r\n                        \"line_of_business\": 12,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEFRSA\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"Liquids\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 14,\r\n                        \"line_of_business\": 14,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": null,\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"Salt\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 17,\r\n                        \"line_of_business\": 17,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEWETH\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"ICD\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 18,\r\n                        \"line_of_business\": 18,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEMOTU\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"R&G \"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 99,\r\n                        \"line_of_business\": 99,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEMOTU\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"Others\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 40,\r\n                        \"division\": 14,\r\n                        \"line_of_business\": 14,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEMOWEFR\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"Salt\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 10,\r\n                        \"line_of_business\": 10,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WETUWE\",\r\n                        \"plant_name\": \"1430\",\r\n                        \"plant_description\": \"SOHAM MARITIME PRIVATE LIMITED\",\r\n                        \"division_description\": \"Tea\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 13,\r\n                        \"line_of_business\": 13,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEWETHFR\",\r\n                        \"plant_name\": \"1430\",\r\n                        \"plant_description\": \"SOHAM MARITIME PRIVATE LIMITED\",\r\n                        \"division_description\": \"Foods\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 40,\r\n                        \"division\": 13,\r\n                        \"line_of_business\": 13,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEMOWEFR\",\r\n                        \"plant_name\": \"1430\",\r\n                        \"plant_description\": \"SOHAM MARITIME PRIVATE LIMITED\",\r\n                        \"division_description\": \"Foods\"\r\n                    }\r\n                ],\r\n                \"tse\": [\r\n                    {\r\n                        \"user_id\": \"1114192\",\r\n                        \"first_name\": \"Niraj\",\r\n                        \"last_name\": \"Singh\",\r\n                        \"email\": \"Niraj.Singh@tataconsumer.com\",\r\n                        \"mobile_number\": \"7398157801\",\r\n                        \"code\": \"NE01TS03\"\r\n                    }\r\n                ],\r\n                \"asm\": [\r\n                    {\r\n                        \"user_id\": \"1112157\",\r\n                        \"first_name\": \"Abhinav\",\r\n                        \"last_name\": \"Singh\",\r\n                        \"email\": \"Abhinav.Singh@tataconsumer.com\",\r\n                        \"mobile_number\": \"9654939037\",\r\n                        \"code\": \"NE01\"\r\n                    }\r\n                ]\r\n            },\r\n            \"order_type\": \"Auto-Order\"\r\n        },\r\n        \"errors\": [\r\n            {\r\n                \"item_number\": \"000010\",\r\n                \"message\": \"Missing :Net Value,,ZCD1,JOCG,JOSG,JTC1,ZMRP;  Missing :Pricing,,ZCD1,JOCG,JOSG,JTC1,ZMRP\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/report-portal-error/:distributor_id",
+					"host": ["{{env}}admin"],
+					"path": ["report-portal-error", ":distributor_id"],
+					"variable": [
+						{
+							"key": "distributor_id",
+							"value": "100003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-mapping-requests",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\" : \"PENDING\",\r\n    \"type\" :\"ADD\",\r\n    \"distributor_code\" : \"149033\",\r\n    \"TSE_code\":\"MH07TS01\",\r\n    \"ASMRSM_code\" :\"1112441\",\r\n    \"created_by\" :\"priyank.singh@tataconsumer.com\",\r\n    \"submission_comments\" : \"Testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/create-mapping-requests"
+			},
+			"response": []
+		},
+		{
+			"name": "get-mapping-requests",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"offset\": 0,\r\n    \"limit\": 10,\r\n    \"search\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/get-mapping-requests"
+			},
+			"response": []
+		},
+		{
+			"name": "get-liquidation-materials",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/get-liquidation-materials?plantCode=1428,1430",
+					"host": ["{{env}}admin"],
+					"path": ["get-liquidation-materials"],
+					"query": [
+						{
+							"key": "plantCode",
+							"value": "1428,1430"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tse-list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/tse-list"
+			},
+			"response": []
+		},
+		{
+			"name": "get-distributor-code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/get-distributor-code"
+			},
+			"response": []
+		},
+		{
+			"name": "report-portal-error-cfa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"remarks\": \"fgfdbvsvcbn\",\r\n    \"categoryId\": 1,\r\n    \"ccRecipients\": \"kiran.hebballi@tataconsumer.com,Abhinav.Singh@tataconsumer.com,Niraj.Singh@tataconsumer.com\",\r\n    \"tse\": [\r\n        {\r\n            \"user_id\": \"1114192\",\r\n            \"first_name\": \"Niraj\",\r\n            \"last_name\": \"Singh\",\r\n            \"email\": \"Niraj.Singh@tataconsumer.com\",\r\n            \"mobile_number\": \"7398157801\",\r\n            \"code\": \"NE01TS03\"\r\n        }\r\n    ],\r\n    \"errorCode\": \"ERR-DBO-OVAL-009-TENT-AMOUNT\",\r\n    \"errorMessage\": \"Unable to get tentative amount value\",\r\n    \"logObj\": {\r\n        \"sales_order_data\": {\r\n            \"sales_org\": \"1010\",\r\n            \"distribution_channel\": 10,\r\n            \"division\": \"10\",\r\n            \"items\": [\r\n                {\r\n                    \"material_code\": \"14000000000546\",\r\n                    \"item_number\": \"000010\",\r\n                    \"required_qty\": \"1\",\r\n                    \"target_qty\": \"1\",\r\n                    \"pack_type\": \"100 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"TATAGOLD_CARE_100G_CEKA\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 10,\r\n                    \"stock_in_hand\": \"0\",\r\n                    \"stock_in_transit\": \"\",\r\n                    \"open_order\": \"\"\r\n                }\r\n            ],\r\n            \"partners\": [\r\n                {\r\n                    \"partner_role\": \"AG\",\r\n                    \"partner_number\": \"100003\"\r\n                },\r\n                {\r\n                    \"partner_role\": \"WE\",\r\n                    \"partner_number\": \"100003\",\r\n                    \"partner_name\": \"Singh Enterprises\"\r\n                }\r\n            ],\r\n            \"pdp\": \"OFF\",\r\n            \"original_items\": [\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000000542\",\r\n                    \"item_number\": \"000010\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"200 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"TATAGOLD_SPECIALITY_200G_CEKA\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 10\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000000575\",\r\n                    \"item_number\": \"000020\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"50s\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"TETLEYBL_FTB-MASALA_50S_TB\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 10\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000002053\",\r\n                    \"item_number\": \"000030\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"100 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"SPICESPURES_KASHMIRICHILLY100G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000002415\",\r\n                    \"item_number\": \"000040\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"250 gms\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"SF RAGIBITESFILLS_CHOCO_250G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000002428\",\r\n                    \"item_number\": \"000050\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"250 gms\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"SF RAGIBITESFILLS_STRBRY_250G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005478\",\r\n                    \"item_number\": \"000060\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_CHEESYPASTA_CORN_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005479\",\r\n                    \"item_number\": \"000070\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_TOMPASTA_VGS_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005481\",\r\n                    \"item_number\": \"000080\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_NOODLE_SCHWNVGS_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005483\",\r\n                    \"item_number\": \"000090\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_BIRYANI_SPICYVEG_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"14000000005488\",\r\n                    \"item_number\": \"000100\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Single Serve\",\r\n                    \"sales_unit\": null,\r\n                    \"description\": \"YS_DAL MAKHANI_V\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"15000000000519\",\r\n                    \"item_number\": \"000110\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"500 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"BESAN_BESAN GARGARA_500G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"15000000000521\",\r\n                    \"item_number\": \"000120\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"200 gms\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"BESAN_BESAN GARGARA_200G\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                },\r\n                {\r\n                    \"original_quantity\": \"0\",\r\n                    \"material_code\": \"15000000000673\",\r\n                    \"item_number\": \"000130\",\r\n                    \"required_qty\": \"0\",\r\n                    \"target_qty\": \"0\",\r\n                    \"pack_type\": \"Rs 10\",\r\n                    \"sales_unit\": \"CV\",\r\n                    \"description\": \"SPICESBLENDS_CHICKEN _RS.10\",\r\n                    \"sales_org\": 1010,\r\n                    \"distribution_channel\": 10,\r\n                    \"division\": 13\r\n                }\r\n            ],\r\n            \"po_number\": \"\",\r\n            \"po_date\": \"\",\r\n            \"req_date\": \"\",\r\n            \"navresult\": [],\r\n            \"distributor\": {\r\n                \"id\": \"100003\",\r\n                \"name\": \"Singh Enterprises\",\r\n                \"mobile\": \"9922595206\",\r\n                \"email\": \"kiran.hebballi@tataconsumer.com\",\r\n                \"market\": \"801583\",\r\n                \"channel_code\": \"GT\",\r\n                \"area_code\": \"NE01\",\r\n                \"city\": \"Tinsukia\",\r\n                \"postal_code\": 786125,\r\n                \"liquidation\": true,\r\n                \"enable_pdp\": false,\r\n                \"ao_enable\": true,\r\n                \"reg_enable\": true,\r\n                \"region\": \"Assam\",\r\n                \"customer_group\": \"GT-Dist (Non Metro)\",\r\n                \"customer_group_code\": \"10\",\r\n                \"group5\": \"East 1\",\r\n                \"group5_name\": \"E1\",\r\n                \"distributor_sales_details\": [\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 12,\r\n                        \"line_of_business\": 12,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEFRSA\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"Liquids\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 14,\r\n                        \"line_of_business\": 14,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": null,\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"Salt\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 17,\r\n                        \"line_of_business\": 17,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEWETH\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"ICD\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 18,\r\n                        \"line_of_business\": 18,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEMOTU\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"R&G \"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 99,\r\n                        \"line_of_business\": 99,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEMOTU\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"Others\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 40,\r\n                        \"division\": 14,\r\n                        \"line_of_business\": 14,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEMOWEFR\",\r\n                        \"plant_name\": \"1428\",\r\n                        \"plant_description\": \"M/S. RANA CHOWDHARY\",\r\n                        \"division_description\": \"Salt\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 10,\r\n                        \"line_of_business\": 10,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WETUWE\",\r\n                        \"plant_name\": \"1430\",\r\n                        \"plant_description\": \"SOHAM MARITIME PRIVATE LIMITED\",\r\n                        \"division_description\": \"Tea\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 10,\r\n                        \"division\": 13,\r\n                        \"line_of_business\": 13,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEWETHFR\",\r\n                        \"plant_name\": \"1430\",\r\n                        \"plant_description\": \"SOHAM MARITIME PRIVATE LIMITED\",\r\n                        \"division_description\": \"Foods\"\r\n                    },\r\n                    {\r\n                        \"distributor_id\": \"100003\",\r\n                        \"sales_org\": 1010,\r\n                        \"distribution_channel\": 40,\r\n                        \"division\": 13,\r\n                        \"line_of_business\": 13,\r\n                        \"reference_date\": null,\r\n                        \"pdp_day\": \"WEMOWEFR\",\r\n                        \"plant_name\": \"1430\",\r\n                        \"plant_description\": \"SOHAM MARITIME PRIVATE LIMITED\",\r\n                        \"division_description\": \"Foods\"\r\n                    }\r\n                ],\r\n                \"tse\": [\r\n                    {\r\n                        \"user_id\": \"1114192\",\r\n                        \"first_name\": \"Niraj\",\r\n                        \"last_name\": \"Singh\",\r\n                        \"email\": \"Niraj.Singh@tataconsumer.com\",\r\n                        \"mobile_number\": \"7398157801\",\r\n                        \"code\": \"NE01TS03\"\r\n                    }\r\n                ],\r\n                \"asm\": [\r\n                    {\r\n                        \"user_id\": \"1112157\",\r\n                        \"first_name\": \"Abhinav\",\r\n                        \"last_name\": \"Singh\",\r\n                        \"email\": \"Abhinav.Singh@tataconsumer.com\",\r\n                        \"mobile_number\": \"9654939037\",\r\n                        \"code\": \"NE01\"\r\n                    }\r\n                ]\r\n            },\r\n            \"order_type\": \"Auto-Order\"\r\n        },\r\n        \"errors\": [\r\n            {\r\n                \"item_number\": \"000010\",\r\n                \"message\": \"Missing :Net Value,,ZCD1,JOCG,JOSG,JTC1,ZMRP;  Missing :Pricing,,ZCD1,JOCG,JOSG,JTC1,ZMRP\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/report-portal-error-cfa"
+			},
+			"response": []
+		},
+		{
+			"name": "service-request-category",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/service-request-category/:type",
+					"host": ["{{env}}admin"],
+					"path": ["service-request-category", ":type"],
+					"variable": [
+						{
+							"key": "type",
+							"value": "SD_RESPONSE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "plant-code-update-request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"sales_org\": \"1010\",\r\n            \"distribution_channel\": \"10\",\r\n            \"division\": \"10\",\r\n            \"plant_name\": \"1265\",\r\n            \"previous_sales_details\": \"10/10/1213\"\r\n        }\r\n    ],\r\n    \"dbCode\": \"100122\",\r\n    \"name\": \"R.K.AGENCIES-RKD\",\r\n    \"comment\": \"gjchjkbkjbjk \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/plant-code-update-request"
+			},
+			"response": []
+		},
+		{
+			"name": "get-plant-code-update-request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"offset\": 0,\r\n    \"limit\": 10,\r\n    \"search\": \"\",\r\n    \"status\": \"ALL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/get-plant-code-update-request"
+			},
+			"response": []
+		},
+		{
+			"name": "logistic-Officer-Response",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pc_number\": \"PC-0124-00031\",\r\n    \"distributor_code\": \"100003\",\r\n    \"distributor_name\": \"Singh Enterprises\",\r\n    \"division\": \"13\",\r\n    \"tseName\": \"Rajat Kumar  <TCPL_ADMIN>\",\r\n    \"tseId\": \"Rajat Kumar TCPL_62279494\",\r\n    \"distribution_channel\": \"10\",\r\n    \"sales_org\": \"1010\",\r\n    \"request_type\": \"Update_Plant\",\r\n    \"plant_code\": \"1428\",\r\n    \"previous_sales_details\": \"10/13/1430\",\r\n    \"comments\": \"testing this\",\r\n    \"status\": \"APPROVED\",\r\n    \"response\": \"testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/logistic-Officer-Response"
+			},
+			"response": []
+		},
+		{
+			"name": "pdp-update-request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Testing\",\r\n    \"dbCode\": \"82380\",\r\n    \"name\": \"tata\",\r\n    \"pdp_data\": [\r\n        {\r\n            \"sales_org\": \"1010\",\r\n            \"division\": \"10\",\r\n            \"distribution_channel\": \"10\",\r\n            \"plant_code\": \"1234\",\r\n            \"pdp_current\": \"\",\r\n            \"pdp_requested\": \"WETUWETHFR\",\r\n            \"ref_date_current\": \"00000000\",\r\n            \"ref_date_requested\": \"00000000\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/pdp-update-request"
+			},
+			"response": []
+		},
+		{
+			"name": "get-pdp-update-requests",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"offset\": 0,\r\n    \"limit\": 10,\r\n    \"search\": \"\",\r\n    \"status\": \"ALL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/get-pdp-update-requests"
+			},
+			"response": []
+		},
+		{
+			"name": "pdp-update-response",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pdpNo\": \"PDP-0124-00013\",\r\n    \"dbCode\": \"100003\",\r\n    \"dbName\": \"Singh Enterprises\",\r\n    \"sales_org\": \"1010\",\r\n    \"division\": \"12\",\r\n    \"distribution_channel\": \"10\",\r\n    \"plant_code\": \"1428\",\r\n    \"status\": \"APPROVED\",\r\n    \"pdp_old\": \"WEFRSA\",\r\n    \"pdp_new\": \"WETHFRSA\",\r\n    \"ref_date_old\": \"00000000\",\r\n    \"ref_date_new\": \"00000000\",\r\n    \"response\": \"testing \",\r\n    \"created_by\": \"rajat.kumar@tataconsumer.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/pdp-update-response"
+			},
+			"response": []
+		},
+		{
+			"name": "customer-group-list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/customer-group-list"
+			},
+			"response": []
+		},
+		{
+			"name": "depot-code-mapping-details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"divZoneSales\": [\r\n        {\r\n            \"division\": \"10\",\r\n            \"distributionChannel\": \"10\",\r\n            \"sales_org\": \"1010\"\r\n        },\r\n        {\r\n            \"division\": \"12\",\r\n            \"distributionChannel\": \"10\",\r\n            \"sales_org\": \"1010\"\r\n        },\r\n        {\r\n            \"division\": \"13\",\r\n            \"distributionChannel\": \"10\",\r\n            \"sales_org\": \"1010\"\r\n        },\r\n        {\r\n            \"division\": \"14\",\r\n            \"distributionChannel\": \"10\",\r\n            \"sales_org\": \"1010\"\r\n        },\r\n        {\r\n            \"division\": \"17\",\r\n            \"distributionChannel\": \"10\",\r\n            \"sales_org\": \"1010\"\r\n        },\r\n        {\r\n            \"division\": \"18\",\r\n            \"distributionChannel\": \"10\",\r\n            \"sales_org\": \"1010\"\r\n        },\r\n        {\r\n            \"division\": \"99\",\r\n            \"distributionChannel\": \"10\",\r\n            \"sales_org\": \"1010\"\r\n        },\r\n        {\r\n            \"division\": \"13\",\r\n            \"distributionChannel\": \"40\",\r\n            \"sales_org\": \"1010\"\r\n        },\r\n        {\r\n            \"division\": \"14\",\r\n            \"distributionChannel\": \"40\",\r\n            \"sales_org\": \"1010\"\r\n        }\r\n    ],\r\n    \"depot_code\": [\r\n        \"1428\",\r\n        \"1429\",\r\n        \"1430\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/depot-code-mapping-details"
+			},
+			"response": []
+		},
+		{
+			"name": "download-mdm-data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dataDownload\": {\r\n        \"kams\": \"AMAZON\",\r\n        \"key\": true,\r\n        \"customerCode\": [],\r\n        \"siteCode\": [],\r\n        \"depotCode\": [],\r\n        \"region\": [],\r\n        \"vendorCode\": [],\r\n        \"status\": [],\r\n        \"headerFilter\": {},\r\n        \"article_code\": \"\",\r\n        \"article_desc\": \"\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/download-mdm-data"
+			},
+			"response": []
+		},
+		{
+			"name": "get-mdm-data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"offset\": 0,\r\n    \"limit\": 10,\r\n    \"kams\": \"\",\r\n    \"customerCode\": [],\r\n    \"siteCode\": [],\r\n    \"depotCode\": [],\r\n    \"region\": [],\r\n    \"vendorCode\": [],\r\n    \"status\": [],\r\n    \"headerFilter\": {},\r\n    \"article_code\": \"\",\r\n    \"article_desc\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/get-mdm-data"
+			},
+			"response": []
+		},
+		{
+			"name": "mdm-filed-level-save",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 8777,\r\n    \"psku\": \"14000000002397\",\r\n    \"psku_desc\": \"SF MILLETMUESLI_CRUNCHY_B2G1\",\r\n    \"sku\": \"14000000002397\",\r\n    \"sku_desc\": \"SF Millet Muesli Crunchy B2G1 1.2kg\",\r\n    \"division\": null,\r\n    \"article_id\": \"123456\",\r\n    \"article_desc\": \"Testing\",\r\n    \"plant_code\": \"1257\",\r\n    \"site_code\": null,\r\n    \"customer_code\": null,\r\n    \"customer_name\": \"AMAZON\",\r\n    \"vendor_code\": null,\r\n    \"region\": \"Maharashtra\",\r\n    \"status\": true,\r\n    \"vendor_name\": \"TCPL\",\r\n    \"mrp\": \"820\",\r\n    \"caselot\": null,\r\n    \"created_on\": \"2024-01-04T10:50:59.934Z\",\r\n    \"updated_on\": \"2024-01-10T07:25:46.291Z\",\r\n    \"is_deleted\": false,\r\n    \"updated_by\": null,\r\n    \"loose_piece\": false,\r\n    \"primary_buying_uom\": \"CV\",\r\n    \"mrp_uom_buying\": \"PAC\",\r\n    \"l1_pack\": \"1\",\r\n    \"l1_pack_uom\": \"CV\",\r\n    \"l2_pack\": \"6\",\r\n    \"l2_pack_uom\": \"PAC\",\r\n    \"l3_pack\": \"1\",\r\n    \"l3_pack_uom\": \"EA\",\r\n    \"l4_pack\": null,\r\n    \"l4_pack_uom\": \"\",\r\n    \"is_disabled\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/mdm-filed-level-save"
+			},
+			"response": []
+		},
+		{
+			"name": "upload-mdm-data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/KothandapaniJ/Downloads/SH_Requests_2024_1_12.xlsx",
+							"value": ""
+						}
+					]
+				},
+				"url": "{{env}}admin/upload-mdm-data"
+			},
+			"response": []
+		},
+		{
+			"name": "all-mdm-customers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/all-mdm-customers"
+			},
+			"response": []
+		},
+		{
+			"name": "mdm-notifications",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/mdm-notifications"
+			},
+			"response": []
+		},
+		{
+			"name": "update-distributor-plant-code",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"sales_org\": \"1010\",\r\n            \"distribution_channel\": \"10\",\r\n            \"division\": \"10\",\r\n            \"plant_name\": \"1275\",\r\n            \"previous_sales_details\": \"10/10/1137\"\r\n        }\r\n    ],\r\n    \"dbCode\": \"143004\",\r\n    \"name\": \"SIGMA DISTRIBUTORS SIGMA DISTRIBUTORS\",\r\n    \"comment\": \"Testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/update-distributor-plant-code"
+			},
+			"response": []
+		},
+		{
+			"name": "sap-material-list",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"distributionChannels\": [\r\n        10,\r\n        40\r\n    ],\r\n    \"divisions\": [\r\n        10,\r\n        12,\r\n        13,\r\n        14,\r\n        18,\r\n        99\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/sap-material-list"
+			},
+			"response": []
+		},
+		{
+			"name": "update-distributor-mobile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobile_number\": \"7904021030\",\r\n    \"remark\" : \"Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/update-distributor-mobile/:distributor_id",
+					"host": ["{{env}}admin"],
+					"path": ["update-distributor-mobile", ":distributor_id"],
+					"variable": [
+						{
+							"key": "distributor_id",
+							"value": "100003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-distributor-email",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"jaiprassath12345@gmail.com\",\r\n    \"remark\" : \"Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/update-distributor-email/:distributor_id",
+					"host": ["{{env}}admin"],
+					"path": ["update-distributor-email", ":distributor_id"],
+					"variable": [
+						{
+							"key": "distributor_id",
+							"value": "100003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send-otp-mail-mobile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"sms\",\r\n    \"updateValue\": \"7904021030\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}auth/send-otp-mail-mobile"
+			},
+			"response": []
+		},
+		{
+			"name": "verify-mobile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobile\":\"7904021030\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}auth/verify-mobile"
+			},
+			"response": []
+		},
+		{
+			"name": "verify-email",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}auth/verify-email/:id?remark=tests",
+					"host": ["{{env}}auth"],
+					"path": ["verify-email", ":id"],
+					"query": [
+						{
+							"key": "remark",
+							"value": "tests"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "jaiprassath.kothandapani@tataconsumer.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "so-sync",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}util/so-sync/:distributor_id",
+					"host": ["{{env}}util"],
+					"path": ["so-sync",	":distributor_id"],
+					"variable": [
+						{
+							"key": "distributor_id",
+							"value": "100003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-sync",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}util/product-sync"
+			},
+			"response": []
+		},
+		{
+			"name": "distributor-sync",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "bearer-auth",
+						"value": "$2y$10$z97XkHhqGaz1tC9qOJXXeu9jxaKhcTh2ZPtOyggxIiZ5qCHYteA6i",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}util/distributor-sync"
+			},
+			"response": []
+		},
+		{
+			"name": "sales-hierarchy-sync",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}util/sales-hierarchy-sync"
+			},
+			"response": []
+		},
+		{
+			"name": "distributor-inventory-sync",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}util/distributor-inventory-sync"
+			},
+			"response": []
+		},
+		{
+			"name": "mdm-sync",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}util/mdm-sync"
+			},
+			"response": []
+		},
+		{
+			"name": "materials-bom-explode",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"materialCode\" : \"15000000002350\",\r\n    \"quantity\" : 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}materials-bom-explode"
+			},
+			"response": []
+		}
+	]
+}

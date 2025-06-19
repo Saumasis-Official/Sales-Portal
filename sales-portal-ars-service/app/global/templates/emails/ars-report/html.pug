@@ -1,0 +1,71 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title  Forecast upload status notification.
+    link(href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i', rel='stylesheet')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='stylesheet', href='../assets/styles/style.css', type='text/css')
+  body(data-gr-c-s-loaded='true', style='')
+    .template-wrapper
+    table.body(border='0', cellpadding='0', cellspacing='0')
+      tbody
+        tr
+          td  
+          td.container
+            .content
+              table.main
+                tbody
+                  tr
+                    td.wrapper
+                      table(border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                          tr
+                            td
+                              a.template-logo(href='https://pegasus.tataconsumer.com/tcp-logo.png')
+                                img(src='https://pegasus.tataconsumer.com/tcp-logo.png')
+
+                              p.lead
+                                | Hello, 
+                                br
+                                br
+                                if !data.isOrderPlaced
+                                  | No auto-order was placed on #{data.yesterday}.
+                                else 
+                                  | Please find attached here the detailed report of auto orders placed on #{data.yesterday}.
+                                  if data.summary && data.summary.length > 0
+                                    table.data-grid-table.table(style='font-size:14px;text-align:left;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;width: 100%;{{msohideall}}' cellpadding='5' cellspacing='0' border='1' bordercolor='#dddddd')
+                                          tr 
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Region
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Count of Orders
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Tentative Amount(₹)
+                                            th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Count of Distributors                                           
+                                          each val in data.summary
+                                            tr
+                                              td(style='text-align:center')= val.region
+                                              td(style='text-align:center')= val.orderCount
+                                              td(style='text-align:center')= val.tentative
+                                              td(style='text-align:center')= val.dbCount
+                              br
+                              br
+                              p Thank you
+              table
+                tbody
+                  tr
+                    td.wrapper
+                      table(border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                          tr
+                            td
+                             
+                  .footer
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td.content-block
+                            p.text-center
+                              | © 2021 Tata Consumer Products Limited.
+                              br
+                              |  This is an automated email, please do not respond to this mail id.
+                              //- a(href='#') unsubscribe 
+          td  

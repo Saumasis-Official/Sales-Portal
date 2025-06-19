@@ -1,0 +1,11 @@
+.row-pending{
+    background-color: rgb(242, 216, 168);
+ }
+
+.row-approved{
+    background-color: #adefc0;
+}
+
+.row-rejected{
+    background-color: rgb(225 95 95 / 63%);
+}

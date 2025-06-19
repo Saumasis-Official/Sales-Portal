@@ -1,0 +1,123 @@
+{
+  "name": "tcpl-sync-mediator-service",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cd dist &&  nodemon server.js",
+    "start-prod": "cross-env pm2 startOrGracefulReload ecosystem.config.js",
+    "prestart": "tsc && cp -r app/global dist/app/",
+    "startdev": "cd dist &&  nodemon  server.js && tsc --watch",
+    "clean": "rm -rf dist",
+    "watch": "tsc",
+    "copy": "cp -r app/global dist/app/",
+    "test": "NODE_ENV=test && mocha ",
+    "debug": "NODE_ENV=test && cd dist && nodemon  server.js",
+    "prestartdev": " npm run clean && tsc &&  npm run copy && npm run watch",
+    "poststartdev": "tsc --watch",
+    "watchserver": "tsc --watch",
+    "dev": "nodemon server.ts",
+    "start-tsc": "nodemon ./dist/server.js",
+    "build": "tsc -p .",
+    "buildAndstart": "npm run build && npm run start-prod",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "npm run lint -- --fix",
+    "prepare": "husky install",
+    "commit": "git-cz",
+    "migrate": "node-pg-migrate",
+    "jest-test": "jest -c ./jestconfig.js --runInBand --detectOpenHandles --forceExit"
+  },
+  "dependencies": {
+    "@pm2/io": "^4.3.5",
+    "aws-sdk": "^2.1029.0",
+    "axios": "^0.17.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "crypto-js": "^4.1.1",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^6.2.0",
+    "email-templates": "^2.7.1",
+    "express": "^4.16.4",
+    "express-basic-auth": "^1.2.1",
+    "express-boom": "^2.0.0",
+    "express-correlation-id": "^2.0.1",
+    "express-joi-validator": "^2.0.0",
+    "express-session": "^1.15.6",
+    "fast-csv": "^2.4.1",
+    "hbs": "^4.0.1",
+    "helmet": "^3.15.0",
+    "joi": "^14.1.1",
+    "jsonwebtoken": "^8.4.0",
+    "jwt-decode": "^3.1.2",
+    "mocha": "^5.2.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.34",
+    "morgan": "^1.9.0",
+    "multer": "^1.2.0",
+    "nocache": "^3.0.1",
+    "node-pg-migrate": "^6.0.0",
+    "node-ses": "^3.0.3",
+    "nodemailer": "^6.7.1",
+    "nodemailer-ses-transport": "^1.5.1",
+    "nodemon": "^3.0.1",
+    "pg": "^8.7.1",
+    "pm2": "^4.5.1",
+    "pug": "2.0.0-beta6",
+    "serve-favicon": "^2.5.0",
+    "snowflake-sdk": "^2.0.2",
+    "swagger-ui-express": "^4.2.0",
+    "ts-lint": "^4.5.1",
+    "winston": "^3.3.3",
+    "worker-thread": "^1.1.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@types/async": "^2.0.45",
+    "@types/bcrypt-nodejs": "^0.0.30",
+    "@types/body-parser": "^1.16.8",
+    "@types/express": "^4.17.2",
+    "@types/express-serve-static-core": "4.17.30",
+    "@types/jest": "^29.5.4",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^16.9.6",
+    "@types/nodemailer": "^4.3.4",
+    "babel-eslint": "^8.0.1",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^5.2.1",
+    "husky": "^7.0.0",
+    "jest": "^29.6.4",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    ".js": [
+      "eslint --fix"
+    ],
+    ".{js,json,md}": [
+      "prettier --write"
+    ]
+  }
+}

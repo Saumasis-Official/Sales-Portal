@@ -1,0 +1,102 @@
+/* Extra small devices (portrait phones, less than 360px) */
+@media (max-width: 360px) { 
+    .tcp-form-wrapper h1 {
+        margin-top: 30%;
+        font-size: 35px;
+    }
+    .tcp-logo-block h2 {
+        font-size: 18px;
+        margin-top: 3% !important;
+    }
+    .distributer-btn {
+        padding-top: 3%;
+    }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+
+@media (max-width: 575.98px) {
+    .tcp-form-wrapper {
+        padding-top: 10%;
+    }
+    .tcp-form-wrapper h1 {
+        margin-top: 20%;
+    }
+    .tcp-logo-block h2 {
+        margin-top: 4%;
+    }
+    .tcp-logo-block img {
+        margin-top: 20%;
+    }
+    .form-block input {
+        height: 35px;
+    }
+    .default-btn {
+        height: 35px;
+        padding-top: 5px;
+        font-size: 15px;
+    }
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .tcp-form-wrapper h1 {
+        /* margin-bottom: 20px; */
+        font-size: 30px;
+    }
+    .tcp-logo-block h2 {
+        font-size: 15px;
+        margin-top: 1%;
+    }
+    .form-block input{
+        height: 45px;
+    }
+    .distributer-btn {
+        padding-top: 0px;
+    }
+    .default-btn {
+        height: 35px;
+        padding-top: 5px;
+        font-size: 15px;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .tcp-form-wrapper h1 {
+        margin-bottom: 20px;
+        font-size: 35px;
+    }
+    .tcp-logo-block h2 {
+        font-size: 18px;
+        margin-top: 2%;
+    }
+    .form-block input {
+        height: 45px;
+    }
+    .distributer-btn {
+        padding-top: 5px;
+    }
+    .default-btn {
+        height: 45px;
+        padding-top: 10px;
+    }
+}
+
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) and (max-width: 1199.98px) {}
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {}
+
+.login-with-sso {
+    font-family: 'Avenir-Heavy';
+}

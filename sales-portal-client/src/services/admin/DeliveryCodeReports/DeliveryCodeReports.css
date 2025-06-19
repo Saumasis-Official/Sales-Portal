@@ -1,0 +1,16 @@
+.delivery-code-check-box{
+    cursor: context-menu;
+    pointer-events: none;  
+}
+.delivery-report-search{
+    width: 450px;
+    margin-left: 250px;
+}
+.delivery-report-search-div{
+    padding-right: 5px;
+    position: relative;
+}
+.delivery-report-head-bottom{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

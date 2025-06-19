@@ -1,0 +1,208 @@
+.process-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.style-circle {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-top: 5px;
+  border: 1px solid rgb(193, 190, 190);
+  margin-bottom: 15px;
+}
+
+.right-arrow {
+  margin-top: 27px;
+  margin-left: 40px;
+  font-size: 16px;
+}
+
+.minus-icon {
+  font-size: 20px;
+  transform: scaleX(7);
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.ptag {
+  margin-top: 0px;
+  font-size: small;
+  color: orange;
+  margin-bottom: 0px;
+}
+
+.process-name {
+  margin-top: 0px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+
+.common-text {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.no-data-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.astModal {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+.sapModal {
+  margin-left: 115px;
+  border: 1px solid black;
+  padding: 3px;
+}
+
+th td {
+  padding: 0px;
+}
+
+.sap-modal {
+  border-left: 1px solid #c9c8c8;
+  border-right: 1px solid #c9c8c8;
+}
+
+.distributor-table-container {
+  max-height: 300px;
+  width: 100%;
+  overflow: auto;
+}
+
+.distributor-table-container table thead tr {
+  background: #1268b3;
+  color: white;
+}
+
+.distributor-table-container table tbody tr:nth-of-type(odd) {
+  background: #f3f3f3;
+}
+
+.custom-modal-header .ant-modal-content {
+  width: 980px;
+  margin: 0 -140px;
+}
+
+.process-flow-container {
+  align-items: center;
+  margin-left: -8px;
+  margin-top: 20px;
+  background-color: rgb(246, 245, 245);
+  padding-left: 45px;
+  margin-right: -1px;
+}
+
+.info-circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-top: 5px;
+  border: 1px solid rgb(193, 190, 190);
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.color-index-container {
+  display: flex;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.hide-data-btn {
+  margin-left: 844px;
+  margin-top: -44px;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  background-color: #b9b6b6;
+  border: 1px solid #b9b6b6;
+  font-size: 15px;
+  font-weight: bolder;
+  display: block;
+  cursor: pointer;
+}
+
+.data-table {
+  margin-top: 50px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  display: block;
+}
+
+.small-cards {
+  background-color: white;
+  padding: 20px;
+}
+
+.cards-div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  padding: 5px 0px;
+  margin-top: 20px;
+}
+
+.single-card {
+  background-color: #d9d7d7;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.cfa-table-container {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.cfa-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cfa-table-container th,
+.cfa-table-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.cfa-table-container thead th {
+  background-color: #1268b3;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  color: white;
+}
+
+.cfa-table-container .fixed-row {
+  position: sticky;
+  background-color: #a5d0f8;
+  font-weight: 700;
+  bottom: 0;
+  z-index: 1;
+}
+
+.CfaNoDataDiv {
+  text-align: center;
+  margin: 0;
+  font-weight: normal !important;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+}
+
+.no-table-data-text {
+  font-weight: bold;
+  font-size: 15px;
+}

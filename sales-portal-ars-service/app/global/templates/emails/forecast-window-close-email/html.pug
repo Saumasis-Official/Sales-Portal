@@ -1,0 +1,80 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title  Mail sent to ASM and RSM on last date of forecast adjustment window close 
+    link(href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i', rel='stylesheet')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='stylesheet', href='../assets/styles/style.css', type='text/css')
+  body(data-gr-c-s-loaded='true', style='')
+    .template-wrapper
+    table.body(border='0', cellpadding='0', cellspacing='0')
+      tbody
+        tr
+          td  
+            table.main(width: '580px', Margin: '0 auto')
+              tbody
+                tr
+                  td.wrapper
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td
+                            a.template-logo(href='https://pegasus.tataconsumer.com/tcp-logo.png')
+                              img(src='https://pegasus.tataconsumer.com/tcp-logo.png')
+                            br
+                            br
+                            p.lead
+                              |Hello 
+                              b  #{content.name},
+                            br
+                            p Below is the Snapshot of Phasing and Forecast adjustment in your region. The adjustment window is open till #{content.close_date}th #{content.month}. Kindly have ASM's review and make adjustments accordingly.
+                            
+                            table(border='0' cellpadding='0' cellspacing='0')
+                              tbody
+                                tr
+                                  td.mt30.mb30(align='center')
+                                    table.data-grid-table.table(style='font-size:14px;text-align:left;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;width: 100%;{{msohideall}}' cellpadding='5' cellspacing='0' border='1' bordercolor='#dddddd')
+                                      thead
+                                        tr
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Region
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Area 
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Phasing Adjustment done (Y/N)
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Updated By
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Forecast Adjustment done (Y/N)
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Updated By
+                                      tbody
+                                        each row in content.tableData
+                                          tr
+                                            td(style='text-align:center;') #{row.zone}                                      
+                                            td(style='text-align:center;') #{row.area}
+                                            td(style='text-align:center;') #{row.fc_iu}
+                                            td(style='text-align:center;') #{row.fc_ub}
+                                            td(style='text-align:center;') #{row.f_iu}
+                                            td(style='text-align:center;') #{row.f_ub}
+                            br
+                            p 
+                             b  You can review the same in the below link as well:
+                            a.support-link(href=activate_url) Link to Order Portal for Review
+                            br
+                            br
+                            p Thank you
+            table
+              tbody
+                tr
+                  td.wrapper
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td
+                            
+                .footer
+                  table(border='0', cellpadding='0', cellspacing='0')
+                    tbody
+                      tr
+                        td.content-block
+                          p.text-center
+                            | © 2021 Tata Consumer Products Limited.
+                            br
+                            |  This is an automated email, please do not respond to this mail id.
+                          

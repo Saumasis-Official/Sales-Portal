@@ -1,0 +1,55 @@
+.highlight {
+  position: relative;
+  z-index: 1001; 
+  border: 2px solid rgb(38, 128, 160);
+  background-color: rgba( 252,252,249,0.991); 
+  pointer-events: none;
+}
+/* dark background */
+.tour-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba( 0, 0, 0, 0.7); 
+  z-index: 1000; 
+}
+
+.highlight-overlay {
+  position: absolute;
+  background-color: transparent;
+  z-index: 1002; 
+}
+
+.tour-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  min-width: 400px;
+  text-align: start;
+  max-height: 150px;
+
+ 
+}
+
+.pop-up-btn {
+  float: right;
+  padding: 4px;
+  min-width: 40px;
+  min-height: 10px;
+  color: white;
+  background-color: #1890ff;
+  border: oldlace;
+  border-radius: 5px;
+}
+
+.action-btn {
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 5px 10px;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+}

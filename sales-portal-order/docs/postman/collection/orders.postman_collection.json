@@ -1,0 +1,467 @@
+{
+	"variables": [],
+	"info": {
+		"name": "orders",
+		"_postman_id": "100a11a4-89aa-be08-2061-a6334d091413",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "bodyData= JSON.parse(responseBody)",
+              "value = bodyData.token",
+              "pm.collectionVariables.set(\"token\", value);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{authurl}}auth/api/v1/login",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{credential}}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-materials",
+      "request": {
+        "url": "{{env}}materials",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-materials-search",
+      "request": {
+        "url": {
+          "raw": "{{env}}/materials?search_query=chakra",
+          "host": ["{{env}}"],
+          "path": ["materials"],
+          "query": [
+            {
+              "key": "search_query",
+              "value": "chakra"
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-warehouse",
+      "request": {
+        "url": {
+          "raw": "{{env}}/warehouses/:login_id",
+          "host": ["{{env}}"],
+          "path": ["warehouses", ":login_id"],
+          "query": [],
+          "variable": [
+            {
+              "key": "login_id",
+              "value": "116683"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "distributor-profile",
+      "request": {
+        "url": "{{env}}/distributor/profile",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-orders",
+      "request": {
+        "url": "{{env}}/orders",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-po-details",
+      "request": {
+        "url": {
+          "raw": "{{env}}/po-details/:po_number",
+          "host": ["{{env}}"],
+          "path": ["po-details", ":po_number"],
+          "query": [],
+          "variable": [
+            {
+              "key": "po_number",
+              "value": "AWSPR-00000000000251"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "healthcheck",
+      "request": {
+        "url": "{{env}}/hc-index",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbl9pZCI6IjExNjY4MyIsInR5cGUiOiJESVNUUklCVVRPUiIsIm5hbWUiOiJNQUhBVkVFUiBBU1NPQ0lBVEVTIiwiaGFzUGFzc3dvcmQiOmZhbHNlLCJpYXQiOjE2MzgxNjUwNTIsImV4cCI6MTYzODE2ODY1Mn0.RmSDZ_QbSx-W-iMRyx7l3qUfQ4RMvZn03LMCUpjFIgw",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "update-material-tags",
+      "request": {
+        "url": "{{env}}/util/update-material-tags",
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "dataset",
+              "type": "file",
+              "src": "/home/Downloads/Ordering Portal Material List with tagging_Updated_dt 26.11.2021.xlsx",
+              "value": ""
+            }
+          ]
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "sales-hierarchy-details",
+      "request": {
+        "url": "{{env}}/util/sales-hierarchy-details",
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "dataset",
+              "type": "file",
+              "src": "/home/Downloads/Sales_hierarchy.xlsx",
+              "value": ""
+            }
+          ]
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-distributor-profile",
+      "request": {
+        "url": "{{env}}admin/distributor/profile/100053",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-orders",
+      "request": {
+        "url": "{{env}}admin/orders/100053",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-materials",
+      "request": {
+        "url": "{{env}}admin/materials",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-po-details",
+      "request": {
+        "url": {
+          "raw": "{{env}}admin/po-details/:po_number/:distributor_id",
+          "host": ["{{env}}admin"],
+          "path": ["po-details", ":po_number", ":distributor_id"],
+          "query": [],
+          "variable": [
+            {
+              "key": "po_number",
+              "value": "AWSPR-00000000000251"
+            },
+            {
+              "key": "distributor_id",
+              "value": ""
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "description": ""
+          }
+        ],
+        "body": {},
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-sync-logs",
+      "request": {
+        "url": "{{env}}admin/sync-logs",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "remove-draft",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{env}}remove-draft/AWSPR-00000000000086",
+          "host": ["{{env}}remove-draft"],
+          "path": ["AWSPR-00000000000086"],
+          "variable": [
+            {
+              "key": "po_number",
+              "value": "AWSPR-00000000000086"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "remove-draft-admin",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{env}}admin/remove-draft/AWSPR-00000000000086/116683",
+          "host": ["{{env}}admin/remove-draft"],
+          "path": ["AWSPR-00000000000086", "116683"],
+          "variable": [
+            {
+              "key": "po_number",
+              "value": "AWSPR-00000000000086"
+            },
+            {
+              "key": "distributor_id",
+              "value": "116683"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-get-zone-wise-orders",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"from_date\": \"2022-03-01 18:39+05:30\",\r\n    \"to_date\": \"2022-06-01 18:39+05:30\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{env}}admin/get-zone-wise-orders"
+      },
+      "response": []
+    },
+    {
+      "name": "admin-get-zone-wise-reported-issues",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"from_date\": \"2022-03-01 18:39+05:30\",\r\n    \"to_date\": \"2022-06-03 18:39+05:30\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{env}}admin/get-zone-wise-reported-issues"
+      },
+      "response": []
+    }
+  ]
+}

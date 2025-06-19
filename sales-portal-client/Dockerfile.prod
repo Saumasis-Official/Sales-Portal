@@ -1,0 +1,45 @@
+FROM public.ecr.aws/docker/library/node:18-alpine
+
+# Create app directory
+WORKDIR /usr/src/app/sales-portal-client
+
+# Install app dependencies
+COPY sales-portal-client/ /usr/src/app/sales-portal-client/
+RUN ls -l
+RUN apk update
+RUN apk add --no-cache aws-cli
+ARG AWS_ACCESS_KEY_ID 
+ARG AWS_SECRET_ACCESS_KEY 
+ARG AWS_SESSION_TOKEN
+ARG REACT_APP_STAGE
+ARG REACT_APP_BASE_URL
+ARG REACT_APP_ARS_ALLOCATION_BASE_URL
+ARG REACT_APP_CLIENT_ID
+ARG REACT_APP_POOL_ID
+ARG REACT_APP_DOMAIN
+ARG REACT_APP_RECAPTCHA_KEY
+ARG REACT_APP_REDIRECT_SIGN_IN
+ARG REACT_APP_REDIRECT_SIGN_OUT
+ARG REACT_APP_COGNITO_IDP_NAME
+ARG REACT_APP_CACHE_VERSION
+RUN echo $AWS_DEFAULT_REGION 
+RUN echo $AWS_ACCESS_KEY_ID 
+RUN echo $AWS_SECRET_ACCESS_KEY 
+RUN echo $AWS_SESSION_TOKEN 
+RUN echo $REACT_APP_STAGE
+RUN echo $REACT_APP_BASE_URL
+RUN echo $REACT_APP_ARS_ALLOCATION_BASE_URL
+RUN echo $REACT_APP_CLIENT_ID
+RUN echo $REACT_APP_POOL_ID
+RUN echo $REACT_APP_DOMAIN
+RUN echo $REACT_APP_RECAPTCHA_KEY
+RUN echo $REACT_APP_REDIRECT_SIGN_IN
+RUN echo $REACT_APP_REDIRECT_SIGN_OUT
+RUN echo $REACT_APP_COGNITO_IDP_NAME
+RUN echo $REACT_APP_CACHE_VERSION
+RUN aws sts get-caller-identity
+RUN npm config set registry https://registry.npmmirror.com/ --global
+RUN npm install && npm run build
+RUN ls -l
+RUN cp /usr/src/app/sales-portal-client/tcp-logo.* build/
+RUN aws s3 sync build/ s3://pegasus-ci-artifact/pegasus-prd/ --delete --region ap-south-1

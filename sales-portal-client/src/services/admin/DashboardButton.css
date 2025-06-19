@@ -1,0 +1,102 @@
+.massEditBtnDiv, .massEditBtnDiv-mob {    
+    float: right;    
+    display: flex;
+    justify-content: center;
+    /* margin: 0px 2px; */
+  }
+  
+  .massEditBtnDiv button {
+    margin-left: 5px;
+    display: flex;
+    background: #34aeef;
+    height: 30px;
+    border: none;
+    color: #fff;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .massEditBtnDiv-mob button{
+    background: #34aeef;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    margin-left: 5px;
+    width: fit-content;
+  }
+  
+  .massEditBtnDiv button:disabled, .massEditBtnDiv-mob button:disabled {
+    background: #ccc;
+  }
+  
+  #checkbox-span {
+    float: left;
+  }
+  #text-span {
+    float: right;
+  }
+  
+.status-filter {
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.dashboard-header-actions {
+  width: 15%;
+}
+@media (min-width:984px) and (max-width: 1152px){
+  .dashboard-header-actions {
+    width: 20%;
+  }
+  .massEditBtnDivParent {
+    margin-top: 48px;
+    margin-left: 10px;
+  }
+  }
+  @media (min-width:769px) and (max-width: 985px){
+    .dashboard-header-actions {
+      width: 17%;
+  }
+  }
+  @media (min-width: 300px) and (max-width: 768px){
+    
+  .massEditBtnDiv {
+    /* float: right; */
+    display: flex;
+    justify-content: space-around;
+    /* margin: 0px 2px; */
+    margin-bottom: 0px;
+    margin-top: 80px;
+}
+.dashboard-header-actions {
+  width: 65%;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-bottom: 3px;
+  margin-top: -39px;
+} 
+
+  }
+  @media (min-width: 0px) and (max-width: 300px){
+    .massEditBtnDiv {
+      /* float: right; */
+      display: flex;
+      justify-content: space-around;
+      /* margin: 0px 2px; */
+      margin-bottom: 0px;
+      margin-top: 80px;
+  }
+  .dashboard-header-actions {
+    width: 65%;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-bottom: 3px;
+    margin-top: -39px;
+  } 
+
+  }

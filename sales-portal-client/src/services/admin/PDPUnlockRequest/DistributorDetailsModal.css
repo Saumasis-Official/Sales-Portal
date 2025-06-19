@@ -1,0 +1,60 @@
+.distributor-table-header table thead tr {
+  background: #1268b3;
+  color: white;
+}
+
+.distributor-table-header table tbody tr:nth-of-type(odd) {
+  background: #f3f3f3;
+}
+
+.distributor-table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  unicode-bidi: isolate;
+}
+
+.distributor-table th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: center;
+  unicode-bidi: isolate;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #1268b3;
+}
+
+.ant-modal-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100%;
+}
+
+.distributor-table-header {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.ant-modal-content {
+  box-shadow: none;
+}
+
+.distributor-details-modal {
+  position: fixed;
+  top: 15%;
+  left: 30%;
+  bottom: 4.3%;
+}
+
+.text-hyperlink {
+  color: #1268b3 !important;
+  cursor: pointer;
+  text-decoration: underline;
+}

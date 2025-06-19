@@ -1,0 +1,12 @@
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+>
+  <!-- Bars -->
+  <rect width="4" height="12" x="4" y="6" fill="#4bade9" />
+  <rect width="4" height="18" x="11" y="0" fill="#4bade9" />
+  <rect width="4" height="8" x="18" y="10" fill="#4bade9" />
+</svg>

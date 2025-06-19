@@ -1,0 +1,60 @@
+.user-role-select {
+  max-width: 180px;
+  width: 100%;
+  min-width: 185px;
+}
+
+.user-role-select.ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  height: 32px;
+  border: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-role-select.ant-select-single:not(.ant-select-customize-input).ant-select-focused
+  .ant-select-selector {
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-role-select .ant-select-selector .ant-select-selection-item,
+.user-role-select
+  .ant-select-selector
+  .ant-select-selection-placeholder {
+  line-height: 32px;
+}
+
+.user-role-select.ant-select-open .ant-select-selection-item {
+  color: #333;
+}
+
+.user-role-dropdown.ant-select-dropdown {
+  background-color: #ffffff;
+  padding: 0;
+  font-size: 14px;
+}
+
+.user-role-dropdown
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #00aeef;
+  color: #fff;
+}
+
+/* .user-role-dropdown .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+    background-color: #fff;
+} */
+.user-role-dropdown .ant-select-item-option-active {
+  background-color: #b3b3b3;
+  color: #fff;
+}
+
+.user-role-dropdown .ant-select-item-option:hover {
+  background-color: #b3b3b3;
+  color: #fff;
+}
+
+.user-email-text {
+  border: none;
+  width: 100%;
+  min-width: 250px;
+}

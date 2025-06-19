@@ -1,0 +1,39 @@
+steps:
+  dev_unittest:
+    - echo "No Unit Test Cases"
+
+  dev_build:
+    - docker build -f sales-portal-ars-allocation-service/Dockerfile -t ars-allocation-dev:latest . 
+
+  dev_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag ars-allocation-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:dev-latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:dev-latest && docker tag ars-allocation-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:dev-$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:dev-$commit_id 
+   
+  dev_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "dev-ars-allocation-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:dev-latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "DEV-AP-SALE-BACKEND-01" --service "DEV-AP-ALLOCATION-ARS-SERVICE" --task-definition "dev-ars-allocation-td":${NEW_REVISION}
+    
+  uat_unittest:
+    - echo "No Unit Test Cases"
+
+  uat_build:
+    - docker build -f sales-portal-ars-allocation-service/Dockerfile -t ars-allocation-uat:latest . 
+
+  uat_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag ars-allocation-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:uat-latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:uat-latest && docker tag ars-allocation-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:uat-$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:uat-$commit_id 
+   
+  uat_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "uat-ars-allocation-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:uat-latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "UAT-AP-SALE-BACKEND-01" --service "UAT-AP-ARS-ALLOCATION-SERVICE" --task-definition "uat-ars-allocation-td":${NEW_REVISION}
+
+  prod_unittest:
+    - echo "No Unit Test Cases"
+
+  prod_build:
+    - docker build -f sales-portal-ars-allocation-service/Dockerfile -t ars-allocation-prod:latest . 
+
+  prod_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag ars-allocation-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:prod-latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:prod-latest && docker tag ars-allocation-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:prod-$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:prod-$commit_id 
+   
+  prod_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "prd-ars-allocation-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars-allocation:prod-latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "PRD-AP-ARS-API-01" --service "PRD-AP-ARS-ALLOCATION-SERVICE" --task-definition "prd-ars-allocation-td":${NEW_REVISION}
+   
+
+   

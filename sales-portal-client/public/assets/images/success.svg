@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="153" height="153" viewBox="0 0 153 153">
+  <g id="Component_452_1" data-name="Component 452 – 1" transform="translate(1.5 1.5)">
+    <g id="Group_4139" data-name="Group 4139">
+      <path id="Path_9831" data-name="Path 9831" d="M75,0A75,75,0,1,1,0,75,75,75,0,0,1,75,0Z" fill="none" stroke="#2e68ad" stroke-width="3" stroke-dasharray="12" opacity="0.4"/>
+      <circle id="Ellipse_599" data-name="Ellipse 599" cx="57.177" cy="57.177" r="57.177" transform="translate(17.823 17.823)" fill="none" stroke="#2e68ad" stroke-width="3" stroke-dasharray="12" opacity="0.4"/>
+    </g>
+    <g id="icons-navigation-check-1-default" transform="translate(27.196 21.896)">
+      <g id="Group_4144" data-name="Group 4144">
+        <g id="Group_4143" data-name="Group 4143">
+          <g id="Group_4140" data-name="Group 4140">
+            <path id="Path_9190" data-name="Path 9190" d="M0,0H101.151V101.151H0Z" fill="none"/>
+          </g>
+          <g id="Group_4141" data-name="Group 4141" transform="translate(18.966 18.966)">
+            <path id="Path_9191" data-name="Path 9191" d="M0,0H63.219V63.219H0Z" fill="none"/>
+            <path id="Path_9192" data-name="Path 9192" d="M0,0H63.219V63.219H0Z" fill="none"/>
+          </g>
+          <g id="Group_4142" data-name="Group 4142" transform="translate(22.127 28.449)">
+            <path id="Path_9193" data-name="Path 9193" d="M0,21.529,14.7,46.09a3.078,3.078,0,0,0,5.058,0l9.306-11.547L56.9,0" fill="none" stroke="#2e68ad" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

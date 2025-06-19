@@ -1,0 +1,48 @@
+steps:
+  dev_unittest:
+    - echo "No unit test cases"
+    
+  dev_build:
+    - docker build -f sales-portal-mdm-lambda/Dockerfile -t mdm-dev:latest .
+
+  dev_trivyscan:
+    - trivy scan2html image mdm-dev:latest --scan2html-flags --output salesportal-mdm-lambda-trivy.html
+ 
+  dev_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag mdm-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:dev_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:dev_latest && docker tag mdm-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:dev_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:dev_$commit_id
+
+  dev_deploy:
+    - aws lambda update-function-code --function-name mdm-pegasus-code-dev-sync --image-uri 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:dev_latest
+    
+
+  uat_unittest:
+    - echo "No unit test cases"
+    
+  uat_build:
+    - docker build -f sales-portal-mdm-lambda/Dockerfile -t mdm-uat:latest .
+
+  uat_trivyscan:
+    - trivy image mdm-uat:latest
+
+  uat_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag mdm-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:uat_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:uat_latest && docker tag mdm-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:uat_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:uat_$commit_id 
+
+  uat_deploy:
+    - aws lambda update-function-code --function-name mdm-pegasus-code-uat-sync --image-uri 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:uat_latest
+
+  prod_unittest:
+    - echo "No unit test cases"
+    
+  prod_build:
+    - docker build -f sales-portal-mdm-lambda/Dockerfile -t mdm-prod:latest .
+
+  prod_trivyscan:
+    - trivy image mdm-prod:latest
+
+  prod_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag mdm-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:prod_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:prod_latest && docker tag mdm-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:prod_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:prod_$commit_id
+
+  prod_deploy:
+    - aws lambda update-function-code --function-name mdm-pegasus-code-prd-sync --image-uri 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-mdm:prod_latest
+   
+  

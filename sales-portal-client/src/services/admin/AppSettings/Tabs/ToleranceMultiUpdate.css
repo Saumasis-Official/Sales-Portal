@@ -1,0 +1,38 @@
+.btn-radio-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+#multi-update-button {
+  margin-right: 20px;
+}
+
+.input-small {
+  width: 100px;
+  margin-right: 10px;
+}
+.multi-update-ars button {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 10px;
+  display: inline-block;
+  background: #34aeef;
+  border: none;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.basic-details .ant-select-clear {
+  top: 35%;
+  font-size: 16px;
+}
+
+.textarea-multiupdate-ars {
+  width: 50%;
+  padding: 0px 0px 0px 5px;
+  margin-left: 27px;
+}
+

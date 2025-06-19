@@ -1,0 +1,388 @@
+.main-content-rdd {
+  padding: 0px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.left-section-rdd {
+  width: 38%;
+  float: left;
+  padding-top: 5px;
+}
+
+.left-section-rdd, .middle-section-rdd, .right-section-rdd {
+  flex: 1 1 30%;  
+  min-width: 280px; 
+  margin: 10px;
+}
+.selectLabel-rdd {
+  font-size: 14px;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+  color: #777;
+  padding: 0px 0px 0px 0px;
+}
+
+.span-rdd {
+  padding: 0px 5px 0px 0px;
+}
+.col-rdd{
+  margin-left: -4px;
+  margin-right: 5px;
+}
+.radio-group-rdd{
+  color: black;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+}
+.plant-code-rdd {
+  padding: 0 5px 0 1.5px;
+}
+
+.span-apt-qty {
+  font-size: 10px;
+  margin-left: -22px;
+  color: red;
+  transition: all 0.3s ease; 
+}
+.span-apt-qty:hover {
+  font-size: 12px;
+}
+
+.span-date-msg{
+  font-size: 10px;
+  color: red;
+}
+
+.span-appt-qty{
+   padding: 0px 0px 0px 2px;
+}
+
+.radio-rdd {
+  margin-right: 2px;
+  color: black;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+}
+
+.select-code .ant-select-selector {
+  max-height: 32px;
+}
+.select-code
+  .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-search-input {
+  height: 30px !important;
+}
+.select-code {
+  width: 80%;
+}
+
+.plant-name-rdd {
+  font-size: 14px;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+  color: #777;
+}
+
+.middle-section-rdd {
+  width: 35%;
+}
+
+.ant-picker-rdd {
+  width: 83.5%;
+  height: 32px;
+}
+
+.so-number-selector-rdd {
+  margin-top: 22px;
+}
+
+.sono-rdd {
+  width: 79%;
+}
+
+.sono-rdd .ant-select-selector {
+  height: 32px;
+}
+.right-section-rdd {
+  float: right;
+  width: 33.33%;
+}
+
+.appointment-info-rdd {
+  background-color: #f2f2f2;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+  color: #3b3a3a;
+  padding: 8px 8px 8px 8px;
+  font-size: 14px;
+  margin-left: -23px;
+}
+.multi-select {
+  color: black;
+  background-color: #bee1f6;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+  padding: 5px 2px;
+  font-size: 14px;
+  margin-left: -23px;
+}
+
+.appointmnent-row-rdd {
+  margin-bottom: 2px;
+}
+
+.table-rdd {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.totalRow-rdd,
+.total-rdd {
+  background-color: #1268b3;
+  color: #ffffff;
+  text-align: center;
+}
+.totalCell-rdd {
+  font-weight: normal;
+  font-family: MyriadPro-Semibold;
+}
+
+.table-row {
+  background-color: #f2f2f2;
+}
+
+.submitButtonContainer-rdd {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-top: 9px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 4px;
+  text-align: right;
+  padding-right: 53px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitButton-rdd {
+  padding: 4px 20px;
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  font-size: 20px;
+  margin-left: 11px;
+  height: 35px;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+  color: #777;
+  margin-bottom: 7px;
+}
+.prefil-submitButton-rdd {
+  padding: 4px 20px;
+  background-color: #1268b3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 126px;
+  font-size: 20px;
+  margin-left: 11px;
+  height: 35px;
+  font-family: 'MyriadPro-Semibold', sans-serif;
+  color: white;
+  margin-bottom: 7px;
+}
+
+.select-code.ant-select-single
+  .ant-select-selector
+  .ant-select-selection-item,
+.ant-select-single
+  .ant-select-selector
+  .ant-select-selection-placeholder {
+  line-height: 30px;
+}
+
+.table-rdd th {
+  padding: 0px 0px 0px 0px;
+}
+.table-rdd td {
+  padding: 10px 0px;
+  font-size: 13px;
+}
+
+.total-rdd td {
+  font-size: 14px;
+}
+.table-rdd th {
+  font-weight: normal;
+  font-family: MyriadPro-Semibold;
+}
+
+.page-tritle-rdd {
+  margin: 0;
+  font-size: 30px;
+  color: #333333de;
+  font-family: MyriadPro-Regular;
+}
+.collapsed-row {
+  background-color: #f2f2f2;
+}
+
+.rdd-shaded-sub-row {
+  background-color: #f2f2f2;
+}
+
+.collapse-button-rdd {
+  width: 17px;
+  height: 17px;
+  font-family: 'MyriadPro-Semibold';
+  border: 1px;
+  font-size: 18px;
+  line-height: 3px;
+  color: #fff;
+  background: #1890ff;
+  padding-bottom: 2px;
+}
+
+.error-message-rdd {
+  position: absolute;
+  top: 100%;
+  left: -55px;
+  color: red;
+  font-size: 9px;
+  padding-bottom: 50px;
+}
+
+.rdd-input {
+  padding-left: 3.5px;
+}
+
+.qty-input-rdd {
+  width: 80px;
+  border-radius: 5%;
+  background-color: inherit;
+  border-color: rgb(221, 220, 220);
+  border-width: 0.2px;
+  width: 80px;
+}
+.input-focus-rdd:focus {
+  border-color: #40a9ff;
+  border-top-color: rgb(64, 169, 255);
+  border-right-color: rgb(64, 169, 255);
+  border-bottom-color: rgb(64, 169, 255);
+  border-left-color: rgb(64, 169, 255);
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  border-right-width: 1px;
+  outline: 0;
+}
+
+.qty-input-rdd-disabled[readonly] {
+  width: 80px;
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+  color: #777;
+  border: 0;
+  border-radius: 5%;
+}
+
+.appt-qty-input-rdd {
+  width: 60px;
+  border-radius: 5%;
+  background-color: rgb(245, 242, 242);
+  border-color: rgb(221, 220, 220);
+  border-width: 0.2px;
+}
+.appt-qty-input-rdd-disabled {
+  width: 60px;
+  background-color: #d7d9da;
+  cursor: not-allowed;
+  color: black;
+  border: 0;
+  border-radius: 5%;
+  border-color: rgb(7, 7, 7);
+}
+
+.collapse-button-rdd:hover {
+  border: 1px solid #69b1ff;
+  color: #69B1FF;
+}
+
+.select-code.ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-search-input {
+  height: 30px;
+}
+
+.cancel-rdd{
+ float: right;
+ margin-top: -30px;
+ height: 30px;
+ margin-right: 15px;
+}
+.admin-dashboard-block-rdd {
+  padding: 15px 0px;
+  height: 100%;
+  min-height: calc(100vh - 104px);
+  border-radius: 8px;
+  background: #fff;
+}
+.top-div-rdd {
+  padding: 0px 8px;
+}
+
+.custom-spinner .ant-spin-dot {
+  font-size: 30px; 
+}
+#id-spinner .ant-spin-nested-loading > div > .ant-spin .ant-spin-dot {
+  position: fixed;
+  top: 50% ;
+  left: 50% ;
+} 
+.tooltip-rdd .ant-tooltip-inner{
+  max-height: 300px;
+  overflow-y: auto;
+}
+.message-open-qty{
+  color: red;
+  font-size: 9px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.prefil-submitButton-rdd:disabled{
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .left-section-rdd, .middle-section-rdd, .right-section-rdd {
+    flex: 1 1 100%;  
+  }
+
+  .submitButton-rdd {
+    width: 100%;
+  }
+  .prefil-submitButton-rdd{
+    width: 100%;
+  }
+  
+  .table-rdd {
+    overflow-x: auto;
+    display: block; 
+  }
+  .table-rdd th, .table-rdd td {
+    padding: 15px 8px; 
+  }
+}
+.plant-rdd{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 200px;
+}
+
+@media (min-width: 1200px) {
+  .totalRow-rdd {
+    height: 45px;
+  }
+}

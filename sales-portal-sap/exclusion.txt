@@ -1,0 +1,15 @@
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\docs" 
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\.husky" 
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\node_modules" 
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\.gitignore" 
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\public" 
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\uploadedFile" 
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\.prettierrc" 
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\commitlint.config.js"
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\.nvmrc"
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\jestconfig.js"
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\package-lock.json"
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\README.md"
+"C:\\home\\appuser\\workspace\\'Sales Portal'\\sales-portal-sap-ci-dev\\sales-portal-sap\\exclusion.txt"
+
+

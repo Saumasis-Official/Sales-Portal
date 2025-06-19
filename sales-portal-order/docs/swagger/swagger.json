@@ -1,0 +1,1665 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "orders",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://devapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://uatapi-pegasus.tataconsumer.com",
+      "variables": {}
+    },
+    {
+      "url": "https://prdapi-pegasus.tataconsumer.com",
+      "variables": {}
+    }
+  ],
+
+  "paths": {
+    "/order/api/v1/hc-index": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is health check api used to check if the service is properly running",
+        "operationId": "healthcheck",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/auth/api/v1/login": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to validate and logging in a particular distributor in the portal",
+        "operationId": "login",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/loginrequest"
+              },
+              "example": {
+                "login_id": "116683",
+                "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/order/api/v1/materials": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch all the materials/products from the database that are synced by product master sync",
+        "operationId": "get-materials",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1//materials": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to search all the materials from the database that match with the search query",
+        "operationId": "get-materials-search",
+        "parameters": [
+          {
+            "name": "search_query",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "chakra"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/distributor/profile": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used the fetch the basic details (profile) of a particular distributor",
+        "operationId": "distributor-profile",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/orders": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch all the purchase orders of a particular distributor",
+        "operationId": "get-orders",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/po-details/{po_number}/{distributor_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch the purchase order details of a particular purchase order using the PO number",
+        "operationId": "get-po-details",
+        "parameters": [
+          {
+            "name": "po_number",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "AWSPR-00000000000251"
+            }
+          },
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "100053"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/fetch-forecast-for-dist": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch the suggested order by applying backend rules and calculations for ARS Feature",
+        "operationId": "fetch-forecast-for-dist",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "json object with distributor code and active divisions",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "distributor_code": {
+                  "type": "string",
+                  "example": "141626"
+                },
+                "divisions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "10"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/stock-data": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch SIH, SIT, OO for ARS Feature",
+        "operationId": "stock-data",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "json object with distributor code, document type and psku list as array",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dbCode": {
+                  "type": "string",
+                  "example": "141626"
+                },
+                "docType": {
+                  "type": "string",
+                  "example": "ZOR"
+                },
+                "psku": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "15000000002505"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/util/update-material-tags": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to update the material tags provided in a excel from the request body in the product/material master data in the database in order to enhance the search operation",
+        "operationId": "update-material-tags",
+        "consumes": "multipart/form-data",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/updatematerialtagsrequest",
+                "example": {
+                  "dataset": "/home/Downloads/Ordering Portal Material List with tagging_Updated_dt 26.11.2021.xlsx"
+                },
+                "properties": {
+                  "media": {
+                    "type": "string",
+                    "format": "base64"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/order/api/v1/admin/materials": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch all the materials/products from the database by admin",
+        "operationId": "get-materials",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/admin/distributor/profile/{distributor_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used the fetch the basic details (profile) of a particular distributor by admin",
+        "operationId": "distributor-profile",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/admin/orders/{distributor_id}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch all the purchase orders of a particular distributor by admin",
+        "operationId": "get-orders",
+        "parameters": [
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/admin/po-details/{po_number}": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch the purchase order details of a particular purchase order using the PO number by admin",
+        "operationId": "get-po-details",
+        "parameters": [
+          {
+            "name": "po_number",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "AWSPR-00000000000251"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/admin/sync-logs": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used by admin to fetch all the different types of sync services available with their last update details",
+        "operationId": "sync-logs",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/remove-draft/{po_number}": {
+      "delete": {
+        "tags": ["Misc"],
+        "summary": "This api is used to remove a draft of a particular distributor by using the PO number",
+        "operationId": "remove-draft",
+        "parameters": [
+          {
+            "name": "po_number",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "AWSPR-00000000000086"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/admin/remove-draft/{po_number}/{distributor_id}": {
+      "delete": {
+        "tags": ["Misc"],
+        "summary": "This api is used to remove a draft of a particular distributor using the PO number by an admin",
+        "operationId": "remove-draft",
+        "parameters": [
+          {
+            "name": "po_number",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "AWSPR-00000000000086"
+            }
+          },
+          {
+            "name": "distributor_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 116683
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/order/api/v1/get-zone-wise-orders": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to get zone wise sales order value",
+        "operationId": "get-zone-wise-orders",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/zoneWiseOrders"
+              },
+              "example": {
+                "from_date": "2022-03-01 18:39+05:30",
+                "to_date": "2022-06-01 18:39+05:30"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/order/api/v1/get-zone-wise-reported-issues": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to get zone wise reported issues",
+        "operationId": "get-zone-wise-reported-issues",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/zoneWiseIssues"
+              },
+              "example": {
+                "from_date": "2022-03-01 18:39+05:30",
+                "to_date": "2022-06-01 18:39+05:30"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/material-tags": {
+      "get": {
+        "tags": ["Misc"],
+        "summary": "This api is used to fetch the material tags from the request body in the product/material master data in the database in order to enhance the search operation",
+        "security": [{ "api_key": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/get-category-wise-reported-issues": {
+      "post": {
+        "tags": ["Misc"],
+        "summary": "This api is used to get category wise reported issues",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "from_date": "2023-01-02T18:30:00.000Z",
+                  "to_date": "2023-10-03T18:00:00.000Z"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/sdr-list": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to get sdr-list",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "offset": 0,
+                  "limit": 10,
+                  "search": "",
+                  "status": "ALL"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/sdr-report-data": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to post sdr report data",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "toDate": "2024-01-01 00:00:00",
+                  "fromDate": "2024-01-11 09:51:07"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/sd-response-report-data": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to post SD Response Report-data",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "toDate": "2024-01-01 00:00:00",
+                  "fromDate": "2024-01-11 09:51:07"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/service-delivery-request": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to post Service Delivery-Request",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "distributor_id": 100003,
+                  "req_reason_id": 10,
+                  "so_number": 111023826,
+                  "sd_req_comments": "Testing for swagger",
+                  "material_code": 15000000002696,
+                  "material_description": "TATA SALT BLACK SALT 180X100G SACHET",
+                  "plant_code": 1408,
+                  "cfa_name": "abc",
+                  "cfa_email": "jaiprassath.kothandapani@tataconsumer.com",
+                  "cfa_contact": 7904021033
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/brand-variant-list": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch Brand-variant-list using the Area Code",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "areaCode": "AP01"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/forecast": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to make Forecast using the particular Area Code and Brand Variant Code",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "areaCode": "KA01",
+                  "brandVariantCode": "15000000000755"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/update-forecast": {
+      "put": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to make Update-Forecast in sync with the sales_allocation_key,distributorCode and updated_allocation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": [
+                  {
+                    "sales_allocation_key": "1227231221061003",
+                    "distributorCode": "109958",
+                    "updated_allocation": 132
+                  },
+                  {
+                    "sales_allocation_key": "1228231221061003",
+                    "distributorCode": "109968",
+                    "updated_allocation": 86
+                  },
+                  {
+                    "sales_allocation_key": "1229231221061003",
+                    "distributorCode": "140017",
+                    "updated_allocation": 435
+                  },
+                  {
+                    "sales_allocation_key": "1230231221061003",
+                    "distributorCode": "141626",
+                    "updated_allocation": 44
+                  },
+                  {
+                    "sales_allocation_key": "1231231221061003",
+                    "distributorCode": "141631",
+                    "updated_allocation": 44
+                  },
+                  {
+                    "sales_allocation_key": "1232231221061003",
+                    "distributorCode": "143004",
+                    "updated_allocation": 87
+                  },
+                  {
+                    "sales_allocation_key": "1233231221061003",
+                    "distributorCode": "153559",
+                    "updated_allocation": 87
+                  },
+                  {
+                    "sales_allocation_key": "1234231221061003",
+                    "distributorCode": "154163",
+                    "updated_allocation": 44
+                  },
+                  {
+                    "sales_allocation_key": "1235231221061003",
+                    "distributorCode": "154376",
+                    "updated_allocation": 131
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/forecast-summary": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to Forecast-Summary using AreaCode,Search,Limit and Offset",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "areaCode": "AP01",
+                  "search": "",
+                  "limit": 10,
+                  "offset": 0
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/forecast-configuration": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch Forecast-Configuration using AreaCode",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "areaCode": "AP01"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/last-forecast-date": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch Last-Forecast-Date using AreaCode",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "areaCode": "AP01"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/submit-forecast": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to Submit the Forecast using AreaCode",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "areaCode": "AP01"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/fetch-forecast-for-dist": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to Fetch Forecast for Distributors according to the active divisions and distributor code",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "distributor_code": "100003",
+                  "divisions": [  12,  14,  17,  18,  99,  13,  10  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/stock-data": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to Fetch Stock Data according to the distributor code, document type and psku list as array",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "dbCode": "100003",
+                  "psku": [
+                    "15000000001665"
+                  ],
+                  "docType": "ZOR"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/stock-sync-time": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to get stock-sync-time",
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/sku-stock-data": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to get SKU Stock Data according to the distributor code, document type and psku",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "distributor_code": "100003",
+                  "sku": "15000000001665",
+                  "docType": "ZOR"
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/forecast-dump-validation": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to get Forecast Dump Validation",
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auto-order-report-email": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to generate Auto Order Report through Email",
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auto-submit-forecast": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to generate Auto submit Forecast",
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/send-sis-ss-emails": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to Send sis-ss-Emails",
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/download-forecast-summary": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to Download Forecast-Summary using AreaCode",
+        "security": [{ "api_key" : [] }],
+        "parameters": [
+          {
+            "name": "area",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "AP01"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/stock-norm-audit/{cg}": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch Stock Norm-Audit using CG Code",
+        "security": [{ "api_key" : [] }],
+        "parameters": [
+          {
+            "name": "cg",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true,
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/stock-norm-audit": {
+      "put": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used update Stock Norm-Audit ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "update": [
+                    {
+                      "dist_id": "109534",
+                      "applicable_month": "202401",
+                      "class_a_sn": "6",
+                      "class_a_ss_percent": "23",
+                      "class_b_sn": "8",
+                      "class_b_ss_percent": "70",
+                      "class_c_sn": "12",
+                      "class_c_ss_percent": "60"
+                    },
+                    {
+                      "dist_id": "150907",
+                      "applicable_month": "202401",
+                      "class_a_sn": "6",
+                      "class_a_ss_percent": "23",
+                      "class_b_sn": "8",
+                      "class_b_ss_percent": "70",
+                      "class_c_sn": "12",
+                      "class_c_ss_percent": "60"
+                    },
+                    {
+                      "dist_id": "109521",
+                      "applicable_month": "202401",
+                      "class_a_sn": "6",
+                      "class_a_ss_percent": "23",
+                      "class_b_sn": "8",
+                      "class_b_ss_percent": "70",
+                      "class_c_sn": "12",
+                      "class_c_ss_percent": "60"
+                    },
+                    {
+                      "dist_id": "142167",
+                      "applicable_month": "202401",
+                      "class_a_sn": "6",
+                      "class_a_ss_percent": "23",
+                      "class_b_sn": "8",
+                      "class_b_ss_percent": "70",
+                      "class_c_sn": "12",
+                      "class_c_ss_percent": "60"
+                    },
+                    {
+                      "dist_id": "142168",
+                      "applicable_month": "202401",
+                      "class_a_sn": "6",
+                      "class_a_ss_percent": "23",
+                      "class_b_sn": "8",
+                      "class_b_ss_percent": "70",
+                      "class_c_sn": "12",
+                      "class_c_ss_percent": "60"
+                    },
+                    {
+                      "dist_id": "100492",
+                      "applicable_month": "202401",
+                      "class_a_sn": "6",
+                      "class_a_ss_percent": "23",
+                      "class_b_sn": "8",
+                      "class_b_ss_percent": "70",
+                      "class_c_sn": "12",
+                      "class_c_ss_percent": "60"
+                    },
+                    {
+                      "dist_id": "141297",
+                      "applicable_month": "202401",
+                      "class_a_sn": "6",
+                      "class_a_ss_percent": "23",
+                      "class_b_sn": "8",
+                      "class_b_ss_percent": "70",
+                      "class_c_sn": "12",
+                      "class_c_ss_percent": "60"
+                    },
+                    {
+                      "dist_id": "139829",
+                      "applicable_month": "202401",
+                      "class_a_sn": "6",
+                      "class_a_ss_percent": "23",
+                      "class_b_sn": "8",
+                      "class_b_ss_percent": "70",
+                      "class_c_sn": "12",
+                      "class_c_ss_percent": "60"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/moq-mapping-data": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch MOQ Mapping-Data using AreaCode,Search,Limit and Offset",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "area": "ALL",
+                  "search": "",
+                  "limit": 10,
+                  "offset": 0
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/update-moq": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch Update-MOQ using the particular Plant Code, distributor Code and MOQ Data",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "moq_data": [
+                    {
+                      "dbId": "101313",
+                      "plantId": 64,
+                      "moq": 4
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/stock-norm-Misc/{cg}": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch Stock Norm Misc using CG Code",
+        "security": [{ "api_key" : [] }],
+        "parameters": [
+          {
+            "name": "cg",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": 31
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/stock-norm-Misc": {
+      "put": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to update Stock Norm-Misc",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "customerGroup": "31",
+                  "update": {
+                    "class_a_sn": "6",
+                    "class_a_ss_percent": "23",
+                    "class_b_sn": "6",
+                    "class_b_ss_percent": "70",
+                    "class_c_sn": "6",
+                    "class_c_ss_percent": "61"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/all-ars-tolerance/{cg}": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch All-ARS-Tolerance using CG Code",
+        "security": [{ "api_key" : [] }],
+        "parameters": [
+          {
+            "name": "cg",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true,
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to update All-ARS-Tolerance ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "data": [
+                    {
+                      "class_a_max": "30",
+                      "class_b_max": "50",
+                      "class_c_max": "50",
+                      "class_a_min": "-30",
+                      "class_b_min": "-50",
+                      "class_c_min": "-50",
+                      "remarks": "Testing",
+                      "id": "17"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "parameters": [
+          {
+            "name": "cg",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/ars-tolerance/{cg}/{areaCode}": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch All-ARS-Tolerance using CG Code and Area Code",
+        "security": [{ "api_key" : [] }],
+        "parameters": [
+          {
+            "name": "cg",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true,
+            "example": 10
+          },
+          {
+            "name": "areaCode",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "TN01"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/send-forecast-window-emails": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to Send Forecast window Emails",
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/sales-hierarchy-details": {
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to post Sales Hierarchy Details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": ""
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch Sync-Stock-Norm",
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch Forecast-for-Distributor",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "distributor_code": "100003",
+                  "divisions": [ 12, 14, 17, 18, 99, 13, 10 ]
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to Remove Expired-carts",
+        "security": [{ "api_key" : [] }],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/{cg}/{areaCode}": {
+      "get": {
+        "tags": [ "Misc" ],
+        "summary": "This api is used to fetch ARS-Tolerance using CG and Area Code",
+        "security": [{ "api_key" : [] }],
+        "parameters": [
+          {
+            "name": "cg",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": 10
+          },
+          {
+            "name": "areaCode",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "TN01"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "loginrequest": {
+        "title": "loginrequest",
+        "required": ["login_id", "password"],
+        "type": "object",
+        "properties": {
+          "login_id": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "login_id": "116683",
+          "password": "U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg="
+        }
+      },
+      "updatematerialtagsrequest": {
+        "title": "updatematerialtagsrequest",
+        "required": ["dataset"],
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "type": "file"
+          }
+        },
+        "example": {
+          "dataset": "/home/Downloads/Ordering Portal Material List with tagging_Updated_dt 26.11.2021.xlsx"
+        }
+      },
+      "salesHierarchyDetailsRequest": {
+        "title": "salesHierarchyDetailsRequest",
+        "required": ["dataset"],
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "type": "file"
+          }
+        },
+        "example": {
+          "dataset": "/home/Downloads/Sales_hierarchy.xlsx"
+        }
+      },
+      "zoneWiseOrders": {
+        "title": "zoneWiseOrders",
+        "required": ["from_date", "to_date"],
+        "type": "object",
+        "properties": {
+          "from_date": {
+            "type": "string"
+          },
+          "to_date": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "from_date": "2022-03-01 18:39+05:30",
+          "to_date": "2022-06-03 18:39+05:30"
+        }
+      },
+      "zoneWiseIssues": {
+        "title": "zoneWiseIssues",
+        "required": ["from_date", "to_date"],
+        "type": "object",
+        "properties": {
+          "from_date": {
+            "type": "string"
+          },
+          "to_date": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "from_date": "2022-03-01 18:39+05:30",
+          "to_date": "2022-06-03 18:39+05:30"
+        }
+      }
+    }
+  },
+  "security": [{ "api_key": [] }],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

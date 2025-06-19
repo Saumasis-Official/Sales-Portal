@@ -1,0 +1,90 @@
+.material-table-data {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+  height: 30px;
+}
+
+.material-dropdown-wrapper {
+  display: block;
+  position: absolute;
+  background-color: #fff;
+  left: 39px;
+  right: 0;
+  top: 44px;
+  z-index: 1;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 4px;
+  overflow: auto;
+  max-height: 100px;
+}
+
+.material-dropdown-wrapper .new-material-list-table table td {
+  background-color: #fff !important;
+  padding: 6px 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.material-dropdown-wrapper .new-material-list-table table td:first-child {
+  width: 298px;
+}
+
+.material-dropdown-wrapper .new-material-list-table table td:nth-of-type(2) {
+  width: 170px;
+}
+
+.material-dropdown-wrapper .new-material-list-table table td:nth-of-type(3) {
+  width: 92px;
+}
+
+.material-dropdown-wrapper .new-material-list-table table td:first-child div {
+  width: 250px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.material-dropdown-wrapper .new-material-list-table table td span.anticon.anticon-gift {
+  color: #1268B3;
+}
+
+ul.promo-items-modal {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+ul.promo-items-modal li {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 10px;
+  margin: 0 0 10px 0;
+  line-height: normal;
+}
+
+ul.promo-items-modal li b {
+  display: block;
+  line-height: normal;
+}
+
+ul.promo-items-modal li:first-child {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.material-promo-btn {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: -3px;
+}
+
+.material-promo-btn div {
+  color: #fff;
+  font-size: 12px;
+  padding: 1px 5px 0;
+  border-radius: 4px;
+  background: #1268b3;
+}

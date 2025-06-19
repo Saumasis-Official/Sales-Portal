@@ -1,0 +1,62 @@
+.tolerance-modal .ant-modal-content {
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.tolerance-modal .ant-modal-header {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.tolerance-modal .ant-modal-body {
+  padding: 0px;
+}
+
+.tolerance-modal .ant-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.tolerance-form-item {
+  margin-bottom: 24px;
+}
+
+.tolerance-form-item label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #262626;
+}
+
+.tolerance-form-item .ant-select,
+.tolerance-form-item .ant-input {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.tolerance-form-item .ant-input:focus,
+.tolerance-form-item .ant-select-focused .ant-select-selector {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.tolerance-form-buttons {
+  text-align: right;
+  margin-top: 24px;
+}
+
+.tolerance-form-buttons .ant-btn {
+  min-width: 80px;
+  border-radius: 4px;
+}
+
+.tolerance-form-buttons .ant-btn-primary {
+  margin-left: 8px;
+  background: #1890ff;
+}
+
+.tolerance-form-buttons .ant-btn-primary:hover {
+  background: #40a9ff;
+}

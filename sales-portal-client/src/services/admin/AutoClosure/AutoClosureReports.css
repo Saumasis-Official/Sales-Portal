@@ -1,0 +1,67 @@
+.download-button-auto-closure-gt-reports-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: -42px 0px 7px 0px;
+}
+
+.download-button-auto-closure-gt-reports {
+  height: 35px;
+  background: #34aeef;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: MyriadPro-Semibold;
+}
+
+.download-button-auto-closure-gt-reports:hover {
+  background: #34aeef;
+  color: #fff;
+}
+
+.custom-ant-select-multiple .ant-select-selector {
+  padding: 6px 4px;
+}
+
+.download-button-auto-closure-gt-reports:disabled {
+  cursor: not-allowed;
+  color: #8d8d8d;
+  background: #c6c6c6;
+  border-color: #c6c6c6;
+}
+.search-fld-auto-closure-report {
+  width: 200px;
+  padding: 0 0px 0 40px;
+  margin: 10px 0;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #fff url(../../../assets//images/search.svg) no-repeat
+    scroll 10px 10px;
+}
+.custom-upload {
+  margin-left: 50px;
+}
+
+.custom-upload
+  .ant-btn:not(.ant-btn-circle):not(
+    .ant-btn-circle-outline
+  ).ant-btn-icon-only {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.auto-closure-report-text {
+  text-align: center;
+  font-weight: bolder !important;
+  font-size: 16px !important;
+}
+.ant-upload-list-item-info {
+  padding: 0 4px;
+  transition: background-color 0.3s;
+  position: relative;
+  padding: 0 4px;
+  margin: -35px 0px 0px 188px;
+  transition: background-color 0.3s;
+}

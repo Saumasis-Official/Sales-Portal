@@ -1,0 +1,36 @@
+steps:
+  dev_unittest:
+    - cd sales-portal-credit && npm install && npm run jest-test
+    
+  dev_build:
+    - docker build -f sales-portal-credit/Dockerfile -t credit-dev:latest .
+
+  dev_trivyscan:
+    - trivy scan2html image credit-dev:latest --scan2html-flags --output salesportal-credit-trivy.html
+
+  dev_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag credit-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:dev_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:dev_latest && docker tag credit-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:dev_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:dev_$commit_id 
+
+  dev_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "dev-sale-credit-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:dev_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "DEV-AP-SALE-BACKEND-01" --service "DEV-AP-SALE-CREDIT-SERVICE" --task-definition "dev-sale-credit-td":${NEW_REVISION}
+
+    
+  uat_build:
+    - docker build -f sales-portal-credit/Dockerfile -t credit-uat:latest . 
+
+  uat_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag credit-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:uat_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:uat_latest && docker tag credit-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:uat_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:uat_$commit_id
+    
+  uat_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "uat-sale-credit-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:uat_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "UAT-AP-SALE-BACKEND-01" --service "UAT-AP-SALE-CREDIT-SERVICE" --task-definition "uat-sale-credit-td":${NEW_REVISION}
+    
+    
+  prod_build:
+    - docker build -f sales-portal-credit/Dockerfile -t credit-prod:latest . 
+    
+  prod_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag credit-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:prod_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:prod_latest && docker tag credit-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:prod_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:prod_$commit_id
+    
+  prod_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "prod-sale-credit-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-credit:prod_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "PRD-AP-SALE-BACKEND-01" --service "PRD-AP-SALE-CREDIT-SERVICE" --task-definition "prod-sale-credit-td":${NEW_REVISION}
+    

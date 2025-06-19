@@ -1,0 +1,166 @@
+.check-colm-op:checked + .colm-opt {
+  background-color: rgb(125, 193, 252);
+}
+
+.check-colm-op {
+  display: none;
+}
+
+.colm-opt-partial-checked{
+ box-shadow: 0 0 1px 1px #1268b3;
+}
+
+.colm-opt {
+  background-color: rgb(230, 236, 241);
+  border: none;
+  padding: 0.5% 25%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 3px 2px;
+  border-radius: 8px;
+  border-color: #1268b3;
+}
+
+.colm-opt:hover {
+  background-color: rgb(191, 225, 255);
+}
+
+.table-header-options {
+  margin-top: 2vh;
+  margin-left: 0px;
+}
+
+.rule-config-table-container {
+  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+
+.rule-config-table thead tr th {
+  position: sticky;
+  top: 0;
+  background-color: #1268b3;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  padding: 0 1%;
+  z-index: 1;
+}
+
+.rule-config-table tbody tr td {
+  font-size: 14px;
+  text-align: center;
+  padding: 0 1%;
+}
+
+/* .rule-config-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+} */
+
+.unsaved-rule {
+  background-color: #d7fff5;
+}
+
+.disabled-icon {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.reset-button {
+  margin-top: 2px;
+  display: inline-block;
+  background-color: #34aeef;
+  margin-right: 20px;
+  border: none;
+  color: #fff;
+  padding: 5px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-all-button {
+  margin-top: 2px;
+  display: inline-block;
+  background-color: #34aeef;
+  margin-right: 20px;
+  border: none;
+  color: #fff;
+  padding: 5px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-all-button:disabled {
+  background: transparent;
+  cursor: not-allowed;
+  border: none;
+  color: #fff;
+}
+
+.save-all-button[disabled] {
+  background-color: #ccc;
+}
+
+.info-icon-button {
+  background: none;
+  border-style: none;
+}
+
+.addmore-button:disabled {
+  background: transparent;
+}
+
+.info-action-btn{
+  background: transparent;
+  border: none;
+  color:#1268b3;
+  font-size: 18px;
+  margin-right: 5px
+}
+
+.info-action-btn:disabled{
+  background: none;
+  opacity: 0.4;
+}
+
+.prioritization-table-container .ant-table-small .ant-table-thead > tr > th {
+  font-size: 14px;
+  background-color: #1268b3;
+  color: white;
+}
+
+.prioritization-table-container .ant-table-small .ant-spin-container .ant-table-thead > tr > th {
+  font-size: 14px;
+  background-color: #34aeef;
+  color: white;
+}
+.th-colm-op{
+    color: black;
+}
+.checked-th{
+    background-color: rgb(173, 239, 192) !important;
+}
+
+.non-forecasted-update-cg-th{
+  font-size: 12px;
+  color: black !important;
+  padding: 0 !important;
+  width: 300px;
+}
+
+.non-forecasted-update-cg-th label{
+  padding: 2px 3px;
+  background-color: rgb(230, 236, 241);
+  border-radius: 8px;
+}
+
+.check-colm-op:checked + .non-forecast-update-opt {
+  background-color: rgb(125, 193, 252);
+}
+
+.rule-config-table .ant-select{
+  width: 120px;
+}

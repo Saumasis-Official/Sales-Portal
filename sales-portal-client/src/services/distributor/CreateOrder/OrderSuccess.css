@@ -1,0 +1,53 @@
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .success-wrapper {
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .order-success-page {
+        padding: 20px;
+        margin-left: 0;
+    }
+
+    .success-wrapper {
+        margin: 30px 0 0 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .success-img-flex {
+        display: block;
+    }
+
+    .sucess-header h2 {
+        margin-top: 6%;
+        margin-left: 0;
+        font-size: 22px;
+    }
+
+    .sucess-header p {
+        margin-top: 1%;
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+
+    .success-card1,
+    .success-card2 {
+        padding: 10px;
+        display: block;
+    }
+
+    .success-po {
+        margin-left: 0 !important;
+    }
+
+    .success-so {
+        margin-left: 0;
+    }
+
+    .success-req_date {
+        margin-left: 0;
+    }
+}

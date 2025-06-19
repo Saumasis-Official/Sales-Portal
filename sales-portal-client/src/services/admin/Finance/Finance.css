@@ -1,0 +1,108 @@
+
+.title-flds{
+ width: 100%;
+ font-weight: 500;
+ font-size: 18px;
+ padding: 20px;
+}
+.form-controls{
+    width: 30%;
+    padding: 0 15px;
+    height: 40px;
+    font-size:medium;
+    font-weight: 400;
+    border: 1px solid #ccc;
+    transition: border-color 0.1s;
+    font-family: 'Avenir-Medium';
+    color: #333333;
+    border: 1px solid #e8e9ec;
+    border-radius: 4px;
+    background: #fff;
+} 
+.form-controls:focus {
+    border-color: #69adec;
+}
+.mandatory-mark{
+    font-size: larger;
+}
+.sbmt-btns{
+    height: 40px;
+    margin: 20px 20px;
+    width: 120px;
+    font-size: 18px;
+    font-family: MyriadPro-Semibold;
+    letter-spacing: 0.03px;
+    color: #FFFFFF;
+    display: inline-block;
+    background: #1268B3;
+    border-radius: 4px;
+    border: none;
+    padding: 5px 24px;
+    cursor: pointer;
+}
+.pan-details{
+    font-size: large;
+}
+
+.collapse-gst-tbl {
+    width: 100%;
+  }
+  .collapse-gst-tbl .ant-collapse {
+    border: 1px solid #f6f9fb;
+  }
+  .collapse-gst-tbl .ant-collapse-header {
+    width: fit-content;
+    margin-top: -26px;
+  }
+  .collapse-gst-tbl .ant-collapse-content {
+    background-color: #d4e4ee;
+    border: 0;
+  }
+  .collapse-gst-tbl .ant-collapse {
+    background-color: #a7b8c4;
+    border: 0;
+  }
+  .collapse-gst-tbl .ant-collapse-content-box {
+    padding: 0 !important;
+  }
+  .collapse-gst-tbl .ant-collapse-header .ant-collapse-arrow {
+    color: #fff;
+  }
+  .collapse-gst-tbl .ant-collapse-header {
+    width: 25px !important;
+    margin-top: -37px;
+    background: transparent;
+    float: left;
+    height: 20px;
+    line-height: 20px !important;
+    margin-left: -5px;
+  }
+
+  .gst-tbl {
+    width: 100%;
+    color: #000000;
+  
+    background: #ffffff;
+  }
+  
+  .gst-tbl td,
+  .gst-tbl th {
+    /* padding: 2px 10px; */
+    border: solid thin #2d83c0;
+  }
+.liab-dtls{
+    font-family: Avenir-Heavy;
+    color: #1268b3;
+    margin-left: 5px;
+    font-size: x-large;
+    padding: 10px;
+    background-color:#edf5f9;
+    width: 60%;
+}
+.liab-dtls span{
+    margin-left: 10px;
+    color: #000000;
+}
+.gst-container .ant-collapse-content{
+  overflow: scroll !important;
+}

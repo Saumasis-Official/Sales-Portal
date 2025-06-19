@@ -1,0 +1,702 @@
+.admin-dashboard-wrapper {
+  padding: 20px 34px 24px;
+  margin-top: 60px;
+  margin-left: 100px;
+}
+
+.dashboard-parent-div .ant-select-multiple .ant-select-selector {
+  padding: 1px 0px;
+}
+.admin-dashboard-block {
+  padding: 20px 30px;
+  height: 100%;
+  min-height: calc(100vh - 104px);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.admin-dashboard-head {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-dashboard-head h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #333333de;
+  font-family: MyriadPro-Regular;
+}
+
+.admin-dashboard-head2 {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: column;
+}
+
+.admin-dashboard-head2 h2 , .admin-dashboard-head2-mob h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #333333de;
+  font-family: MyriadPro-Regular;
+}
+
+.admin-dashboard-head-top, .admin-dashboard-head-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row;
+}
+.admin-dashboard-head-bottom-mob{
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: start;
+  align-items: center;
+  flex-flow: column wrap;
+}
+.dashboard-filters-mob{
+  display: flex;
+  width: 100%;
+  /* margin: 3px 0px; */
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.dashboard-filter-mob{
+  padding: 2px 3px;
+  text-align: center;
+}
+.dashboard-buttons-mob{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
+  margin: 3px 0px;
+}
+
+.admin-dashboard-head-top-right{
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-flow: row;
+}
+
+.dashboard-header-action{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row;
+}
+.admin-dashboard-search {
+  flex: 1;
+  max-width: 493px;
+  position: relative;
+}
+
+.admin-dashboard-search > div {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.admin-dashboard-search > div svg {
+  width: 16px;
+  height: 16px;
+}
+
+.admin-dashboard-search .search-fld {
+  height: 48px;
+  line-height: 48px;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+  background: #fff url(../../assets/images/search.svg) no-repeat
+    scroll 13px 15px;
+  padding: 0 30px 0 40px;
+  width: 100%;
+  font-size: 20px;
+  color: #333;
+  font-family: MyriadPro-Regular;
+}
+
+.dash-search-fld {
+  height: 32px;
+  line-height: inherit;
+  border: 1px solid #dededf;
+  border-radius: 2px;
+  background: #fff url(../../assets/images/search.svg) no-repeat
+  scroll 8px 8px;
+  padding: 0 30px 0 30px;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  font-family: MyriadPro-Regular;
+}
+
+.dash-search-close{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: inline-block;
+}
+
+.admin-dashboard-search .search-fld::placeholder {
+  color: #b5b5b5;
+}
+
+.admin-dashboard-table {
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.admin-dashboard-table table {
+  width: 100%;
+}
+
+.admin-dashboard-table table thead tr {
+  background: #1268b3;
+}
+
+.admin-dashboard-table table thead tr th {
+  color: #fff;
+  padding: 11px 9px;
+  font-weight: normal;
+  font-family: MyriadPro-Semibold;
+  font-size: 16px;
+}
+
+.admin-dashboard-table table thead tr th.action-title {
+  text-align: center;
+}
+
+.admin-dashboard-table table tr td {
+  padding: 11px 9px;
+  font-weight: normal;
+  font-family: MyriadPro-Regular;
+  font-size: 18px;
+  color: #333333;
+}
+
+.admin-dashboard-table table tbody tr:nth-of-type(odd) {
+  background: #f3f3f3;
+}
+
+.admin-dashboard-table table tbody tr .checkbox-wrap {
+  text-align: center;
+}
+
+.admin-dashboard-table table tbody tr td label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 22px;
+}
+
+.admin-dashboard-table table tbody tr td label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.admin-dashboard-table table tbody tr td label .checkmark-box {
+  position: absolute;
+  top: 0;
+  left: auto;
+  height: 22px;
+  width: 22px;
+  background-color: #fff;
+  border: 1px solid #767777;
+  border-radius: 4px;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  label:hover
+  input
+  ~ .checkmark-box {
+  background-color: #1268b3;
+  border-color: #1268b3;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  label:hover
+  input:not(:checked):disabled
+  ~ .checkmark-box,
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  label
+  input:not(:checked):disabled
+  ~ .checkmark-box {
+  background-color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  label:hover
+  input:checked:disabled
+  ~ .checkmark-box,
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  label
+  input:checked:disabled
+  ~ .checkmark-box {
+  background-color: #add8e6;
+  border-color: #add8e6;
+  cursor: not-allowed;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  label
+  input:checked
+  ~ .checkmark-box {
+  background-color: #1268b3;
+  border-color: #1268b3;
+}
+
+.checkmark-box:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  label
+  input:checked
+  ~ .checkmark-box:after {
+  display: block;
+}
+
+.admin-dashboard-table table tbody tr td label .checkmark-box:after {
+  left: 7px;
+  top: 2px;
+  width: 7px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.admin-dashboard-table table tbody tr td button {
+  border: none;
+  font-size: 16px;
+  background: #00aeef;
+  color: #fff;
+  border-radius: 5px;
+  width: 83px;
+  cursor: pointer;
+  height: 28px;
+  
+}
+
+.admin-dashboard-table table tbody tr td button[disabled] {
+  color: #c6c6c6;
+  background: #d4d8da;
+}
+
+.admin-dashboard-table table tbody tr td .info-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  .edit-distributor-contact-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.admin-dashboard-table table tbody tr td.admin-ations {
+  min-width: 120px;
+}
+
+.admin-dashboard-table table tbody tr td.admin-ations .action-btns {
+  display: flex;
+  justify-content: center;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td.admin-ations
+  .action-btns
+  button {
+  width: auto;
+  background: transparent;
+  padding: 0;
+  height: auto;
+  color: #1268b3;
+  display: inline-block;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td.admin-ations
+  .action-btns
+  button
+  .anticon-check-circle
+  svg {
+  width: 19px;
+  height: 19px;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td.admin-ations
+  .action-btns
+  button:disabled {
+  color: #c6c6c6;
+}
+
+.admin-dashboard-table table tbody tr td .info-icon span {
+  color: #1268b3;
+}
+
+.admin-dashboard-table table tbody tr td .info-icon span svg {
+  width: 18px;
+  height: 18px;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  .edit-distributor-contact-icon
+  span {
+  color: #1268b3;
+}
+
+.admin-dashboard-table
+  table
+  tbody
+  tr
+  td
+  .edit-distributor-contact-icon
+  span
+  svg {
+  width: 18px;
+  height: 18px;
+}
+.dashboard-search-mob{
+  position: relative;
+    width: 100%;
+    margin: 3px 5px;
+}
+@media (min-width: 1400px) {
+  .dash-search-cont{
+    position: relative;
+    max-width: 450px;
+    width: 100%;
+    min-width: 250px;
+    margin: 0px 5px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .admin-dashboard-search {
+    max-width: 380px;
+  }
+  .dash-search-cont{
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    min-width: 250px;
+    margin: 0px 5px;
+  }
+
+  .admin-dashboard-search .search-fld {
+    font-size: 16px;
+  }
+
+  .admin-dashboard-table table thead tr th{
+    font-size: 14px;
+  }
+  .admin-dashboard-table table tr td {
+    font-size: 13px;
+  }
+
+  .admin-dashboard-table table tr td.admin-dbstate {
+    /* min-width: 100px; */
+    white-space: normal;
+    /* word-break: break-word; */
+  }
+
+  .admin-dashboard-table table tr td.admin-dbname {
+    min-width: 120px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+
+  .admin-dashboard-table table tbody tr td a:focus {
+    text-decoration: none;
+  }
+
+  .admin-dashboard-table table tbody tr td label {
+    height: 18px;
+  }
+
+  .admin-dashboard-table table tbody tr td label .checkmark-box {
+    width: 18px;
+    height: 18px;
+  }
+
+  .admin-dashboard-table
+    table
+    tbody
+    tr
+    td
+    label
+    .checkmark-box:after {
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+  }
+
+  .admin-dashboard-table table tbody tr td button {
+    font-size: 14px;
+    width: 70px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .admin-dashboard-wrapper {
+    margin-left: 80px;
+  }
+  .dash-search-cont{
+    position: relative;
+    max-width: 350px;
+    width: 100%;
+    min-width: 200px;
+    margin: 0px 2px;
+  }
+
+  .admin-dashboard-table {
+    overflow: auto;
+  }
+
+  .admin-dashboard-table table thead tr th,
+  .admin-dashboard-table table tr td {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .admin-dashboard-wrapper {
+    margin-left: 0;
+    padding: 20px 15px;
+  }
+  .dash-search-cont{
+    position: relative;
+    max-width: 250px;
+    width: 100%;
+    min-width: 200px;
+  }
+
+  .admin-dashboard-block {
+    padding: 20px 15px;
+  }
+
+  .admin-dashboard-head {
+    display: block;
+  }
+
+  .admin-dashboard-table {
+    overflow: auto;
+  }
+
+  .admin-dashboard-table table thead tr th,
+  .admin-dashboard-table table tr td {
+    font-size: 14px;
+  }
+}
+
+.width5{
+  text-align: center;
+}
+
+.border-btn {
+  color: #1268b3;
+  background: #fff;
+  border: 1px solid #1268b3;
+  padding: 6px 0 0 0;
+  height: 39px;
+  border-radius: 4px;
+  font-size: 18px;
+  display: inline-block;
+  padding: 5px 24px;
+  letter-spacing: 0.03px;
+  font-family: 'MyriadPro-Semibold';
+  min-width: 110px;
+  cursor: pointer;
+}
+
+.border-btn:hover:enabled {
+  color: #fff;
+  background: #1268b3;
+  box-shadow: 0 5px 25px rgba(18, 104, 179, 0.3);
+}
+
+.sbmt-btn:hover:enabled {
+  color: #fff;
+  background: #1268b3;
+  box-shadow: 0 5px 25px rgba(18, 104, 179, 0.3);
+}
+
+input[type=radio] {
+  border: 1px solid #fff;
+  padding: 0.5em;
+  appearance: none;
+}
+
+input[type=radio]:checked {
+  background: url(data:image/gif;base64,R0lGODlhAQABAPAAAP///////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==) no-repeat center center;
+  background-size: 9px 9px;
+}
+input[type=radio]:focus {
+  outline-color: transparent;
+}
+
+.req-tabs .tablink{
+  background-color: rgba(243,243,243,255);
+  font-size: 13px;
+  width: 9vw;
+}
+
+.req-tabs .active{
+  background-color: rgba(243,243,243,255);
+  font-family: MyriadPro-Semibold;
+  font-size: 13px;
+  border-bottom: 4px solid #1360d4;
+}
+.tablink{
+  padding: 0px;
+}
+
+.dashboard-parent-div .ant-select {
+  width: 90px;
+}
+.dashboard-parent-div  {
+  display: flex;
+}
+.pdp-unlock-check-span{
+  color: #ff0000;
+}
+.pdp-unlock-check-span b {
+  font-weight: bold;
+}
+.massEditBtnDivParent{
+  margin-top: 50px;
+  margin-left: 10px;
+}
+#tolerance-delete-all .checkmark-box{
+  position: absolute;
+  top: 0;
+  left: auto;
+  height: 22px;
+  width: 22px;
+  background-color: #fff;
+  border: 1px solid #767777;
+  border-radius: 4px;
+} 
+
+/* add style for the screen size less than 768px width */
+@media  (min-width: 300px) and (max-width: 768px){
+  .massEditBtnDiv button{
+    margin-left: -147px;
+    margin-top: -30px;
+  }
+  .dash-search-cont{
+    position: relative;
+    max-width: 200px;
+    width: 100%;
+    min-width: 200px;
+  }
+  .massEditBtnDivParent{
+    margin-top: 2px;
+    margin-left: -11px;
+  }
+  .admin-dashboard-block{
+    min-width: 100vw;
+  }
+
+}
+
+@media (min-width:765px) and (max-width: 985px){
+  .admin-dashboard-block{
+    min-width: 130vw;
+  }
+  .dash-search-cont{
+    position: relative;
+    max-width: 350px;
+    width: 100%;
+    min-width: 200px;
+  }
+}
+@media (min-width:0px) and (max-width: 300px){
+  .admin-dashboard-block{
+    min-width: 1000vw;
+  }
+  .massEditBtnDiv button{
+    margin-left: -147px;
+    margin-top: -30px;
+  }
+  .massEditBtnDivParent{
+    margin-top: 2px;
+    margin-left: -11px;
+  }
+
+}
+  

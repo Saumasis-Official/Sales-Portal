@@ -1,0 +1,10 @@
+.ant-cascader-menus {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  position: relative !important; /* without important, it will be overwritten by antd, dropdown will not show */
+}
+
+.ant-cascader-menu-item-content {
+  margin-right: 10px; /* to avoid overlap of the expansion arrow on the option label */
+}

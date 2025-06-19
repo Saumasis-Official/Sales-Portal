@@ -1,0 +1,984 @@
+{
+  "info": {
+    "name": "Auth",
+    "_postman_id": "b83e8430-632c-40b5-8e24-89d9855845c1",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "bodyData= JSON.parse(responseBody)",
+              "value = bodyData.token",
+              "pm.collectionVariables.set(\"token\", value);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{env}}login",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{credentials}}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "validate",
+      "request": {
+        "url": "{{env}}validate",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          },
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "refresh-token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "bodyData= JSON.parse(responseBody)",
+              "value = bodyData.token",
+              "pm.collectionVariables.set(\"token\", value);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{env}}refresh-token",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "user-details",
+      "request": {
+        "url": {
+          "raw": "{{env}}user/fetch/:id",
+          "host": ["{{env}}user"],
+          "path": ["fetch", ":id"],
+          "query": [],
+          "variable": [
+            {
+              "key": "id",
+              "value": "116683"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "validate-dist-id",
+      "request": {
+        "url": {
+          "raw": "{{env}}validate-distributor-id/:id",
+          "host": ["{{env}}validate-distributor-id"],
+          "path": [":id"],
+          "query": [],
+          "variable": [
+            {
+              "key": "id",
+              "value": "116683"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-alert",
+      "request": {
+        "url": {
+          "raw": "{{env}}get-alert/:id",
+          "host": ["{{env}}get-alert"],
+          "path": [":id"],
+          "query": [],
+          "variable": [
+            {
+              "key": "id",
+              "value": "116683"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "update-alert",
+      "request": {
+        "url": "{{env}}update-alert",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"cloumn_name\":[{\"cloumn_name\":\"po_so_sms\",\"status\":false},{\"cloumn_name\":\"invoice_details_sync_sms\",\"status\":false},{\"cloumn_name\":\"po_so_email\",\"status\":false},{\"cloumn_name\":\"invoice_details_sync_email\",\"status\":true}],\"login_id\":\"116683\"}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "update-mobile-otp",
+      "request": {
+        "url": "{{env}}send-otp-mail-mobile",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"updateValue\":\"7760295006\",\n    \"type\":\"sms\",\n    \"remark\": \"test\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "update-email-otp",
+      "request": {
+        "url": "{{env}}send-otp-mail-mobile",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"updateValue\":\"deepak_1@outlook.com\",\n    \"type\":\"email\"\n\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "reset-password",
+      "request": {
+        "url": "{{env}}reset-password",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"login_id\":\"116683\",\"password\":\"U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg=\"}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "generate-otp",
+      "request": {
+        "url": "{{env}}generate-otp",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"login_id\": \"116683\"}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "verify-otp",
+      "request": {
+        "url": "{{env}}verify-otp",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"login_id\": \"116683\", \"otp\": \"111100\"}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "verify-mobile",
+      "request": {
+        "url": "{{env}}verify-mobile",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"otp\":111100,\r\n    \"remark\": \"test\"\r\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "verify-email",
+      "request": {
+        "url": {
+          "raw": "{{env}}verify-email/:id?remark=test",
+          "host": ["{{env}}verify-email"],
+          "path": [":id"],
+          "query": [
+            {
+              "key": "remark",
+              "value": "test"
+            }
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "U2FsdGVkX18O4NYvgttRwpSkUZF+02Ltgzxs*qjqFH4="
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "change-password-new",
+      "request": {
+        "url": "{{env}}change-password",
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"current_password\": \"U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg=\",\n    \"new_password\": \"U2FsdGVkX19vo5/HmMHkUhm8jSz0WXCovWicd9Vaiec=\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "change-password-to-old",
+      "request": {
+        "url": "{{env}}change-password",
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"current_password\": \"U2FsdGVkX19vo5/HmMHkUhm8jSz0WXCovWicd9Vaiec=\",\n    \"new_password\": \"U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg=\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "healthcheck",
+      "request": {
+        "url": "{{env}}hc-index",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbl9pZCI6IjExNjY4MyIsInR5cGUiOiJESVNUUklCVVRPUiIsIm5hbWUiOiJNQUhBVkVFUiBBU1NPQ0lBVEVTIiwiaGFzUGFzc3dvcmQiOmZhbHNlLCJpYXQiOjE2MzgxNjUwNTIsImV4cCI6MTYzODE2ODY1Mn0.RmSDZ_QbSx-W-iMRyx7l3qUfQ4RMvZn03LMCUpjFIgw",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-success-sessions",
+      "request": {
+        "url": {
+          "raw": "{{env}}sessions?type=success",
+          "host": ["{{env}}sessions"],
+          "query": [
+            {
+              "key": "type",
+              "value": "success"
+            }
+          ],
+          "variable": []
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"from\": \"2021-12-08 09:00:57.86248+05:30\",\n    \"to\": \"2021-12-08 11:08:57.86248+05:30\",\n    \"type\": \"success\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-all-sessions",
+      "request": {
+        "url": "{{env}}sessions",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"from\": \"2021-12-08 11:00:57.86248+05:30\",\n    \"to\": \"2021-12-08 11:08:57.86248+05:30\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "logout",
+      "request": {
+        "url": "{{env}}logout",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "update-login-setting",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"enable_login\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/login-setting/100053",
+          "host": ["{{env}}admin"],
+          "path": ["login-setting", "100053"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update-alert-settings",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"enable_po_so_sms\":true,\n    \"enable_po_so_email\":false,\n    \"enable_invoice_sync_sms\":false,\n    \"enable_invoice_sync_email\":true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/alert-settings/100053",
+          "host": ["{{env}}admin"],
+          "path": ["alert-settings", "100053"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update-alert-history",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"alert_setting_changes\": {\n        \"enable_po_so_sms\": false,\n        \"enable_invoice_sync_email\": true\n    },\n    \"remarks\": \"I am updating alert settings of 100053...\",\n    \"changed_by\": \"harshit.wadhwa@tothenew.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/alert-remarks/100053",
+          "host": ["{{env}}admin"],
+          "path": ["alert-remarks", "100053"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update-distributor-settings",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"enable_po_so_sms\": true,\n    \"enable_po_so_email\": false,\n    \"enable_invoice_sync_sms\": false,\n    \"enable_invoice_sync_email\": true,\n    \"enable_login\": true,\n    \"remarks\": \"updated some settings for 100053\",\n    \"changed_by\": \"harshit.wadhwa@tothenew.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/distributor-settings/100053",
+          "host": ["{{env}}admin"],
+          "path": ["distributor-settings", "100053"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "alert-comment-list/100053",
+      "request": {
+        "url": {
+          "raw": "{{env}}alert-comment-list/100053?type=email",
+          "host": ["{{env}}alert-comment-list"],
+          "path": ["100053"],
+          "query": [
+            {
+              "key": "type",
+              "value": "email"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "description": "Get the alert comment List of each distributor with distributor Id"
+      },
+      "response": []
+    },
+    {
+      "name": "get-distribution-list",
+      "request": {
+        "url": "get-distribution-list",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"limit\":20,\n\t\"offset\":0,\n\t\"search\":\"\",\n\t\"tseCode\":\"\"\n}"
+        },
+        "description": "Get Distributor list"
+      },
+      "response": []
+    },
+    {
+      "name": "get-tse-user-list",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"limit\":10,\n\t\"offset\":0,\n\t\"search\":\"\",\n    \"status\": \"enabled\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/tse-user-list",
+          "host": ["{{env}}admin"],
+          "path": ["tse-user-list"]
+        },
+        "description": "Get TSE User list"
+      },
+      "response": []
+    },
+    {
+      "name": "admin-update-distributor-mobile",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"mobile_number\": \"9958825034\",\n    \"remark\": \"test\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/update-distributor-mobile/100053",
+          "host": ["{{env}}admin"],
+          "path": ["update-distributor-mobile", "100053"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-update-distributor-email",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"harshit.wadhwa@tothenew.com\",\n    \"remark\": \"test\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/update-distributor-email/100053",
+          "host": ["{{env}}admin"],
+          "path": ["update-distributor-email", "100053"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "tse-user-list",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"limit\":10,\n\t\"offset\":0,\n\t\"search\":\"\"\n}"
+        },
+        "url": {
+          "raw": "{{env}}admin/tse-user-list",
+          "host": ["{{env}}admin"],
+          "path": ["tse-list"]
+        },
+        "description": "Get Distributer list"
+      },
+      "response": []
+    },
+    {
+      "name": "tse-user-setting",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"user_id\": \"1110124\",\n    \"role\": \"ASM\",\n    \"enableLogin\": INACTIVE\n}"
+        },
+        "url": {
+          "raw": "{{env}}admin/tse-user-setting",
+          "host": ["{{env}}admin"],
+          "path": ["tse-user-setting"]
+        },
+        "description": "Get Distributer list"
+      },
+      "response": []
+    },
+    {
+      "name": "app-level-settings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{env}}app-level-configuration",
+          "host": ["{{env}}app-level-configuration"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-update-app-level-configuration",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"app_level_configuration\": [\n        {\n            \"key\": \"UNIVERSAL_SEARCH_COMPONENT\",\n            \"value\": \"HIDE\",\n            \"remarks\": \"updated global search..\"\n        },\n        {\n            \"key\": \"DEFAULT_SEARCH_BEHAVIOUR\",\n            \"value\": \"UNIVERSAL\",\n            \"remarks\": \"updated default search to universal..\"\n        }\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/app-level-configuration",
+          "host": ["{{env}}admin"],
+          "path": ["app-level-configuration"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-app-level-configuration",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{env}}admin/app-level-configuration",
+          "host": ["{{env}}admin"],
+          "path": ["app-level-configuration"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-get-all-sessions",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"from\": \"2021-12-08 11:00:57.86248+05:30\",\n    \"to\": \"2021-12-08 11:08:57.86248+05:30\"\n}"
+        },
+        "url": {
+          "raw": "{{env}}admin/sessions",
+          "host": ["{{env}}admin"],
+          "path": ["sessions"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin/distributor-list",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"limit\":10,\r\n\t\"offset\":0,\r\n\t\"search\":\"\",\r\n    \"status\":\"ALL\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/distributor-list",
+          "host": ["{{env}}admin"],
+          "path": ["distributor-list"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "env",
+      "value": "https://devapi-pegasus.tataconsumer.com/auth/api/v1/"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "credentials",
+      "value": "{\"login_id\":\"116683\",\"password\":\"U2FsdGVkX1+imUQ9TCYlY3oPG3Pq4uH3NQeDc2EQrWg=\"}"
+    },
+    {
+      "key": "admin_token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

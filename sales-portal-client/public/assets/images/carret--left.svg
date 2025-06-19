@@ -1,0 +1,15 @@
+<svg id="carret--left_20" data-name="carret--left / 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="8.75" viewBox="0 0 5 8.75">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_4272" data-name="Path 4272" d="M952.875-19.625l-5-4.375,5-4.375Z" transform="translate(-947.875 28.375)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_4271" data-name="Path 4271" d="M941-14h20V-34H941Z" transform="translate(-941 34)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_4220" data-name="Group 4220" clip-path="url(#clip-path)">
+    <g id="Group_4219" data-name="Group 4219" transform="translate(-6.875 -5.625)" clip-path="url(#clip-path-2)">
+      <path id="Path_4270" data-name="Path 4270" d="M942.875-33.375h15v18.75h-15Z" transform="translate(-941 34)" fill="#161616"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,53 @@
+.excel-upload-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  & p{
+    text-align: center;
+  }
+  & .Upload-div{
+    width: 35rem;
+    border: 3px dashed lightgray;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  & div {
+    border-top-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+
+    /* &.ant-modal-header {
+      background-color: #1268b3;
+      background-image: linear-gradient(to right, #1268b3,#34aeef,whitesmoke);
+      & .ant-modal-title {
+        color: white;
+      }
+    } */
+    & .ant-modal-body {
+      & .mdm-upload-icon {
+        display: flex;
+        height: 8rem;
+        justify-content: center;
+        align-items: center;
+        & svg {
+          scale: 700%;
+          opacity: 50%;
+        }
+      }
+      & input {
+        display: none;
+        float: right;
+      }
+    }
+  }
+}
+
+.forecast-upload-modal{
+  text-align: center;
+}
+
+.forecast-upload-icon{
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(71%);
+}

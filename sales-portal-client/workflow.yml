@@ -1,0 +1,48 @@
+steps:
+  dev_unittest:
+    - echo "No unit test case"
+    
+  dev_build:
+    - aws sts get-caller-identity && docker build -f sales-portal-client/Dockerfile.dev -t client-dev:latest --build-arg REACT_APP_GA_ID="G-57SC0VBZ1E" --build-arg REACT_APP_RECAPTCHA_KEY="6LcNJWIeAAAAAJJZaJlvJjmYtuKMGhqpzg2c501_" --build-arg ENV="dev" --build-arg NODE_OPTIONS="--max_old_space_size=4096" --build-arg REACT_APP_BASE_URL="https://devapi-pegasus.tataconsumer.com" --build-arg REACT_APP_REDIRECT_SIGN_OUT="https://dev-pegasus.tataconsumer.com" --build-arg REACT_APP_STAGE="dev" --build-arg REACT_APP_CLIENT_ID="7508kp9h7i7h2tv1jo9af6800b" --build-arg REACT_APP_POOL_ID="ap-south-1_BLqY8Kp57" --build-arg REACT_APP_DOMAIN="pegasus-dev.auth.ap-south-1.amazoncognito.com" --build-arg REACT_APP_REDIRECT_SIGN_IN="https://dev-pegasus.tataconsumer.com/admin/dashboard" --build-arg REACT_APP_COGNITO_IDP_NAME="dev-pegasus-azurecognito-idp_" --build-arg REACT_APP_CACHE_VERSION=$(date +%Y%m%d)$(date +%H%M%S) --build-arg AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --build-arg REACT_APP_ARS_ALLOCATION_BASE_URL="https://devarsallocationapi.tataconsumer.com" .
+
+  dev_trivyscan:
+    - trivy --timeout 10m scan2html image client-dev:latest --scan2html-flags --output salesportal-client-trivy.html
+
+  dev_push:
+    - echo "PUSH"
+
+  dev_deploy:
+    - aws s3 sync s3://pegasus-ci-artifact/pegasus-dev/ s3://dev-pegasus.tataconsumer.com --delete --region ap-south-1 && aws cloudfront create-invalidation --distribution-id E3U1MTFGR63WL7 --paths "/*"
+    
+
+  uat_unittest:
+    - echo "No unit test cases"
+
+  uat_build:
+    - aws sts get-caller-identity && docker build -f sales-portal-client/Dockerfile.uat -t client-uat:latest --build-arg REACT_APP_GA_ID="G-9Y5D0WLS2Z" --build-arg REACT_APP_RECAPTCHA_KEY="6LcNJWIeAAAAAJJZaJlvJjmYtuKMGhqpzg2c501_" --build-arg ENV="uat" --build-arg REACT_APP_BASE_URL="https://uatapi-pegasus.tataconsumer.com" --build-arg REACT_APP_REDIRECT_SIGN_OUT="https://uat-pegasus.tataconsumer.com" --build-arg REACT_APP_STAGE="uat" --build-arg REACT_APP_CLIENT_ID="46e7ofqkbrlih9a5npk17p050v" --build-arg REACT_APP_POOL_ID="ap-south-1_BTGWS14hL" --build-arg REACT_APP_DOMAIN="pegasus-uat.auth.ap-south-1.amazoncognito.com" --build-arg REACT_APP_REDIRECT_SIGN_IN="https://uat-pegasus.tataconsumer.com/admin/dashboard" --build-arg REACT_APP_COGNITO_IDP_NAME="uat-pegasus-azurecognito-idp_" --build-arg REACT_APP_CACHE_VERSION=$(date +%Y%m%d)$(date +%H%M%S) --build-arg AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --build-arg REACT_APP_ARS_ALLOCATION_BASE_URL="https://uatarsallocationapi.tataconsumer.com" .
+
+  uat_trivyscan:
+    - trivy --timeout 10m image client-uat:latest
+    
+  uat_push:
+    - echo "PUSH"
+
+  uat_deploy:
+    - aws s3 sync s3://pegasus-ci-artifact/pegasus-uat/ s3://uat-pegasus.tataconsumer.com --delete --region ap-south-1 && aws cloudfront create-invalidation --distribution-id EDMZ41RQ4ETCO --paths "/*"
+    
+
+  prod_unittest:
+    - echo "No unit test cases"
+
+  prod_build:
+    - aws sts get-caller-identity && docker build -f sales-portal-client/Dockerfile.prod -t client-prod:latest --build-arg REACT_APP_GA_ID="G-S5FNBMXE5G" --build-arg REACT_APP_RECAPTCHA_KEY="6LcNJWIeAAAAAJJZaJlvJjmYtuKMGhqpzg2c501_" --build-arg ENV="prod" --build-arg REACT_APP_BASE_URL="https://prdapi-pegasus.tataconsumer.com" --build-arg REACT_APP_REDIRECT_SIGN_OUT="https://pegasus.tataconsumer.com" --build-arg REACT_APP_STAGE="prod" --build-arg REACT_APP_CLIENT_ID="1i7fglk9d0nfb9go92s65d6d5o" --build-arg REACT_APP_POOL_ID="ap-south-1_TMV1tQyuz" --build-arg REACT_APP_DOMAIN="pegasus.auth.ap-south-1.amazoncognito.com" --build-arg REACT_APP_REDIRECT_SIGN_IN="https://pegasus.tataconsumer.com/admin/dashboard" --build-arg REACT_APP_COGNITO_IDP_NAME="prod-pegasus-azurecognito-idp_" --build-arg REACT_APP_CACHE_VERSION=$(date +%Y%m%d)$(date +%H%M%S) --build-arg AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --build-arg REACT_APP_ARS_ALLOCATION_BASE_URL="https://prdarsallocationapi.tataconsumer.com" .
+
+  prod_trivyscan:
+    - trivy --timeout 10m image client-prod:latest
+    
+  prod_push:
+    - echo "Push"
+
+  prod_deploy:
+    - aws s3 sync s3://pegasus-ci-artifact/pegasus-prd/ s3://pegasus.tataconsumer.com --delete --region ap-south-1 && aws cloudfront create-invalidation --distribution-id E1C15ZPUHRND0X --paths "/*"
+    

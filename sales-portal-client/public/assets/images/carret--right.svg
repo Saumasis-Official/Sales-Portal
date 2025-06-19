@@ -1,0 +1,15 @@
+<svg id="Icon_-_Carret--Right_20" data-name="Icon - Carret--Right / 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="8.75" viewBox="0 0 5 8.75">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_4269" data-name="Path 4269" d="M998.125-28.375l5,4.375-5,4.375Z" transform="translate(-998.125 28.375)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_4268" data-name="Path 4268" d="M990-14h20V-34H990Z" transform="translate(-990 34)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_4218" data-name="Group 4218" clip-path="url(#clip-path)">
+    <g id="Group_4217" data-name="Group 4217" transform="translate(-8.125 -5.625)" clip-path="url(#clip-path-2)">
+      <path id="Path_4267" data-name="Path 4267" d="M993.125-33.375h15v18.75h-15Z" transform="translate(-990 34)" fill="#161616"/>
+    </g>
+  </g>
+</svg>

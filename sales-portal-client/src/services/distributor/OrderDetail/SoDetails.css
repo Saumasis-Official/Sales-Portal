@@ -1,0 +1,199 @@
+/* TABS */
+/* Style tab links */
+.tablink {
+    background-color: white;
+    color: #1268B3;
+    /* float: left; */
+    border: none;
+    outline: none;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    padding: 10px 11px;
+    font-size: 14px;
+    width: 30%;
+    height: 42px;
+    margin-right: 8px;
+}
+
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    width: 60% !important;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+    /* padding: 5% 0 0 0; */
+    height: 100%;
+}
+
+
+/* TABLE */
+.purchase-order-block {
+    /* margin-top: 20px; */
+    padding: 20px;
+    border-radius: 0 8px 8px 8px;
+    background: #fff;
+}
+
+.purchase-order-block.new-sales-order-block {
+    padding: 0;
+    min-height: 61vh;
+}
+
+.purchase-order-table {
+    max-height: 50vh !important;
+    /* padding: 15px; */
+    padding-top: 0px!important;
+    padding:5px;
+    overflow: auto !important;
+}
+
+.purchase-order-table table tbody tr td {
+    padding: 6px 12px;
+}
+/*ROR table*/
+.ror-sales-table{
+    max-height: calc(100vh - 350px) !important;
+    min-height: calc(100vh - 350px) !important;
+    background: #fff;
+    overflow: auto !important;
+    padding: 1px 8px 9px;
+  }
+.ror-sales-order-table table th {
+    background: #1268b3;
+    color: #ffffff;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .ror-sales-order-table table td {
+    color: #333333;
+    font-size: 14px;
+    padding: 2px 5px !important;
+  }
+ 
+  .ror-purchase-order-table > .ror-parent-row:nth-child(even) {
+    background-color: #fff; 
+    
+  }
+  
+  .ror-purchase-order-table > .ror-parent-row:nth-child(odd) {
+    background-color: #f3f3f3;
+   
+  }
+
+.so-details-page .tablink {
+    position: relative;
+}
+
+.so-details-page .tablink:before {
+    content: '';
+    height: 1px;
+    background: #1268B3;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    opacity: 0;
+}
+
+.so-details-page .tablink.active:before {
+    opacity: 1;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+    .po-details-head {
+        flex-wrap: wrap;
+        position: relative;
+        margin: 0;
+        padding-top: 20px;
+    }
+
+    .po-details-head .back-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .po-details-col-1,
+    .po-details-col-2 {
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .po-details-head {
+        flex-wrap: wrap;
+        position: relative;
+        margin: 0;
+        padding-top: 20px;
+    }
+
+    .po-details-head .back-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+
+    .so-details-page .tablink {
+        width: auto;
+    }
+
+    .po-details-col-1,
+    .po-details-col-2,
+    .so-details-col-1,
+    .so-details-col-2 {
+        margin: 0;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .so-details-page {
+        padding: 20px;
+        margin-left: 0;
+    }
+
+    .so-details-page .tablink {
+        width: auto;
+    }
+
+    .po-details-head {
+        flex-wrap: wrap;
+        position: relative;
+        margin: 0;
+        padding-top: 20px;
+    }
+
+    .po-details-head .back-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .po-details-col-1,
+    .po-details-col-2,
+    .so-details-col-1,
+    .so-details-col-2 {
+        margin: 0;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .po-details ul li span {
+        width: 100px;
+    }
+
+    .po-details ul li.field-val {
+        font-size: 12px;
+    }
+
+    .so-details-page .sales-order-block.new-sales-order-block {
+        min-height: unset;
+    }
+}

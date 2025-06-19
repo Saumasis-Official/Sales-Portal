@@ -1,0 +1,55 @@
+.custom-checkbox-group .ant-checkbox-disabled + span {
+    color: black;
+    cursor: not-allowed;
+}
+.custom-input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-input {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 4px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    min-height: 32px;
+    cursor: text;
+}
+
+.custom-input .ant-tag {
+    margin-bottom: 4px;
+}
+
+.time-picker-icon {
+    font-size: 16px;
+    color: #1890ff;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.remarks-value textarea:disabled {
+    background: #d5d5d5;
+    cursor: not-allowed;
+}
+.div-btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.custom-checkbox-group .ant-checkbox-wrapper {
+    margin: 4px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .custom-checkbox-group .checkbox-selected {
+    background-color: #a4dcf6 !important;
+  }
+  
+  .custom-checkbox-group .ant-checkbox-wrapper:hover {
+    background-color: #f0f5ff;
+  }

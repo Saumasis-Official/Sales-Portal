@@ -1,0 +1,153 @@
+.forecast-dashboard-head {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.page-title{
+  width: 40%;
+  margin: 10px 0px;
+}
+
+.header-tools{
+    width: 60%;
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.header-tools>div{
+    margin: 0 5px;
+}
+
+.area-filter{
+  width: auto;
+}
+
+.dashboard-search{
+    width: 70%;
+    position: relative;
+    font-size: 13px;
+ }
+ 
+ .search-fld{
+    height: auto;
+    line-height: 40px;
+    border: 1px solid #dededf;
+    border-radius: 4px;
+    background: #fff url(../../../assets/images/search.svg) no-repeat
+      scroll 13px 15px;
+    padding: 0 30px 0 40px;
+    width: 100%;
+    font-size: 13px;
+    color: #333;
+    font-family: MyriadPro-Regular;
+ }
+ .close-search{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: inline-block;
+ }
+
+.brand-filter{
+    width: fit-content;
+}
+
+.brand-select{
+    width: 100%;
+}
+
+.page-title h2 {
+  margin: 0;
+  width: 100%;
+  font-size: 26px;
+  color: #333333de;
+  font-family: MyriadPro-Regular;
+}
+
+.dashboard-tabs {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.dashboard-tabs .tablink {
+  background-color: rgba(243, 243, 243, 255);
+  font-size: 13px;
+  width: 20%;
+  max-width: 200px;
+  min-width: 100px;
+  height: 50px;
+}
+
+.dashboard-tabs .active {
+  background-color: rgba(243, 243, 243, 255);
+  font-family: MyriadPro-Semibold;
+  font-size: 13px;
+  border-bottom: 4px solid #1360d4;
+  width: 20%;
+  max-width: 200px;
+  min-width: 100px;
+  height: 50px;
+}
+
+.comment-btn {
+  padding: 0 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.summary-header-options-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 10px;
+  width: 100%;
+}
+
+.vertical-center {
+  padding-top: 20px;
+}
+
+.quantity-norm-label {
+  padding-right: 10px;
+}
+
+.btn-upload{
+    background-color: #1268b3 !important;
+    color: #fff !important;
+    font-weight: 400 !important;
+    width: 7.5rem ;
+    height: 2.7rem !important;
+    text-align: center !important;
+    border-radius: 6% !important;
+    margin-right: 10px;
+    font-size: 18px;
+    font-family: MyriadPro-Semibold;
+}
+.sbmt-btn{
+  height: 2.7rem !important;
+}
+
+.stock-norm-upload-download{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+
+@media only screen and (max-width:900px) {
+  .summary-header-options-container{
+    grid-template-columns: 2fr 1fr;
+  }
+}

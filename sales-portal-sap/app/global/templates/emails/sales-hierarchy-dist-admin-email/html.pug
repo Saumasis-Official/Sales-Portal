@@ -1,0 +1,82 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title  Mail notification to TSE on DB changes being approved / rejected
+    link(href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i', rel='stylesheet')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='stylesheet', href='../assets/styles/style.css', type='text/css')
+  body(data-gr-c-s-loaded='true', style='')
+    .template-wrapper
+    table.body(border='0', cellpadding='0', cellspacing='0')
+      tbody
+        tr
+          td  
+          td.container
+            .content
+              table.main
+                tbody
+                  tr
+                    td.wrapper
+                      table(border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                          tr
+                            td
+                              a.template-logo(href='https://pegasus.tataconsumer.com/tcp-logo.png')
+                                img(src='https://pegasus.tataconsumer.com/tcp-logo.png')
+                              p.lead
+                                | Hello #{content.addressname || '<NOT AVAILABLE>'} (#{content.addresscode || '<NOT AVAILABLE>'}), 
+                                br
+                                br
+                                | Your request for customer changes have been reviewed and #{content.type || '<NOT AVAILABLE>'} accordingly.
+                                br
+                                br
+                                | Below is the snapshot of the changes:
+                                br
+                                br
+                              table(border='0' cellpadding='0' cellspacing='0')
+                                tbody
+                                  tr
+                                    td.mt30.mb30(align='center')
+                                      table.data-grid-table.table(style='font-size:14px;text-align:left;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;width: 100%;{{msohideall}}' cellpadding='5' cellspacing='0' border='1' bordercolor='#dddddd')
+                                        tr
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Distributor #
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Distributor Name 
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Change Status 
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  TSE Code
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  TSE Name
+                                        tr
+                                          td #{content.distributor_code || '<NOT AVAILABLE>'}
+                                          td #{content.distributor_name || '<NOT AVAILABLE>'}
+                                          td #{content.type || '<NOT AVAILABLE>'}
+                                          td #{content.newcode || content.addresscode || '<NOT AVAILABLE>'}
+                                          td #{content.newname || content.addressname || '<NOT AVAILABLE>'}
+                              br
+                              p.lead
+                                | You can check the same in the below link as well:
+                                br
+                                br                                        
+                                a.support-link(href=activate_url) Link to Order Portal for Review
+                                br
+                                br
+                              p Thank you
+              table
+                tbody
+                  tr
+                    td.wrapper
+                      table(border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                          tr
+                            td
+                             
+                  .footer
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td.content-block
+                            p.text-center
+                              | © 2021 Tata Consumer Products Limited.
+                              br
+                              |  This is an automated email, please do not respond to this mail id.
+                              //- a(href='#') unsubscribe
+          td  

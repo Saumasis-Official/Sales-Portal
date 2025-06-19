@@ -1,0 +1,49 @@
+
+steps:
+  dev_unittest: 
+    - cd sales-portal-ars-service && npm run jest-test  
+    
+  dev_build:
+    - docker build -f sales-portal-ars-service/Dockerfile -t ars-dev:latest . 
+    
+  dev_trivyscan:
+    - trivy image ars-dev:latest
+
+  dev_push: 
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag ars-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:dev_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:dev_latest && docker tag ars-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:dev_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:dev_$commit_id 
+    
+  dev_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "dev-sale-ars-service-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:dev_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "DEV-AP-SALE-BACKEND-01" --service "DEV-AP-SALE-ARS-SERVICE" --task-definition "dev-sale-ars-service-td":${NEW_REVISION}
+   
+    
+  uat_unittest:
+    - cd sales-portal-ars-service && npm run jest-test
+
+  uat_build:
+    - docker build -f sales-portal-ars-service/Dockerfile -t ars-uat:latest . 
+
+  uat_trivyscan:
+    - trivy image ars-uat:latest
+
+  uat_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag ars-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:uat_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:uat_latest && docker tag ars-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:uat_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:uat_$commit_id 
+
+  uat_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "uat-sale-ars-service-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:uat_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "UAT-AP-SALE-BACKEND-01" --service "UAT-AP-SALE-ARS-SERVICE" --task-definition "uat-sale-ars-service-td":${NEW_REVISION}
+    
+
+  prod_unittest:
+    - cd sales-portal-ars-service &&  npm run jest-test
+
+  prod_build:
+    - docker build -f sales-portal-ars-service/Dockerfile -t ars-prod:latest . 
+
+  prod_trivyscan:
+    - trivy image ars-prod:latest
+
+  prod_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag ars-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:prod_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:prod_latest && docker tag ars-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:prod_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:prod_$commit_id 
+   
+  prod_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "prd-sale-ars-service-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/ars:prod_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "PRD-AP-SALE-BACKEND-01" --service "PRD-AP-SALE-ARS-SERVICE" --task-definition "prd-sale-ars-service-td":${NEW_REVISION}
+   

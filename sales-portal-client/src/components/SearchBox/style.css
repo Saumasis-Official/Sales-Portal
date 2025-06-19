@@ -1,0 +1,31 @@
+#col-search {
+    width: auto;
+    position: relative;
+    display: flex;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+#search {
+    color: #333;
+    font-family: MyriadPro-Regular;
+    width: 80%;
+    flex: 1;
+    border: 1px solid #dededf;
+    border-radius: 4px;
+    min-width: 50px;
+}
+
+#serch::placeholder{
+    color: #b5b5b5;
+}
+
+#reset {
+    color: red;
+    font-family: "MyriadPro-Regular";
+    padding: 0.2vw 0.5vw;
+    cursor: pointer;
+    width: fit-content;
+    height: max-content;
+    right: 90%;
+}

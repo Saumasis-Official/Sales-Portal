@@ -1,0 +1,49 @@
+.form-group{
+    display: flex;
+    padding: 10px;
+}
+.title-fld{
+ width: 100%;
+ font-weight: 500;
+ font-size: 18px;
+}
+.form-ctrl{
+    width: 96%;
+    padding: 0 15px;
+    height: 40px;
+    font-size:medium;
+    font-weight: 400;
+    border: 1px solid #ccc;
+    transition: border-color 0.1s;
+    font-family: 'Avenir-Medium';
+    color: #333333;
+    border: 1px solid #e8e9ec;
+    border-radius: 4px;
+    background: #fff;
+} 
+.form-ctrl:focus {
+    border-color: #69adec;
+}
+.mandatory-mark{
+    font-size: larger;
+}
+.btn{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+.sbmt-btns{
+    height: 50px;
+    margin-top: 10px;
+    width: 150px;
+    font-size: 18px;
+    font-family: MyriadPro-Semibold;
+    letter-spacing: 0.03px;
+    color: #FFFFFF;
+    display: inline-block;
+    background: #1268B3;
+    border-radius: 4px;
+    border: none;
+    padding: 5px 24px;
+    cursor: pointer;
+}

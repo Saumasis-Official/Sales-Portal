@@ -1,0 +1,232 @@
+.CL-TableHeader {
+    padding-top: 0px;
+}
+.card-row-col {
+    font-family: MyriadPro-Regular;
+    color: #333333de;
+}
+.ecom-header-two .dashboard-tabs .tablink {
+    width: 15%;
+}
+.search_box-ecom {
+    width: 60%;
+    min-width: 250px;
+    position: relative;
+    font-size: 13px;
+    margin-left: 10px;
+}
+.select-box-color {
+    border-color: #1268b3;
+    box-sizing: initial;
+    border-style: double;
+}
+
+.po-created-session-date-picker {
+    width: 70%;
+}
+.status-group {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.close-search-ecom {
+    position: absolute;
+    top: 15px;
+    left: 19em;
+}
+.left-header-ecom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -12px;
+    align-items: center;
+}
+
+.ecom-header-two {
+    width: 100%;
+    min-width: 200px;
+    display: flex;
+    padding-top: 10px;
+    margin-bottom: -15px;
+    margin-top: -24px;
+}
+.ant-picker-range {
+    height: 42px;
+}
+.po-custom-header span {
+    font-size: larger;
+}
+.admin-dashboard-table table tbody tr:nth-of-type(even) {
+    background: white;
+}
+.mt-ecom-customer-select {
+    padding-left: 500px;
+}
+
+.customer-details {
+    margin-left: 170px;
+}
+
+.header-block-right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: max-content !important;
+}
+
+.cl-info-item1 {
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+}
+.dot-pending {
+    height: 15px;
+    width: 15px;
+    background-color: rgb(242, 216, 168);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px;
+}
+.dot-approved {
+    height: 15px;
+    width: 15px;
+    background-color: #adefc0;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px;
+}
+.dot-rejected {
+    height: 15px;
+    width: 15px;
+    background-color: rgb(225 95 95 / 63%);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px;
+}
+
+/* ApproverConfig.css */
+.button-container {
+    /* margin-top: -20px; */
+    justify-content: right;
+}
+
+.cl-edit-button,
+.cl-save-button,
+.cl-cancel-button,
+.cl-add-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 80px;
+    text-align: center;
+    margin: 5px;
+}
+
+.cl-edit-button {
+    background-color: #12b7e9;
+    color: white;
+}
+
+.cl-save-button {
+    background-color: #12b7e9;
+    color: white;
+}
+
+.cl-cl-cancel-button {
+    background-color: #ede2e3;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.cl-edit-button:hover {
+    background-color: #12b7e9;
+}
+
+.cl-save-button:hover {
+    background-color: #12b7e9;
+}
+
+.cl-cancel-button:hover {
+    background-color: #eee9ea;
+}
+
+.dash-search-fld-cl {
+    height: 32px;
+    line-height: inherit;
+    border: 1px solid #dededf;
+    border-radius: 2px;
+    padding: 0 15px 0 15px;
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+    font-family: MyriadPro-Regular;
+    background: #fff;
+}
+
+.dash-search-close-cl {
+    position: absolute;
+    top: 6px;
+    right: 14px;
+    display: inline-block;
+}
+
+.sub-head {
+    border-left: 1px solid #c9c8c8;
+    border-right: 1px solid #c9c8c8;
+    text-align: center;
+}
+.CL-Approver-TableHeader {
+    padding-top: 0px;
+    /* overflow-x: scroll  !important; */
+}
+.cl-add-button {
+    background-color: #12b7e9;
+    color: white;
+}
+
+.cl-add-button:hover {
+    background-color: #12b7e9;
+    color: white;
+}
+.filter-by-responded {
+    align-items: center;
+    width: 200px;
+}
+.approver-details-div {
+    display: flex;
+    gap: 70px;
+}
+
+.approver-category-radio-button {
+    background-color: #cde6ea;
+}
+.approver-category-radio-button,
+.approver-category-radio-button:hover {
+    background-color: inherit !important;
+    border-color: inherit !important;
+    color: inherit !important;
+    cursor: default !important;
+}
+.approver-category-space {
+    max-height: '110px';
+    overflow-y: 'auto';
+}
+.approver-note {
+    background-color: '#f0f2f5';
+    padding: '12px';
+    border-radius: '4px';
+    margin-top: '16px';
+    border-left: '4px solid #1890ff';
+}
+#subheader-trans-id{
+    width:10%
+}
+#subheader-party-name{
+    width:12%
+}
+#subrequest-id{
+    width:100px
+}

@@ -1,0 +1,1 @@
+update sales_hierarchy_details set email = 'pronobesh.mukherjee@tataconsumer.com', mobile_number = '9830264200';

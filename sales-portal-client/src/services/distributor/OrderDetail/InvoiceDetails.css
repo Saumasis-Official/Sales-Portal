@@ -1,0 +1,88 @@
+/* INVOICE DETAILS */
+.invoice-details-col-1 {
+    margin-left: 2%;
+    /* margin-right: 8%; */
+}
+
+.invoice-details-col-2 {
+    margin-left: 5%;
+}
+
+.invoice-details ul li a.po_number {
+    width: 150px;
+}
+
+.invoice-details ul li {
+    /* margin-bottom: 5px; */
+    display: flex;
+    font-size: 13px;
+    color: #333333;
+    font-family: 'MyriadPro-Semibold';
+}
+
+.invoice-details ul li.field-val {
+    /* margin-bottom: 5px; */
+    display: flex;
+    font-size: 13px;
+    color: #333333;
+    font-family: 'MyriadPro-Regular';
+}
+
+.invoice-details ul li.field-attr {
+    /* margin-bottom: 5px; */
+    display: flex;
+    font-size: 10px;
+    color: #333333;
+    font-family: 'MyriadPro-Semibold';
+}
+
+.invoice-details ul li span {
+    width: 120px;
+}
+
+.invoice-details ul li span.date {
+    width: 80px;
+}
+
+.invoice-details ul li span.invoice_date {
+    width: 80px;
+}
+
+section.main-content.invoice-detail-page .sales-order-table .details-download-btn {
+    display: none;
+}
+
+section.main-content.invoice-detail-page .details-download-btn {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.details-download-btn button {
+    display: inline-block;
+    background: #34aeef;
+    border: none;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 5px;
+}
+
+@media screen and (max-width: 767px) {
+    section.main-content.invoice-detail-page {
+        margin: 60px 0px 0 0px;
+        padding: 20px;
+    }
+
+    .invoice-details-col-1 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .invoice-details-col-2 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin: 0;
+    }
+}

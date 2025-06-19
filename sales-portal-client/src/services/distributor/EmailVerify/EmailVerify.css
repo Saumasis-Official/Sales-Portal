@@ -1,0 +1,32 @@
+.email-verify-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-verify-mssg {
+    margin: 0 15px;
+    max-width: 600px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .13);
+    width: 100%;
+    text-align: center;
+}
+
+.email-verify-mssg h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.email-verify-mssg span {
+    display: inline-block;
+    cursor: pointer;
+    background: #1268B3;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}

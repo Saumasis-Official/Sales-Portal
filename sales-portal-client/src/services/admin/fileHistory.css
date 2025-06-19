@@ -1,0 +1,122 @@
+.select-category {
+  width: 100%;
+}
+
+.upload-file {
+  margin: 10px 0px;
+  padding: 5px;
+}
+.upload-file label {
+  padding-right: 10px;
+}
+
+.upload-file input {
+  padding-right: 20px;
+}
+
+.upload-btn {
+  display: flex;
+  justify-content: end;
+  margin: 20px 0px;
+}
+
+.upload-btn Button {
+  width: 20%;
+}
+
+.file-upload-email {
+  width: 100%;
+  height: 20px;
+}
+
+.title-search {
+  justify-content: start;
+  scale: 0.8;
+}
+
+.dragger-container {
+  margin: 10px 0px;
+  padding: 3px;
+  box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.12) 0px 2px 5px 2px;
+}
+
+.dragger-container:hover {
+  scale: 1.007;
+  transform: 0.4s;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.17) 0px 2px 8px 2px;
+}
+
+.category {
+  padding-bottom: 5px;
+  margin-top: 0px;
+}
+
+.form-wrapper {
+  padding-bottom: 10px;
+}
+.comment-fld {
+  padding-bottom: 8px;
+}
+
+.upload-file input {
+  color: #1d92ff;
+}
+
+.help-category-select {
+  max-width: 130px;
+  width: 100%;
+  min-width: 135px;
+}
+
+.help-category-select.ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  height: 32px;
+  border: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.help-category-select.ant-select-single:not(.ant-select-customize-input).ant-select-focused
+  .ant-select-selector {
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.help-category-select .ant-select-selector .ant-select-selection-item,
+.help-category-select
+  .ant-select-selector
+  .ant-select-selection-placeholder {
+  line-height: 32px;
+}
+
+.help-category-select.ant-select-open .ant-select-selection-item {
+  color: #333;
+}
+
+.help-category-dropdown.ant-select-dropdown {
+  background-color: #ffffff;
+  padding: 0;
+  font-size: 14px;
+}
+
+.help-category-dropdown
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #00aeef;
+  color: #fff;
+}
+
+.help-category-dropdown .ant-select-item-option-active {
+  background-color: #b3b3b3;
+  color: #fff;
+}
+
+.help-category-dropdown .ant-select-item-option:hover {
+  background-color: #b3b3b3;
+  color: #fff;
+}
+
+.width150 {
+  width: 20%;
+}
+

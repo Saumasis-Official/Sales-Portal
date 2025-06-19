@@ -1,0 +1,31 @@
+{
+  "variables": [],
+  "info": {
+    "name": "tcpl-sap-integration",
+    "_postman_id": "a8e4e8e1-fe64-12c7-a12f-b29d928556b4",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "healthcheck",
+      "request": {
+        "url": "{{env}}hc-index",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbl9pZCI6IjExNjY4MyIsInR5cGUiOiJESVNUUklCVVRPUiIsIm5hbWUiOiJNQUhBVkVFUiBBU1NPQ0lBVEVTIiwiaGFzUGFzc3dvcmQiOmZhbHNlLCJpYXQiOjE2MzgxNjUwNTIsImV4cCI6MTYzODE2ODY1Mn0.RmSDZ_QbSx-W-iMRyx7l3qUfQ4RMvZn03LMCUpjFIgw",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+.card-row-col {
+  font-family: MyriadPro-Regular;
+  color: #333333de;
+}
+.ecom-header-two .dashboard-tabs .tablink {
+  width: 20%;
+}
+.header-div {
+  width: 60%;
+  min-width: 350px;
+  display: flex;
+  justify-content: flex-end;
+}
+.search_box-ecom {
+  width: 60%;
+  min-width: 250px;
+  position: relative;
+  font-size: 13px;
+  margin-left: 10px;
+}
+.select-box-color {
+  /* box-shadow:  3px 3px 15px; */
+  /* color:  #1268b3; */
+  border-color: #1268b3;
+  box-sizing: initial;
+  border-style: double;
+}
+.rdd-refresh-block > div {
+  align-items: center;
+  margin-left: -100px;
+}
+.rdd-refresh-block {
+  margin-left: 0px;
+  margin-top: 5px;
+}
+.rdd-refresh-button {
+  font: normal normal 600 13px / 19px MyriadPro-Semibold;
+  letter-spacing: 0.18px;
+  color: #ffffff;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+  opacity: 1;
+  width: 110px;
+  height: 42px;
+  padding-top: 4px;
+  background: #1268b3;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-bottom: -20px;
+  margin-top: -5px;
+}
+.rdd-refresh-button img {
+  padding-left: 8px;
+  padding-bottom: 6px;
+}
+
+.add-button-rdd {
+  border: 0;
+  border-radius: 4px;
+  font: normal normal 600 13px / 19px MyriadPro-Semibold;
+  letter-spacing: 0.03px;
+  background: #34aeef;
+  color: #fff;
+  width: 110px;
+  height: 42px;
+  padding-top: 4px;
+  margin-right: 0px;
+  cursor: pointer;
+}
+.add-button-rdd img {
+  padding-left: 7px;
+  padding-bottom: 5px;
+}
+.po-created-session-date-picker {
+  width: 60%;
+}
+.close-search-ecom {
+  position: absolute;
+  top: 15px;
+  left: 19em;
+}
+.left-header-ecom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -12px;
+  align-items: center;
+}
+.blue-button {
+  color: white;
+  background-color: #1268b3;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+  padding: 5px 4px 5px 5px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 5px;
+  margin-right: 15px;
+}
+.disabled-blue-btn {
+  background-color: #c8c8ca;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 5px;
+  margin-right: 15px;
+}
+.refresh-icon {
+  padding-left: 8px;
+  padding-bottom: 2px;
+}
+.ecom-header-two {
+  width: 100%;
+  min-width: 200px;
+  display: flex;
+  padding-top: 10px;
+  margin-bottom: -15px;
+  margin-top: -24px;
+}
+
+.invoice-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #a49d9d;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-details {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+}
+
+.invoice-info {
+  background-color: #f9f9f9;
+  border: 1px solid #949191;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.invoice-id {
+  font-weight: bold;
+}
+
+.invoice-date,
+.invoice-time {
+  color: #666;
+}
+
+.ant-picker-range {
+  height: 42px;
+}
+.po-custom-header span {
+  font-size: larger;
+}
+.admin-dashboard-table table tbody tr:nth-of-type(even) {
+  background: white;
+}
+.mt-ecom-customer-select {
+  padding-left: 500px;
+}
+.blue-button-details {
+  color: white;
+  background-color: #1268b3;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.customer-details {
+  margin-left: 170px;
+}
+.rdd-blue-button-details {
+  margin-left: 400px;
+}
+.Mtecom-TableHeader {
+  padding-top: 15px;
+  overflow: auto;
+}
+.fixed-table-header{
+  overflow-y: auto;
+  max-height: 488px;
+  position: relative 
+
+}
+.ant-select-multiple.ant-select-show-arrow .ant-select-selector,
+.ant-select-multiple.ant-select-allow-clear .ant-select-selector {
+  padding-right: 0px;
+}
+
+.po-details-table tbody tr.red {
+  background-color: rgba(225, 95, 95, 0.63) !important;
+}
+

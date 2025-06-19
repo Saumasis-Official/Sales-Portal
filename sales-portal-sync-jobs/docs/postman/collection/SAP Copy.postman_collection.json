@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "a68b8099-2ed2-4d33-8cd4-9c55281c3c41",
+		"name": "New SAP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "warehouse-details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/warehouse-details/100003",
+					"host": ["{{env}}admin"],
+					"path": ["warehouse-details", "100003"],
+					"variable": [
+						{
+							"key": "distributor_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

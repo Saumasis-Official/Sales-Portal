@@ -1,0 +1,176 @@
+.email-search {
+    border-radius: 5px;
+    width: 350px;
+}
+
+.button-container-kams {
+    margin-left: -7px;
+    display: flex;
+    align-items: center;
+}
+
+.edit-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.edit-mode-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.kams-img {
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.kams-img:hover {
+    opacity: 0.6;
+}
+.nkams-save {
+    font-size: 16px;
+    font-family: 'MyriadPro-Regular';
+    font-weight: bolder;
+}
+
+.nkams-div {
+    margin-bottom: 1px;
+}
+
+.button-container-kams {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submitButton-add-kams {
+    margin: -1px 0 2px 15px;
+    display: inline-block;
+    background: #34aeef;
+    border: none;
+    color: #fff;
+    padding: 5px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.email-search .ant-select-clear {
+    top: 45%;
+}
+.credit-limit-checkbox-kams {
+    float: right;
+    font-size: 16px;
+    font-family: 'MyriadPro-Semibold', sans-serif;
+    color: #777;
+    margin-top: 5px;
+}
+.credit-limit-checkbox-kams .ant-checkbox-inner {
+    top: 0px;
+    border: 1.3px solid #515151;
+}
+
+.unique-search-icon.anticon svg {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Mobile screen */
+@media screen and (max-width: 575.98px) {
+    .email-search {
+        border-radius: 5px;
+        min-width: 200px;
+        margin-left: 3px;
+    }
+
+    .email-title {
+        font-size: 14px;
+        font-family: 'MyriadPro-Regular';
+        font-weight: bolder;
+
+        margin-top: 5px;
+    }
+
+    .nkam-main-div {
+        margin-bottom: 2px;
+    }
+
+    .nkams-div {
+        margin-bottom: 1px;
+    }
+
+    .nkams-save {
+        margin-left: 32px;
+
+        font-size: 16px;
+        font-family: 'MyriadPro-Regular';
+        font-weight: bolder;
+    }
+}
+
+.back-to-dashboard {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.back-to-dashboard:hover {
+    background-color: #58a1ee;
+    color: #fff;
+}
+
+.global-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: -66px -8px 0px 0px;
+    padding: 10px;
+}
+
+.global-actions .customer-group-select {
+    width: 300px;
+}
+
+.kams-checkbox .ant-checkbox-inner {
+    height: 15px;
+    width: 15px;
+    top: -22px;
+}
+
+.kams-checkbox .ant-checkbox-checked:after {
+    top: -22px;
+}
+
+.header-kams-checkbox .ant-checkbox-inner {
+    height: 15px;
+    width: 15px;
+    top: 0px;
+}
+
+.header-kams-checkbox .ant-checkbox-checked:after {
+    top: 0px;
+}
+
+/* TableStyles.css */
+.kams-name-column {
+    width: 170px;
+}
+
+.customer-code-column {
+    width: 138px;
+}
+
+.payer-code-column {
+    width: 113px;
+}
+
+.customer-group-column {
+    width: 118px;
+}
+
+.email-kams-column {
+    text-align: center;
+}
+
+.credit-limit-column {
+    white-space: nowrap;
+}

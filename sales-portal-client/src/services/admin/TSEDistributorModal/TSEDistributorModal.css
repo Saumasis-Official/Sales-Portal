@@ -1,0 +1,107 @@
+.ant-modal-wrap.details-modal .ant-modal-title {
+  margin-top: 16px;
+  color: #1268b3;
+  font: 24px 'MyriadPro-Semibold';
+  font-weight: normal;
+}
+
+.ant-modal-wrap.details-modal .form-control {
+  height: 42px;
+  font-size: 18px;
+}
+
+.ant-modal-wrap.details-modal .form-wrap {
+  margin-bottom: 20px;
+}
+
+.ant-modal-wrap.details-modal .basic-details .form-wrapper label {
+  color: #333333;
+  text-align: left;
+  font: 18px 'MyriadPro-Semibold';
+  letter-spacing: 0px;
+  color: #333333de;
+  opacity: 1;
+}
+
+.ant-modal-wrap.details-modal .basic-details .form-wrapper span {
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-333333);
+  text-align: left;
+  font: 18px 'MyriadPro-Regular';
+  letter-spacing: 0px;
+  color: #333333de;
+  opacity: 1;
+}
+
+.ant-modal-wrap.details-modal .form-wrap label {
+  color: #333333;
+  text-align: left;
+  font: 18px 'MyriadPro-Semibold';
+  letter-spacing: 0px;
+  color: #333333de;
+  opacity: 1;
+}
+
+.ant-modal-wrap.details-modal .button-wrap {
+  display: flex;
+}
+
+.ant-modal-wrap.details-modal .form-btn {
+  text-align: right;
+}
+
+.ant-modal-wrap.details-modal .button {
+  color: red;
+}
+
+.ant-modal-wrap.details-modal .cancel-btn {
+  height: 48px;
+  width: 154px;
+  font: 18px 'MyriadPro-Semibold';
+  letter-spacing: 0.03px;
+  color: #8d8d8d;
+  display: inline-block;
+  background: #c6c6c6;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.ant-modal-wrap.details-modal .submit-btn {
+  height: 48px;
+  width: 154px;
+  font: 18px 'MyriadPro-Semibold';
+  letter-spacing: 0.03px;
+  color: #ffffff;
+  display: inline-block;
+  background: #1268b3;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.distributor-code-input-fld{
+  width: 100%;
+}
+
+.distributor-code-input-fld{
+  border: 1px solid #c6c6c6;
+}
+.distributor-code-input-fld:hover{
+  border: 1px solid #65abe8;
+}
+
+@media screen and (max-width: 767px) {
+  .ant-modal-wrap.details-modal .basic-details .form-wrapper {
+    display: flex;
+  }
+
+  .ant-modal-wrap.details-modal .basic-details .form-wrapper label {
+    min-width: unset;
+    margin-right: 10px;
+  }
+}
+.Request_modal{
+  float: right;
+}

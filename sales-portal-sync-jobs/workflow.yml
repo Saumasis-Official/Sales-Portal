@@ -1,0 +1,48 @@
+steps:
+  dev_unittest:
+    - echo "No Unit Test Cases"  
+    
+  dev_build:
+    - docker build -f sales-portal-sync-jobs/Dockerfile -t sync-dev:latest .
+
+  dev_trivyscan:
+    - trivy image sync-dev:latest
+
+  dev_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag sync-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:dev_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:dev_latest && docker tag sync-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:dev_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:dev_$commit_id 
+
+  dev_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "dev-sale-sync-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:dev_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "DEV-AP-SALE-BACKEND-01" --service "DEV-AP-SALE-SYNC-JOB-SERVICE" --task-definition "dev-sale-sync-td":${NEW_REVISION}
+  
+    
+  uat_unittest:
+    - echo "No Unit Test Cases"   
+    
+  uat_build:
+    - docker build -f sales-portal-sync-jobs/Dockerfile -t sync-uat:latest . 
+
+  uat_trivyscan:
+    - trivy image sync-uat:latest
+    
+  uat_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag sync-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:uat_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:sync_latest && docker tag sync-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:uat_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:uat_$commit_id
+    
+  uat_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "uat-sale-sync-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:uat_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "UAT-AP-SALE-BACKEND-01" --service "UAT-AP-SALE-SYNC-JOB-SERVICE" --task-definition "uat-sale-sync-td":${NEW_REVISION}
+    
+
+  prod_unittest:
+    - echo "No Unit Test Cases" 
+    
+  prod_build:
+    - docker build -f sales-portal-sync-jobs/Dockerfile -t sync-prod:latest . 
+
+  prod_trivyscan:
+    - trivy image sync-prod:latest
+    
+  prod_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag sync-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:prod_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:prod_latest && docker tag sync-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:prod_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:prod_$commit_id
+    
+  prod_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "prd-sale-sync-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sync-jobs:prod_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "PRD-AP-SALE-BACKEND-01" --service "PRD-AP-SALE-SYNC-JOB-SERVICE" --task-definition "prd-sale-sync-td":${NEW_REVISION}
+    

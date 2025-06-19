@@ -1,0 +1,100 @@
+.body {
+  background-color: white;
+}
+
+.row {
+  display: block;
+  margin-top: 70px;
+  margin-left: 120px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-left: 0px;
+  width: 500px;
+  margin-bottom: 0px;
+}
+
+ul.nav li {
+  width: 50%;
+
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+
+  margin-left: 15px;
+
+  font-weight: 900;
+  font-size: 25px;
+}
+
+ul.nav li.active {
+  border-bottom: 5px solid #1268b3;
+  padding: 0 0 5px;
+}
+
+.FirstTab,
+.SecondTab {
+  margin-top: 50px;
+  font-size: 1rem;
+  border-radius: 10px;
+  width: 95%;
+  margin-left: 15px;
+}
+
+.outlet {
+  position: relative;
+  margin-top: 30px;
+}
+
+hr {
+  width: 96%;
+  margin-left: 20px;
+  margin-right: auto;
+  background-color: #dadada;
+  border: 0 none;
+  height: 0.7px;
+  border: 0;
+
+  margin: 0;
+  padding: 0;
+}
+
+.FirstTab p,
+.SecondTab p {
+  font-weight: normal;
+}
+
+.video-card {
+  min-height: max-content;
+}
+
+.videos-con {
+  display: flex;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.vid-card {
+  margin: 10px;
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(85, 85, 85, 0.2) 0px 2px 8px 0px;
+}
+
+.FirstTab p,
+.SecondTab p {
+  font-weight: normal;
+}
+
+.contact-container {
+  padding: 20px;
+  margin-top: 5px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}

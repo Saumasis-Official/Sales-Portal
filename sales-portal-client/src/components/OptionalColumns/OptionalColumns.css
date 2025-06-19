@@ -1,0 +1,31 @@
+.row-colmn {
+  width: 100%;
+  clear: both;
+  float: left;
+  margin-bottom: 0.5vw;
+}
+
+.check-colm-op:checked + .colm-op {
+  background-color: rgb(125, 193, 252);
+}
+
+.check-colm-op {
+  display: none;
+}
+
+.colm-op {
+  background-color: rgb(230, 236, 241);
+  border: none;
+  padding: 0.5% 1%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 3px 2px;
+  border-radius: 8px;
+  border-color: #1268b3;
+}
+
+.colm-op:hover {
+  background-color: rgb(191, 225, 255);
+}

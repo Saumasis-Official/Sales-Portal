@@ -1,0 +1,46 @@
+.body{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.header{
+    color: #4caf50;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.para{
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.button_skip{
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: gray;
+}
+
+.button_go{
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #1E90FF;
+    color: white;
+}

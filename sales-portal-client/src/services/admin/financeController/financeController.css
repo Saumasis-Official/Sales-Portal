@@ -1,0 +1,27 @@
+.table-heading {
+  font-size: 26px;
+  color: #333333de;
+  font-family: MyriadPro-Regular;
+  text-align: left;
+  margin: 0px 0px 22px 0px;
+}
+
+.ant-checkbox-inner {
+  top: -3px;
+}
+
+.select-ant-selecting .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  height: 43px;
+  border-radius: 3px;
+}
+
+.custom-ant-selecting.ant-select-single
+  .ant-select-selector
+  .ant-select-selection-item,
+.custom-ant-selecting
+  .ant-select-single
+  .ant-select-selector
+  .ant-select-selection-placeholder {
+  line-height: 42px;
+}

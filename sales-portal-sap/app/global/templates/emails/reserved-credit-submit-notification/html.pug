@@ -1,0 +1,62 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title  Mail sent to TSE from logistics team on responding to pdp update request 
+    link(href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i', rel='stylesheet')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='stylesheet', href='../assets/styles/style.css', type='text/css')
+  body(data-gr-c-s-loaded='true', style='')
+    .template-wrapper
+    table.body(border='0', cellpadding='0', cellspacing='0')
+      tbody
+        tr
+          td  
+            table.main(width: '580px', Margin: '0 auto')
+              tbody
+                tr
+                  td.wrapper
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td
+                            a.template-logo(href='https://pegasus.tataconsumer.com/tcp-logo.png')
+                              img(src='https://pegasus.tataconsumer.com/tcp-logo.png')
+                            br
+                            br
+                            p.lead
+                              |Hello 
+                              b #{content.db_name} (#{content.db_code})
+                              |,
+                              br
+                            p  We are pleased to inform you that a credit amount of
+                              b  ₹ #{content.reserved_amount}
+                              |  has been reserved against Capital Foods on 
+                              b #{content.reserved_date}
+                              |.
+                            br
+                            p Kindly review the same in the below link:              
+                            a.support-link(href=activate_url) Link to Order Portal for review
+                            br
+                            br
+                            br
+                            p Thank you
+            table
+              tbody
+                tr
+                  td.wrapper
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td
+                            
+                .footer
+                  table(border='0', cellpadding='0', cellspacing='0')
+                    tbody
+                      tr
+                        td.content-block
+                          p.text-center
+                            | © 2021 Tata Consumer Products Limited.
+                            br
+                            |  This is an automated email, please do not respond to this mail id.
+                          

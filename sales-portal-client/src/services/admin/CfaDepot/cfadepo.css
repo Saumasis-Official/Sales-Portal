@@ -1,0 +1,83 @@
+.del-opt {
+    width: 105px;
+    margin-top: 15
+}
+
+.submit-btn {
+    margin-top: 10px;
+    margin-Left: 80%;
+    display: inline-block;
+    background: #34aeef;
+    height: 50px;
+    border: none;
+    color: #fff;
+    padding: 4px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.address {
+    height: fit-content;
+}
+.table-container {
+    max-height: 72vh; /* Adjust this value based on your requirements */
+    overflow-y: auto;
+  }
+  
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-container>table> th+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table-container>table>thead th {
+    position: sticky;
+    top: 0;
+    background-color: #1268B3;
+  }
+  
+  .basic-cfa-details .form-wrapper span {
+    font-size: 16px;
+  }
+
+  .basic-details .form-wrap {
+    font-size: 20px;
+  }
+
+  .cfa-depot-modal .ant-modal-title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .cfa-depot-modal .form-control {
+    font-size: 14px;
+  }
+
+  .cfa-status-select{
+    font-size: 10px;
+  }
+
+  .line-separator{
+    width: 100%;
+    height: 3px;
+    background-color: #1268B3;
+  }
+
+  .line-separator-div-head {
+    font-size: 20px;
+  }
+
+  .line-separator-div-comment{
+    font-size: 14px;
+    color: #1268B3;
+  }
+
+  .condition-radio-group .ant-radio-wrapper {
+    font-size: 20px;
+    font-family: 'MyriadPro-Semibold';
+  }

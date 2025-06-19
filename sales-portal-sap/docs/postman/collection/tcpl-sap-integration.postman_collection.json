@@ -1,0 +1,710 @@
+{
+  "variables": [],
+  "info": {
+    "name": "tcpl-sap-integration",
+    "_postman_id": "a8e4e8e1-fe64-12c7-a12f-b29d928556b4",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "bodyData= JSON.parse(responseBody)",
+              "value = bodyData.token",
+              "pm.collectionVariables.set(\"token\", value);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{authurl}}",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{credentials}}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "validate-order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "bodyData= JSON.parse(responseBody)",
+              "value = bodyData.data.d.NAVRESULT.results[0].PoNumber",
+              "orderData =JSON.stringify({\"sales_org\":\"1010\",\"distribution_channel\":\"10\",\"soldto\":\"116683\",\"shipto\":\"116683\",\"po_number\":value,\"po_date\":\"29.11.2021\",\"req_date\":\"29.11.2021\",\"pay_terms\":\"\",\"items\":[{\"item_number\":\"000010\",\"material_code\":\"14000000000598\",\"required_qty\":\"3\",\"sales_unit\":\"CV\"}],\"navresult\":[]});",
+              "pm.collectionVariables.set(\"createOrderData\", orderData);",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{env}}validate-order",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sales_org\": \"1010\",\n  \"distribution_channel\": \"10\",\n  \"po_number\": \"\",\n  \"po_date\": \"\",\n  \"req_date\": \"\",\n  \"items\": [\n    {\n      \"material_code\": \"14000000000598\",\n      \"item_number\": \"000010\",\n      \"required_qty\": \"3\",\n      \"target_qty\": \"3\",\n      \"pack_type\": \"\",\n      \"sales_unit\": \"CV\",\n      \"description\": \"TETLEYBL NTB 25S TB\"\n    }\n  ],\n  \"partners\": [\n    {\n      \"partner_role\": \"AG\",\n      \"partner_number\": \"116683\"\n    },\n    {\n      \"partner_role\": \"WE\",\n      \"partner_number\": \"116683\"\n    }\n  ],\n  \"navresult\": []\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "create-order",
+      "request": {
+        "url": "{{env}}create-order",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{createOrderData}}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "update-mobile",
+      "request": {
+        "url": {
+          "raw": "https://devapi-pegasus.tataconsumer.com/sap/api/v1//update-email-mobile/:login_id",
+          "protocol": "https",
+          "host": ["devapi-pegasus", "tataconsumer", "com"],
+          "path": [
+            "sap",
+            "api",
+            "v1",
+            "",
+            "update-email-mobile",
+            ":login_id"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "key": "login_id",
+              "value": "116683"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbl9pZCI6IjExNjY4MyIsInR5cGUiOiJESVNUUklCVVRPUiIsIm5hbWUiOiJNQUhBVkVFUiBBU1NPQ0lBVEVTIiwiaGFzUGFzc3dvcmQiOmZhbHNlLCJpYXQiOjE2MzgxNzQ4MzYsImV4cCI6MTYzODE3ODQzNn0.ikQqbkAjH5Who6Y3rxA2vgqRvDBSqqWqrsMM34oZSrk",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"type\": \"sms\", \"updateValue\": \"9971410421\" }"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "update-email",
+      "request": {
+        "url": {
+          "raw": "https://devapi-pegasus.tataconsumer.com/sap/api/v1//update-email-mobile/:login_id",
+          "protocol": "https",
+          "host": ["devapi-pegasus", "tataconsumer", "com"],
+          "path": [
+            "sap",
+            "api",
+            "v1",
+            "",
+            "update-email-mobile",
+            ":login_id"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "key": "login_id",
+              "value": "116683"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbl9pZCI6IjExNjY4MyIsInR5cGUiOiJESVNUUklCVVRPUiIsIm5hbWUiOiJNQUhBVkVFUiBBU1NPQ0lBVEVTIiwiaGFzUGFzc3dvcmQiOmZhbHNlLCJpYXQiOjE2MzgxNzQ4MzYsImV4cCI6MTYzODE3ODQzNn0.ikQqbkAjH5Who6Y3rxA2vgqRvDBSqqWqrsMM34oZSrk",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"type\": \"email\", \"updateValue\": \"deepak_1@outlook.com\" }"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "validate",
+      "request": {
+        "url": "{{env}}validate",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "healthcheck",
+      "request": {
+        "url": "{{env}}hc-index",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbl9pZCI6IjExNjY4MyIsInR5cGUiOiJESVNUUklCVVRPUiIsIm5hbWUiOiJNQUhBVkVFUiBBU1NPQ0lBVEVTIiwiaGFzUGFzc3dvcmQiOmZhbHNlLCJpYXQiOjE2MzgxNjUwNTIsImV4cCI6MTYzODE2ODY1Mn0.RmSDZ_QbSx-W-iMRyx7l3qUfQ4RMvZn03LMCUpjFIgw",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "re-order",
+      "request": {
+        "url": {
+          "raw": "{{env}}re-order?so_number=%27110066119%27",
+          "host": ["{{env}}re-order"],
+          "query": [
+            {
+              "key": "so_number",
+              "value": "%27110066119%27"
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "credit-limit",
+      "request": {
+        "url": "{{env}}credit-limit/116683",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "sales-order-delivery",
+      "request": {
+        "url": "{{env}}sales-order-delivery",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"deliveryNumber\":\"810081009\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "multiple-sales-order",
+      "request": {
+        "url": "{{env}}multiple-so-details",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"items\": [\n                  {\n                    \"so_number\": \"110272375\",\n                    \"deliveries\": [\"810385104\",\"810385108\"],\n                    \"invoices\":[\"932180875\"]\n                    \n                  },\n                  {\n                    \"so_number\": \"110272374\",\n                                        \"deliveries\": [\"810385109\",\"810385110\"],\n                                        \"invoices\":[\"910241675\",\"910241676\"]\n\n                    \n                  }\n                ]\n              }"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "sales-order-invoice",
+      "request": {
+        "url": "{{env}}sales-order-invoice",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"invoiceNumber\":[\"910047573\"]\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "warehouse-details",
+      "request": {
+        "url": "{{env}}warehouse-details",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"invoiceNumber\":[\"910047573\"]\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "product-sync",
+      "request": {
+        "url": "{{env}}util/product-sync",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbl9pZCI6IjEwMDA1MyIsInR5cGUiOiJESVNUUklCVVRPUiIsIm5hbWUiOiJCQUxBSkkgU1RPUkUiLCJoYXNQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTYzODI2NjcyOSwiZXhwIjoxNjM4MjcwMzI5fQ.kztGkJaQ7fk0W2RyqxKP86PZjvuNavizdQE01VVfsIM",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "so-sync",
+      "request": {
+        "url": {
+          "raw": "{{env}}util/so-sync/100053?status=delivered",
+          "host": ["{{env}}util"],
+          "path": ["so-sync", "100053"],
+          "query": [
+            {
+              "key": "status",
+              "value": "delivered"
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "distributor-sync",
+      "request": {
+        "url": "{{env}}util/distributor-sync",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "so-details",
+      "request": {
+        "url": "{{env}}so-details",
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"so_number\": \"110272324\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "sales-hierarchy-sync",
+      "request": {
+        "url": "{{env}}util/sales-hierarchy-sync",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-credit-limit",
+      "request": {
+        "url": "{{env}}admin/credit-limit/116683",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-warehouse-details",
+      "request": {
+        "url": "{{env}}admin/warehouse-details/100053",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-so-details",
+      "request": {
+        "url": "{{env}}admin/so-details/10003",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"so_number\": \"110272334\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-multiple-so-details",
+      "request": {
+        "url": "{{env}}admin/so-details/10003",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"so_number\":[\"866886636\",\"966888976\"]\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-sales-order-delivery",
+      "request": {
+        "url": "{{env}}admin/sales-order-delivery/100003",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"deliveryNumber\":[\"810081009\"]\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "admin-sales-order-invoice",
+      "request": {
+        "url": "{{env}}sales-order-invoice/10003",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"invoiceNumber\":[\"910047573\"]\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "report-portal-error",
+      "request": {
+        "url": "{{env}}report-portal-error",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"remarks\": \"Remark entered by distributor 100053\",\n    \"errorCode\": \"ERR-DBO-OVAL-001-QTY\",\n    \"errorMessage\": \"Error with quantity of item\",\n    \"ccRecipients\": \"abc.xyz@test.com\",\n    \"tse\": \n        \"code\": \"abc123\"\n    ,\n    \"logObj\": {\n        \"xyz\": \"abc123\"\n    },\n    \"categoryId\": \"3\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "materials-bom-explode",
+      "request": {
+        "url": "{{env}}materials-bom-explode",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "description": ""
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"materialCode\": \"14000000000511\", \"quantity\": \"2\" }"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "distributor-inventory-sync",
+      "request": {
+        "url": "{{env}}util/distributor-inventory-sync",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "get-service-request-categories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{env}}service-request-category",
+          "host": ["{{env}}service-request-category"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "add-service-request-category",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"label\": \"create error\",\n    \"description\": \"this is a test create error\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/service-request-category",
+          "host": ["{{env}}admin"],
+          "path": ["service-request-category"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update-service-request-category",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"description\": \"this is a test category\",\n    \"enable\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{env}}admin/service-request-category/8",
+          "host": ["{{env}}admin"],
+          "path": ["service-request-category", "8"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "add-users",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[{\n    \"userId\": \"PORTAL_20\",\n    \"firstName\": \"TEST\",\n    \"lastName\": \"TEST\",\n    \"emailAddress\": \"ABC.XYZ@TEST.COM\",\n    \"mobileNumber\": \"9999999999\",\n    \"managerId\": \"PORTAL_MANAGED\",\n    \"code\": \"123\",\n    \"roles\": \"SUPPORT\"\n    }]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{env}}admin/create-users"
+      },
+      "response": []
+    }
+  ]
+}

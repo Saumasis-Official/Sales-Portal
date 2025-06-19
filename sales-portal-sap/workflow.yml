@@ -1,0 +1,48 @@
+steps:
+  dev_unittest:
+    - cd sales-portal-sap && npm install && npm run jest-test   
+    
+  dev_build:
+    - docker build -f sales-portal-sap/Dockerfile -t sap-dev:latest .
+
+  dev_trivyscan:
+    - trivy scan2html image sap-dev:latest --scan2html-flags --output salesportal-sap-trivy.html
+
+  dev_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag sap-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:dev_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:dev_latest && docker tag sap-dev:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:dev_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:dev_$commit_id
+
+  dev_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "dev-sale-sap-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:dev_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "DEV-AP-SALE-BACKEND-01" --service "DEV-AP-SALE-SAP-SERVICE" --task-definition "dev-sale-sap-td":${NEW_REVISION}
+    
+
+  uat_unittest:
+    - cd sales-portal-sap && npm run jest-test 
+
+  uat_build:
+    - docker build -f sales-portal-sap/Dockerfile -t sap-uat:latest .
+
+  uat_trivyscan:
+    - trivy image sap-uat:latest
+
+  uat_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag sap-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:uat_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:uat_latest && docker tag sap-uat:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:uat_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:uat_$commit_id 
+
+  uat_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "uat-sale-sap-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:uat_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "UAT-AP-SALE-BACKEND-01" --service "UAT-AP-SALE-SAP-SERVICE" --task-definition "uat-sale-sap-td":${NEW_REVISION}
+    
+   
+  prod_unittest:
+    - cd sales-portal-sap && npm run jest-test 
+
+  prod_build:
+    - docker build -f sales-portal-sap/Dockerfile -t sap-prod:latest .
+
+  prod_trivyscan:
+    - trivy image sap-prod:latest
+
+  prod_push:
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 301555797293.dkr.ecr.ap-south-1.amazonaws.com && docker tag sap-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:prod_latest && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:prod_latest && docker tag sap-prod:latest 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:prod_$commit_id && docker push 301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:prod_$commit_id 
+   
+  prod_deploy:
+    - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "prod-sale-sap-td" --region "ap-south-1" --include TAGS) && NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "301555797293.dkr.ecr.ap-south-1.amazonaws.com/sales-portal-sap:prod_latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)') && NEW_TASK_INFO=$(aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION") && NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision') && aws ecs update-service --cluster "PRD-AP-SALE-BACKEND-01" --service "PRD-AP-SALE-SAP-SERVICE" --task-definition "prod-sale-sap-td":${NEW_REVISION}
+    

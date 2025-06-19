@@ -1,0 +1,102 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title  Mail sent to Credit Limit Approver and Requestor
+    link(href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i', rel='stylesheet')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='stylesheet', href='../assets/styles/style.css', type='text/css')
+  body(data-gr-c-s-loaded='true', style='')
+    .template-wrapper
+    table.body(border='0', cellpadding='0', cellspacing='0')
+      tbody
+        tr
+          td  
+            table.main(width: '580px', Margin: '0 auto')
+              tbody
+                tr
+                  td.wrapper
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td
+                            a.template-logo(href='https://pegasus.tataconsumer.com/tcp-logo.png')
+                              img(src='https://pegasus.tataconsumer.com/tcp-logo.png')
+                              br
+                              br
+
+                        
+                            p.p-margin
+                            b Hello #{content.requestor_name?content.requestor_name:'-'},
+                            p
+                            
+                            br
+                    
+                            p.p-margin
+                            |Your Credit Limit Approval Request has been submitted to 
+                            b #{content.approver_name?content.approver_name:'-'} 
+                            |for First Approval. 
+
+                            p.p-margin                            
+                            br
+                            table(border='0' cellpadding='0' cellspacing='0')
+                              tbody
+                                tr
+                                  td.mt30.mb30(align='center')
+                                    table.data-grid-table.table(style='font-size:14px;text-align:left;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;width: 100%;{{msohideall}}' cellpadding='5' cellspacing='0' border='1' bordercolor='#dddddd')
+                                      thead
+                                        tr
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Request No.
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Requested Date
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Requested Extension Expiry Date
+                                      tbody
+                                        tr
+                                          td(style='text-align:center;') #{content.transaction_id}
+                                          td(style='text-align:center;') #{content.req_date}
+                                          td(style='text-align:center;')  #{content.expiryDate}
+                            p
+                            br
+                            br 
+                            table(border='0' cellpadding='0' cellspacing='0')
+                              tbody
+                                tr
+                                  td.mt30.mb30(align='center')
+                                    table.data-grid-table.table(style='font-size:14px;text-align:left;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;width: 100%;{{msohideall}}' cellpadding='5' cellspacing='0' border='1' bordercolor='#dddddd')
+                                      thead
+                                        tr
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Sub Transaction IDs
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Payer Name(Payer Code)
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Requested Extension Amount
+                                          th(style='text-align:center;text-transform:uppercase;color:#ffffff;font-weight:normal' bgcolor='#1268b3')  Ongoing Status
+                                      tbody
+                                         each subTransaction in content.subTransactionIds
+                                          tr
+                                            td(style='text-align:center;') #{subTransaction.childid}
+                                            td(style='text-align:center;') #{subTransaction.payer_name} (#{subTransaction.payercode})
+                                            td(style='text-align:center;')  ₹ #{subTransaction.amount_requested}
+                                            td(style='text-align:center;')  #{subTransaction.status} 
+                            p 
+                            br 
+                            br
+                            p Thank you
+            table
+            table
+            table
+              tbody
+                tr
+                  td.wrapper
+                    table(border='0', cellpadding='0', cellspacing='0')
+                      tbody
+                        tr
+                          td
+                            
+                .footer
+                  table(border='0', cellpadding='0', cellspacing='0')
+                    tbody
+                      tr
+                        td.content-block
+                          p.text-center
+                            | © 2021 Tata Consumer Products Limited.
+                            br
+                            |  This is an automated email, please do not respond to this mail id.
+                          

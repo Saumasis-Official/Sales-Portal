@@ -1,0 +1,17 @@
+missingno
+pandas
+fastapi
+uvicorn
+SQLAlchemy
+requests
+psycopg2-binary
+python-dotenv
+boto3
+xmltodict
+lxml
+python-multipart
+openpyxl
+pydantic
+pytz
+pycountry
+coverage

@@ -1,0 +1,1254 @@
+{
+	"info": {
+		"_postman_id": "0357a53f-039c-44b2-a66f-881b9fde8f93",
+		"name": "New Order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sync-logs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/sync-logs"
+			},
+			"response": []
+		},
+		{
+			"name": "material-tags",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/material-tags"
+			},
+			"response": []
+		},
+		{
+			"name": "get-category-wise-reported-issues",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"from_date\": \"2023-01-02T18:30:00.000Z\",\r\n\"to_date\": \"2023-10-03T18:00:00.000Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/get-category-wise-reported-issues"
+			},
+			"response": []
+		},
+		{
+			"name": "sdr-list",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"offset\" : 0,\r\n\"limit\" : 10,\r\n\"search\" : \"\",\r\n\"status\" : \"ALL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/sdr-list"
+			},
+			"response": []
+		},
+		{
+			"name": "sdr-report-data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"toDate\": \"2024-01-01 00:00:00\",\r\n    \"fromDate\": \"2024-01-11 09:51:07\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/sdr-report-data"
+			},
+			"response": []
+		},
+		{
+			"name": "sd-response-report-data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"toDate\": \"2024-01-01 00:00:00\",\r\n\"fromDate\": \"2024-01-11 09:51:07\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/sd-response-report-data"
+			},
+			"response": []
+		},
+		{
+			"name": "service-delivery-request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  { \r\n\"distributor_id\":100003,\r\n\"req_reason_id\": 10,\r\n\"so_number\": 111023826,\r\n\"sd_req_comments\": \"Testing for swagger\",\r\n\"material_code\": 15000000002696,\r\n\"material_description\": \"TATA SALT BLACK SALT 180X100G SACHET\",\r\n\"plant_code\": 1408,\r\n\"cfa_name\": \"Jaiprassath\",\r\n\"cfa_email\": \"jaiprassath.kothandapani@tataconsumer.com\",\r\n\"cfa_contact\": 7904021033\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/service-delivery-request"
+			},
+			"response": []
+		},
+		{
+			"name": "brand-variant-list",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"areaCode\": \"AP01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/brand-variant-list"
+			},
+			"response": []
+		},
+		{
+			"name": "forecast",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"areaCode\": \"KA01\",\r\n    \"brandVariantCode\":\"15000000000755\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/forecast"
+			},
+			"response": []
+		},
+		{
+			"name": "update-forecast",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"sales_allocation_key\": \"1227231221061003\",\r\n        \"distributorCode\": \"109958\",\r\n        \"updated_allocation\": 132\r\n    },\r\n    {\r\n        \"sales_allocation_key\": \"1228231221061003\",\r\n        \"distributorCode\": \"109968\",\r\n        \"updated_allocation\": 86\r\n    },\r\n    {\r\n        \"sales_allocation_key\": \"1229231221061003\",\r\n        \"distributorCode\": \"140017\",\r\n        \"updated_allocation\": 435\r\n    },\r\n    {\r\n        \"sales_allocation_key\": \"1230231221061003\",\r\n        \"distributorCode\": \"141626\",\r\n        \"updated_allocation\": 44\r\n    },\r\n    {\r\n        \"sales_allocation_key\": \"1231231221061003\",\r\n        \"distributorCode\": \"141631\",\r\n        \"updated_allocation\": 44\r\n    },\r\n    {\r\n        \"sales_allocation_key\": \"1232231221061003\",\r\n        \"distributorCode\": \"143004\",\r\n        \"updated_allocation\": 87\r\n    },\r\n    {\r\n        \"sales_allocation_key\": \"1233231221061003\",\r\n        \"distributorCode\": \"153559\",\r\n        \"updated_allocation\": 87\r\n    },\r\n    {\r\n        \"sales_allocation_key\": \"1234231221061003\",\r\n        \"distributorCode\": \"154163\",\r\n        \"updated_allocation\": 44\r\n    },\r\n    {\r\n        \"sales_allocation_key\": \"1235231221061003\",\r\n        \"distributorCode\": \"154376\",\r\n        \"updated_allocation\": 131\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/update-forecast"
+			},
+			"response": []
+		},
+		{
+			"name": "forecast-summary",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"areaCode\": \"AP01\",\r\n    \"search\": \"\",\r\n    \"limit\": 10,\r\n    \"offset\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/forecast-summary"
+			},
+			"response": []
+		},
+		{
+			"name": "forecast-configuration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"areaCode\": \"AP01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/forecast-configuration"
+			},
+			"response": []
+		},
+		{
+			"name": "last-forecast-date",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"areaCode\": \"AP01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/last-forecast-date"
+			},
+			"response": []
+		},
+		{
+			"name": "submit-forecast",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"areaCode\": \"AP01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/submit-forecast"
+			},
+			"response": []
+		},
+		{
+			"name": "fetch-forecast-for-dist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"distributor_code\": \"100003\",\r\n    \"divisions\": [\r\n        12,\r\n        14,\r\n        17,\r\n        18,\r\n        99,\r\n        13,\r\n        10\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/fetch-forecast-for-dist"
+			},
+			"response": []
+		},
+		{
+			"name": "stock-data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dbCode\": \"100003\",\r\n    \"psku\": [\r\n        \"15000000001665\"\r\n    ],\r\n    \"docType\": \"ZOR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/stock-data"
+			},
+			"response": []
+		},
+		{
+			"name": "stock-sync-time",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/stock-sync-time"
+			},
+			"response": []
+		},
+		{
+			"name": "sku-stock-data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"distributor_code\": \"100003\",\r\n    \"sku\": \"15000000001665\",\r\n    \"docType\": \"ZOR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/sku-stock-data"
+			},
+			"response": []
+		},
+		{
+			"name": "forecast-dump-validation",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/forecast-dump-validation"
+			},
+			"response": []
+		},
+		{
+			"name": "auto-order-report-email",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/auto-order-report-email"
+			},
+			"response": []
+		},
+		{
+			"name": "auto-submit-forecast",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/auto-submit-forecast"
+			},
+			"response": []
+		},
+		{
+			"name": "send-sis-ss-emails",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/send-sis-ss-emails"
+			},
+			"response": []
+		},
+		{
+			"name": "download-forecast-summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/download-forecast-summary?area=AP01",
+					"host": ["{{env}}admin"],
+					"path": ["download-forecast-summary"],
+					"query": [
+						{
+							"key": "area",
+							"value": "AP01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stock-norm-audit/:cg",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/stock-norm-audit/:cg",
+					"host": ["{{env}}admin"],
+					"path": ["stock-norm-audit",":cg"],
+					"variable": [
+						{
+							"key": "cg",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stock-norm-audit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"update\": [\r\n        {\r\n            \"dist_id\": \"109534\",\r\n            \"applicable_month\": \"202401\",\r\n            \"class_a_sn\": \"6\",\r\n            \"class_a_ss_percent\": \"23\",\r\n            \"class_b_sn\": \"8\",\r\n            \"class_b_ss_percent\": \"70\",\r\n            \"class_c_sn\": \"12\",\r\n            \"class_c_ss_percent\": \"60\"\r\n        },\r\n        {\r\n            \"dist_id\": \"150907\",\r\n            \"applicable_month\": \"202401\",\r\n            \"class_a_sn\": \"6\",\r\n            \"class_a_ss_percent\": \"23\",\r\n            \"class_b_sn\": \"8\",\r\n            \"class_b_ss_percent\": \"70\",\r\n            \"class_c_sn\": \"12\",\r\n            \"class_c_ss_percent\": \"60\"\r\n        },\r\n        {\r\n            \"dist_id\": \"109521\",\r\n            \"applicable_month\": \"202401\",\r\n            \"class_a_sn\": \"6\",\r\n            \"class_a_ss_percent\": \"23\",\r\n            \"class_b_sn\": \"8\",\r\n            \"class_b_ss_percent\": \"70\",\r\n            \"class_c_sn\": \"12\",\r\n            \"class_c_ss_percent\": \"60\"\r\n        },\r\n        {\r\n            \"dist_id\": \"142167\",\r\n            \"applicable_month\": \"202401\",\r\n            \"class_a_sn\": \"6\",\r\n            \"class_a_ss_percent\": \"23\",\r\n            \"class_b_sn\": \"8\",\r\n            \"class_b_ss_percent\": \"70\",\r\n            \"class_c_sn\": \"12\",\r\n            \"class_c_ss_percent\": \"60\"\r\n        },\r\n        {\r\n            \"dist_id\": \"142168\",\r\n            \"applicable_month\": \"202401\",\r\n            \"class_a_sn\": \"6\",\r\n            \"class_a_ss_percent\": \"23\",\r\n            \"class_b_sn\": \"8\",\r\n            \"class_b_ss_percent\": \"70\",\r\n            \"class_c_sn\": \"12\",\r\n            \"class_c_ss_percent\": \"60\"\r\n        },\r\n        {\r\n            \"dist_id\": \"100492\",\r\n            \"applicable_month\": \"202401\",\r\n            \"class_a_sn\": \"6\",\r\n            \"class_a_ss_percent\": \"23\",\r\n            \"class_b_sn\": \"8\",\r\n            \"class_b_ss_percent\": \"70\",\r\n            \"class_c_sn\": \"12\",\r\n            \"class_c_ss_percent\": \"60\"\r\n        },\r\n        {\r\n            \"dist_id\": \"141297\",\r\n            \"applicable_month\": \"202401\",\r\n            \"class_a_sn\": \"6\",\r\n            \"class_a_ss_percent\": \"23\",\r\n            \"class_b_sn\": \"8\",\r\n            \"class_b_ss_percent\": \"70\",\r\n            \"class_c_sn\": \"12\",\r\n            \"class_c_ss_percent\": \"60\"\r\n        },\r\n        {\r\n            \"dist_id\": \"139829\",\r\n            \"applicable_month\": \"202401\",\r\n            \"class_a_sn\": \"6\",\r\n            \"class_a_ss_percent\": \"23\",\r\n            \"class_b_sn\": \"8\",\r\n            \"class_b_ss_percent\": \"70\",\r\n            \"class_c_sn\": \"12\",\r\n            \"class_c_ss_percent\": \"60\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/stock-norm-audit"
+			},
+			"response": []
+		},
+		{
+			"name": "moq-mapping-data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"area\" : \"ALL\",\r\n    \"search\" :\"\",\r\n    \"limit\" : 10,\r\n    \"offset\" : 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/moq-mapping-data"
+			},
+			"response": []
+		},
+		{
+			"name": "update-moq",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"moq_data\": [\r\n        {\r\n            \"dbId\": \"101313\",\r\n            \"plantId\": 64,\r\n            \"moq\": 4\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/update-moq"
+			},
+			"response": []
+		},
+		{
+			"name": "stock-norm-default/:cg",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/stock-norm-default/:cg",
+					"host": ["{{env}}admin"],
+					"path": ["stock-norm-default", ":cg"],
+					"variable": [
+						{
+							"key": "cg",
+							"value": "31"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stock-norm-default",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerGroup\": \"31\",\r\n    \"update\": {\r\n        \"class_a_sn\": \"6\",\r\n        \"class_a_ss_percent\": \"23\",\r\n        \"class_b_sn\": \"6\",\r\n        \"class_b_ss_percent\": \"70\",\r\n        \"class_c_sn\": \"6\",\r\n        \"class_c_ss_percent\": \"61\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/stock-norm-default"
+			},
+			"response": []
+		},
+		{
+			"name": "all-ars-tolerance/:cg",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/all-ars-tolerance/:cg",
+					"host": ["{{env}}admin"],
+					"path": ["all-ars-tolerance", ":cg"],
+					"variable": [
+						{
+							"key": "cg",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ars-tolerance/:cg/:areaCode",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{env}}admin/ars-tolerance/:cg/:areaCode",
+					"host": ["{{env}}admin"],
+					"path": ["ars-tolerance", ":cg", ":areaCode"],
+					"variable": [
+						{
+							"key": "cg",
+							"value": "10"
+						},
+						{
+							"key": "areaCode",
+							"value": "TN01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all-ars-tolerance",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"class_a_max\": \"30\",\r\n            \"class_b_max\": \"50\",\r\n            \"class_c_max\": \"50\",\r\n            \"class_a_min\": \"-30\",\r\n            \"class_b_min\": \"-50\",\r\n            \"class_c_min\": \"-50\",\r\n            \"remarks\": \"jczxjkcbzxjvb\",\r\n            \"id\": \"17\"\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}admin/all-ars-tolerance/:cg",
+					"host": ["{{env}}admin"],
+					"path": ["all-ars-tolerance", ":cg"],
+					"variable": [
+						{
+							"key": "cg",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send-forecast-window-emails",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}admin/send-forecast-window-emails"
+			},
+			"response": []
+		},
+		{
+			"name": "sales-hierarchy-details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}util/sales-hierarchy-details"
+			},
+			"response": []
+		},
+		{
+			"name": "ars-auto-submit",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}ars-auto-submit"
+			},
+			"response": []
+		},
+		{
+			"name": "automated-ars-validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"area_codes\" :[\"KA01\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}automated-ars-validation?month=202311",
+					"host": ["{{env}}automated-ars-validation"],
+					"query": [
+						{
+							"key": "month",
+							"value": "202311"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "distributor-moq",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dbCode\": \"100003\",\r\n    \"plantCodes\": [\r\n        \"1428\",\r\n        \"1430\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}distributor-moq"
+			},
+			"response": []
+		},
+		{
+			"name": "sync-stock-norm",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}sync-stock-norm"
+			},
+			"response": []
+		},
+		{
+			"name": "test-fetch-forecast-for-dist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"distributor_code\": \"143004\",\r\n    \"divisions\" :[\"12\"],\r\n    \"applicable_month\":\"202309\",\r\n    \"next_applicable_month\" : \"202310\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}test-fetch-forecast-for-dist"
+			},
+			"response": []
+		},
+		{
+			"name": "remove-expired-carts",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  { \r\n\"distributor_id\":100003\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}remove-expired-carts"
+			},
+			"response": []
+		},
+		{
+			"name": "service-delivery-request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  { \r\n\"distributor_id\":100003,\r\n\"req_reason_id\": 10,\r\n\"so_number\": 111023826,\r\n\"sd_req_comments\": \"Testing for swagger\",\r\n\"material_code\": 15000000002696,\r\n\"material_description\": \"TATA SALT BLACK SALT 180X100G SACHET\",\r\n\"plant_code\": 1408,\r\n\"cfa_name\": \"Jaiprassath\",\r\n\"cfa_email\": \"jaiprassath.kothandapani@tataconsumer.com\",\r\n\"cfa_contact\": 7904021033\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}service-delivery-request"
+			},
+			"response": []
+		},
+		{
+			"name": "fetch-forecast-for-dist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"distributor_code\": \"100003\",\r\n    \"divisions\": [\r\n        12,\r\n        14,\r\n        17,\r\n        18,\r\n        99,\r\n        13,\r\n        10\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{env}}fetch-forecast-for-dist"
+			},
+			"response": []
+		},
+		{
+			"name": "ars-tolerance/:cg/:areaCode",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{env}}ars-tolerance/:cg/:areaCode",
+					"host": ["{{env}}ars-tolerance"],
+					"path": ["ars-tolerance",":cg",":areaCode"],
+					"variable": [
+						{
+							"key": "cg",
+							"value": "10"
+						},
+						{
+							"key": "areaCode",
+							"value": "TN01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,43 @@
+.persona-table .ant-table-small .ant-table-thead > tr > th {
+  background-color: #1268b3;
+  color: #fff;
+}
+
+.persona-check-box {
+  left: auto;
+  height: 28px;
+  width: 28px;
+}
+
+.persona-check-box-checked {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('../../../assets/images/checkbox-checked-svgrepo-com.svg');
+  text-indent: -9999px; /* Move the text out of view */
+  overflow: hidden; /* Ensure the text does not affect the layout */
+}
+
+.persona-check-box-unchecked {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('../../../assets/images/checkbox-unchecked-svgrepo-com.svg');
+  text-indent: -9999px; /* Move the text out of view */
+  overflow: hidden; /* Ensure the text does not affect the layout */
+}
+
+.persona-download-button {
+  margin-left: 5px;
+  display: flex;
+  background: #34aeef;
+  height: 30px;
+  border: none;
+  color: #fff;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.persona-page-title {
+  width: 75%;
+  min-width: fit-content;
+}

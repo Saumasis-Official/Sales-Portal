@@ -1,0 +1,33 @@
+.tolerance-time-details p {
+  margin-bottom: 5px;
+}
+
+.search-input-tolerance {
+  width: 300px;
+  height: 38px;
+  margin: 2px 30px 3px 0px;
+}
+
+.info-icon .tolerance-exemption .ant-tooltip-inner .anticon-delete {
+  width: 35px;
+  font-size: 16px;
+}
+
+.history-info-icon {
+  width: 35px;
+  font-size: 16px;
+}
+
+.admin-dashboard-table.tolerance-exemption.sn-table-container
+  table
+  tbody
+  tr.change-color {
+  background-color: #d7fff5;
+}
+
+.admin-dashboard-table.tolerance-exemption.sn-table-container
+  table
+  tbody
+  tr.deleted-row {
+  background-color: rgb(255, 0, 0, 0.3);
+}

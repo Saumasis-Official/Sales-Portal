@@ -1,0 +1,225 @@
+
+  .ecom-header-two .dashboard-tabs .tablink {
+    width: 20%;
+  }
+  .header-div {
+    width: 60%;
+    min-width: 350px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .search_box-ecom {
+    width: 60%;
+    min-width: 250px;
+    position: relative;
+    font-size: 13px;
+    margin-left: 10px;
+    padding: 2px;
+  }
+  .po-created-session-date-picker {
+    width: 60%;
+    padding: 2px;
+  }
+  
+  .ecom-header-two {
+    width: 100%;
+    min-width: 200px;
+    display: flex;
+    padding-top: 10px;
+    margin-bottom: -15px;
+    margin-top: -24px;
+  }
+  .ant-picker-range {
+    height: 42px;
+  }
+  .admin-dashboard-table table tbody tr:nth-of-type(even) {
+    background: white;
+  }
+  .po-details-shopify {
+    background-color: #ffffff; 
+    border-radius: 5px;
+    padding: 6px;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+   }
+   .po-details-shopify ul li {
+    display: flex;
+    font-size: 13px;
+    color: #333333;
+    font-family: 'MyriadPro-Semibold';
+    margin-right: 100px;
+  }
+   
+.po-details-shopify ul li.field-attr-mt {
+    display: flex;
+    font-size: 10px;
+    color: #333333;
+    font-family: 'MyriadPro-Semibold';
+  }
+  
+  .po-details-shopify ul li span {
+    width: 120px;
+  }
+
+  .custom-dropdown-link {
+    color: #f9f6f6; /* Custom green color */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 8px;
+    transition: color 0.3s, background-color 0.3s;
+  
+    /* Add some margin to separate the icon from the text */
+    margin-left: 8px;
+  }
+  
+  .custom-dropdown-link:hover {
+    color: #45a049; /* Lighter shade of the custom green color for hover effect */
+    background-color: #f0f0f0; /* Light grey background on hover */
+  }
+  
+  .custom-dropdown-link:active {
+    color: #388e3c; /* Darker shade of the custom green color for active effect */
+    background-color: #e0e0e0; /* Slightly darker grey background on active */
+  }
+ 
+  .resend-button{
+      border: 0;
+      border-radius: 4px;
+      font: normal normal 600 13px / 19px MyriadPro-Semibold;
+      letter-spacing: 0.03px;
+      background: #34aeef;
+      color: #fff;
+      width: 110px;
+      height: 42px;
+      padding-top: 3px;
+      margin-right: 0px;
+      cursor: pointer;
+      margin-left: 16px;
+      margin-top: 2px;
+  }
+  
+
+
+  .admin-dashboard-table table thead {
+      position: sticky; 
+      top: 0; 
+      background-color: #ffffff; 
+      z-index: 1; 
+  }
+
+
+  .table-fixed{
+    height: 63vh;
+    overflow-y: auto;
+  }
+  
+  .body-overflow-hidden {
+    overflow: hidden;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  .shopify-delete {
+    background-color: #34aeef;
+    color: #fff;
+    font-weight: 400 !important;
+    width: 63px;
+    height: 33px;
+    border: none;
+    text-align: center !important;
+    border-radius: 6% !important;
+    margin-right: 13px;
+    margin-bottom: 0px;
+    font-size: 17px;
+    font-family: MyriadPro-Semibold;
+    margin-top: 35px;
+}
+  
+  /* ShopifyPoDetails.css */
+  .shopify-checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .shopify-custom-checkbox {
+    position: relative;
+    width: 19px; 
+    height: 19px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    background-color: #fff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    margin-top: 10px;
+    margin-left: 36px;
+  }
+  
+  .shopify-custom-checkbox:checked {
+    background-color: #1268b3;
+    border-color: #1268b3;
+  }
+  
+  .shopify-custom-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 6px; 
+    width: 7px; 
+    height: 14px; 
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .shopify-disabled-button {
+    background-color: grey !important;
+    border-color: grey !important;
+    color: white !important;
+  }
+  .disabled-checkbox {
+    cursor: not-allowed;
+  }
+  .shopify-cancel {
+    background-color: #34aeef;
+    color: #fff;
+    font-weight: 400 !important;
+    height: 33px;
+    border: none;
+    text-align: center !important;
+    border-radius: 6% !important;
+    margin-left: 245px;
+    font-size: 17px;
+    font-family: MyriadPro-Semibold;
+    margin-top: 35px;
+    margin-right: 15px;
+}
+
+.shopify-save {
+    background-color: #34aeef;
+    color: #fff !important;
+    font-weight: 400 !important;
+    width: 63px;
+    height: 34px;
+    text-align: center !important;
+    border-radius: 6% !important;
+    margin-right: 15px;
+    font-size: 17px;
+    font-family: MyriadPro-Semibold;
+    margin-top: 35px;
+}
+
+.po-details-shopify .btn-container{
+  width: 30%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 0;
+}

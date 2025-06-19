@@ -1,0 +1,35 @@
+{
+	"variables": [],
+	"info": {
+		"name": "orders",
+		"_postman_id": "100a11a4-89aa-be08-2061-a6334d091413",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+    {
+      "name": "admin-get-zone-wise-orders",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{admin_token}}",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"from_date\": \"2022-03-01 18:39+05:30\",\r\n    \"to_date\": \"2022-06-01 18:39+05:30\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{env}}admin/get-zone-wise-orders"
+      },
+      "response": []
+    }
+  ]
+}
